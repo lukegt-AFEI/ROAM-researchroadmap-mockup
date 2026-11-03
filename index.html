@@ -293,6 +293,25 @@ main{padding:2px 20px 48px}
 .ruler{height:22px}
 .track-row .act{height:20px}
 .act .du{font-size:.66rem}
+
+/* v0.3 layout: tighter header, herd roams under the stage headers, cost on hover */
+.intro{grid-template-columns:minmax(0,.85fr) minmax(0,2fr);gap:28px;align-items:start;padding:8px 0 10px}
+.intro h1{font-size:clamp(1.2rem,1.75vw,1.55rem);line-height:1.12;max-width:none}
+.intro p{font-size:.85rem;margin:0 0 3px}
+.intro p+p{font-size:.78rem}
+.legend{align-items:center}
+.legend .herd-btn{position:static;margin-left:auto}
+.rm>.steppe-wrap{position:absolute;margin:0;z-index:0;pointer-events:none}
+.rm>.steppe-wrap .steppe{height:62px}
+.rm>.steppe-wrap .hills{opacity:.55}
+.rm .beast{width:calc(var(--sz)*.45);bottom:calc(var(--b)*.45)}
+.phase-head{position:relative;z-index:1;padding-bottom:58px}
+.phase-head.deploy{background:none}
+.gate-head{position:relative;z-index:1}
+.hovercard{position:fixed;z-index:30;pointer-events:none;background:var(--surface);border:1px solid var(--rule-strong);border-radius:6px;padding:7px 10px;font-size:.78rem;line-height:1.4;box-shadow:0 4px 14px rgba(0,0,0,.12);max-width:300px}
+.hovercard[hidden]{display:none}
+.hovercard b{display:block;font-weight:600;margin-bottom:2px}
+.hovercard span{color:var(--draft);font-size:.72rem}
 </style>
 </head>
 <body>
@@ -921,6 +940,35 @@ layoutRoadmap();
 if(document.fonts && document.fonts.ready) document.fonts.ready.then(()=>{ layoutRoadmap(); });
 let lastW = rm.clientWidth;
 new ResizeObserver(()=>{ if(rm.clientWidth!==lastW){ lastW=rm.clientWidth; layoutRoadmap(); if(typeof drawLinks==="function") drawLinks(hoverId||selected); } }).observe(rm);
+
+// v0.3: the herd roams under the stage headers; cost shows on hover
+(function(){
+  const sw=document.querySelector('.steppe-wrap'), hb=document.getElementById('herdBtn'), lg=document.getElementById('legend');
+  if(hb&&lg) lg.appendChild(hb);
+  function placeSteppe(){
+    if(!sw) return;
+    if(sw.parentNode!==rm) rm.appendChild(sw);
+    const heads=rm.querySelectorAll('.phase-head'), r=rm.querySelector('.ruler');
+    if(!heads.length||!r) return;
+    const l=heads[0].offsetLeft, last=heads[heads.length-1];
+    sw.style.left=l+'px'; sw.style.width=(last.offsetLeft+last.offsetWidth-l)+'px';
+    sw.style.top=(r.offsetTop-sw.offsetHeight)+'px';
+  }
+  placeSteppe(); new ResizeObserver(placeSteppe).observe(rm);
+  if(document.fonts&&document.fonts.ready) document.fonts.ready.then(placeSteppe);
+  const tip=document.createElement('div'); tip.className='hovercard'; tip.hidden=true; document.body.appendChild(tip);
+  const show=b=>{ const a=byId[b.dataset.id]; if(!a) return;
+    tip.innerHTML='<b>'+esc(a.t)+'</b>'+esc(a.dur)+' · '+(a.c?fmtRange(a.c)+(a.per?' ('+esc(a.per)+')':''):'Cost not yet scoped')+' <span>placeholder</span>';
+    tip.hidden=false; const r=b.getBoundingClientRect(), w=tip.offsetWidth, h=tip.offsetHeight;
+    const x=Math.min(Math.max(8,r.left),innerWidth-w-8); let y=r.top-h-6; if(y<8) y=r.bottom+6;
+    tip.style.left=x+'px'; tip.style.top=y+'px'; };
+  rm.addEventListener('mouseover',e=>{const b=e.target.closest('.act'); if(b) show(b); else tip.hidden=true;});
+  rm.addEventListener('mouseleave',()=>{tip.hidden=true;});
+  rm.addEventListener('focusin',e=>{const b=e.target.closest('.act'); if(b) show(b);});
+  rm.addEventListener('focusout',()=>{tip.hidden=true;});
+  addEventListener('scroll',()=>{tip.hidden=true;},{passive:true});
+})();
+
 
 // Totals
 const totals = document.getElementById("totals");
