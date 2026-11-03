@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arctic Rewilding Research Roadmap (Mockup) | AFEI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Public+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ground:#e5e4d4; --surface:#f3f2e8; --surface-2:#eae8d8; --ink:#242a1f; --muted:#5f6350; --rule:#cfccb6; --rule-strong:#9f9a7e;
+  --eco:#56713a; --cli:#3d7672; --mea:#9c7529; --imp:#7a5236;
+  --focus:#3d7672; --draft:#8a5a2b;
+  --hill-far:#d4d3bd; --hill-near:#c3c5a4; --herd:#3a3122; --calf:#9a5a2c; --tusk:#b5a275; --pale:#d4c8a6; --herd2:#80694a; --grass:#7f8c55;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+  color-scheme:light;
+  box-sizing:border-box; padding-top:env(safe-area-inset-top,0px); padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --ground:#1c211a; --surface:#252b22; --surface-2:#20261d; --ink:#e6e3d2; --muted:#a5a58e; --rule:#353d30; --rule-strong:#5a624f;
+    --eco:#9fbe7a; --cli:#86bab3; --mea:#d2ae66; --imp:#c49b77; --focus:#86bab3; --draft:#d0a47a;
+    --hill-far:#252c21; --hill-near:#2e3728; --herd:#a99b7c; --calf:#c98c5c; --tusk:#e3d7b4; --pale:#eee5c9; --herd2:#6f634c; --grass:#6f8456;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --ground:#1c211a; --surface:#252b22; --surface-2:#20261d; --ink:#e6e3d2; --muted:#a5a58e; --rule:#353d30; --rule-strong:#5a624f;
+  --eco:#9fbe7a; --cli:#86bab3; --mea:#d2ae66; --imp:#c49b77; --focus:#86bab3; --draft:#d0a47a;
+  --hill-far:#252c21; --hill-near:#2e3728; --herd:#a99b7c; --calf:#c98c5c; --tusk:#e3d7b4; --pale:#eee5c9; --herd2:#6f634c; --grass:#6f8456;
+  color-scheme:dark;
+}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;background:var(--ground);color:var(--ink);font-family:var(--sans);font-size:16px;line-height:1.5;-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--ground)}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px}
+a{color:inherit}
+
+/* Top bar */
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--ground);border-bottom:1px solid var(--rule)}
+.top-inner{max-width:1360px;margin:0 auto;padding:12px 24px;display:flex;align-items:center;gap:24px;flex-wrap:wrap}
+.brand{font-family:var(--serif);font-size:1.15rem;font-weight:600;letter-spacing:.01em;white-space:nowrap}
+.brand span{font-weight:400;color:var(--muted)}
+nav{display:flex;gap:4px;margin-left:auto;flex-wrap:wrap}
+nav button{background:none;border:0;padding:6px 12px;border-radius:999px;cursor:pointer;color:var(--muted);font-size:.92rem}
+nav button[aria-current="page"]{background:var(--surface);color:var(--ink);box-shadow:inset 0 0 0 1px var(--rule)}
+.theme-btn{background:none;border:1px solid var(--rule);border-radius:999px;padding:5px 11px;cursor:pointer;color:var(--muted);font-size:.85rem}
+
+.draft-note{max-width:1360px;margin:0 auto;padding:10px 24px 0;color:var(--draft);font-size:.86rem}
+
+main{max-width:1360px;margin:0 auto;padding:8px 24px 64px}
+.view[hidden]{display:none}
+
+/* Intro */
+.intro{display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:40px;align-items:end;padding:28px 0 28px}
+.intro h1{font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.2vw,3.3rem);line-height:1.05;margin:0;letter-spacing:-.01em;max-width:18ch}
+.intro p{margin:0 0 10px;max-width:60ch;color:var(--muted)}
+.intro p strong{color:var(--ink);font-weight:600}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.legend button{display:inline-flex;align-items:center;gap:8px;background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:5px 12px 5px 9px;cursor:pointer;font-size:.86rem}
+.legend button[aria-pressed="true"]{border-color:var(--ink)}
+.swatch{width:10px;height:10px;border-radius:2px;display:inline-block}
+
+/* Roadmap grid */
+.rm-wrap{overflow-x:auto;border-top:1px solid var(--rule);-webkit-overflow-scrolling:touch;width:100vw;margin-left:calc(50% - 50vw);padding:0 24px}
+.rm{position:relative;display:grid;grid-template-columns:150px minmax(240px,1fr) 52px minmax(260px,1.1fr) 52px minmax(340px,1.5fr);min-width:1240px}
+.grass-bg{position:absolute;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+.grass-bg path{fill:none;stroke:var(--grass);stroke-width:1.1;stroke-linecap:round;opacity:.2}
+.track-row{grid-column:2 / -1;display:grid;grid-template-columns:subgrid;grid-auto-flow:row dense;row-gap:4px;align-content:start;padding:9px 0;border-bottom:1px solid var(--rule);position:relative;z-index:1}
+.track-row .act{margin:0 6px;width:auto}
+.track-row .act.span{background:linear-gradient(90deg,var(--surface),var(--surface-2))}
+.rm{grid-template-columns:150px minmax(500px,4fr) 52px minmax(620px,5.5fr) 52px minmax(440px,3.8fr);min-width:1814px;max-width:2100px;margin:0 auto}
+.track-row .act.narrow .du{display:none}
+.ruler{grid-column:2 / -1;position:relative;height:26px;border-bottom:1px solid var(--rule);z-index:1}
+.ruler i{position:absolute;bottom:0;width:1px;height:6px;background:var(--rule-strong)}
+.ruler span{position:absolute;top:4px;transform:translateX(-50%);font-size:.68rem;color:var(--muted);white-space:nowrap;font-variant-numeric:tabular-nums}
+.track-row{display:block!important;padding:0!important}
+.track-row .act{position:absolute;margin:0;height:24px;background:color-mix(in srgb,var(--tc) 15%,var(--surface));border-color:color-mix(in srgb,var(--tc) 35%,var(--rule))}
+.track-row .act.span{background:color-mix(in srgb,var(--tc) 15%,var(--surface))}
+.track-row .act.og{border-right-color:transparent;background:linear-gradient(90deg,color-mix(in srgb,var(--tc) 15%,var(--surface)) 0,color-mix(in srgb,var(--tc) 15%,var(--surface)) calc(100% - 80px),transparent)}
+.track-row .act.unl{background:color-mix(in srgb,var(--tc) 30%,var(--surface))}
+.fence{z-index:0;pointer-events:none;background-image:repeating-linear-gradient(to bottom,var(--rule-strong) 0 9px,transparent 9px 15px);background-size:2px 100%;background-position:center top;background-repeat:no-repeat}
+.phase-head.deploy{background:linear-gradient(180deg,transparent,var(--surface-2))}
+.growth{display:block;width:100%;max-width:330px;height:auto;margin:0 0 10px}
+.growth .gcurve{fill:none;stroke:var(--eco);stroke-width:2.2;stroke-linecap:round}
+.growth .gcap{stroke:var(--rule-strong);stroke-width:1;stroke-dasharray:3 3}
+.growth .gax{stroke:var(--rule-strong);stroke-width:1}
+.growth .gt{stroke:var(--rule-strong);stroke-width:1}
+.growth .gp{fill:var(--eco)}
+.growth .gtx{fill:var(--muted);font:500 9px var(--sans)}
+.how-btn{margin-top:12px;background:none;border:1px solid var(--rule-strong);border-radius:999px;padding:4px 11px;font-size:.8rem;cursor:pointer;color:var(--ink)}
+.how-btn:hover{background:var(--surface)}
+.cell{padding:8px 6px;border-bottom:1px solid var(--rule)}
+.links{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible;z-index:3}
+.links path{fill:none;stroke-width:1.5;stroke-linecap:round}
+.links .l-dep{stroke:var(--ink)}
+.links .l-unl{stroke:var(--muted);stroke-dasharray:4 3}
+.mk-dep{fill:var(--ink)}
+.mk-unl{fill:var(--muted)}
+.links g{animation:linkin .18s ease-out}
+@keyframes linkin{from{opacity:0}to{opacity:1}}
+.corner{border-bottom:1px solid var(--rule)}
+.phase-head{padding:20px 12px 18px;border-bottom:1px solid var(--rule-strong)}
+.phase-num{font-family:var(--serif);font-size:3rem;line-height:.9;font-weight:400;color:var(--muted)}
+.phase-name{font-family:var(--serif);font-size:1.3rem;font-weight:600;margin:6px 0 6px;line-height:1.15}
+.phase-q{font-size:.9rem;color:var(--muted);margin:0 0 12px;max-width:34ch}
+.phase-stats{display:flex;gap:18px;font-size:.84rem;font-variant-numeric:tabular-nums}
+.phase-stats div span{display:block;color:var(--muted);font-size:.78rem}
+.phase-stats div b{font-weight:600}
+
+/* Gates: drawn as fence lines */
+.gate{position:relative;border-bottom:1px solid var(--rule);background-image:repeating-linear-gradient(to bottom,var(--rule-strong) 0 9px,transparent 9px 15px);background-size:2px 100%;background-position:center top;background-repeat:no-repeat}
+.gate-head{display:flex;align-items:flex-end;justify-content:center;padding-bottom:18px;border-bottom:1px solid var(--rule-strong);background-image:repeating-linear-gradient(to bottom,var(--rule-strong) 0 9px,transparent 9px 15px);background-size:2px 100%;background-position:center top;background-repeat:no-repeat}
+.gate-btn{writing-mode:vertical-rl;transform:rotate(180deg);background:var(--ground);border:1px solid var(--rule-strong);border-radius:999px;padding:12px 5px;font-size:.76rem;line-height:1.2;cursor:pointer;color:var(--ink);max-height:240px}
+.gate-btn:hover{background:var(--surface)}
+
+.track-label{padding:12px 12px 12px 0;border-bottom:1px solid var(--rule);position:sticky;left:0;background:var(--ground);z-index:1}
+.track-label b{display:flex;align-items:center;gap:8px;font-family:var(--serif);font-size:1.05rem;font-weight:600}
+.track-label small{display:block;color:var(--muted);font-size:.78rem;line-height:1.35;margin-top:4px}
+.stack{display:flex;flex-direction:column;gap:6px}
+
+.stack{gap:4px}
+.act{display:flex;align-items:center;gap:7px;width:100%;height:26px;text-align:left;background:var(--surface);border:1px solid var(--rule);border-left:3px solid var(--tc);border-radius:2px 4px 4px 2px;padding:0 8px 0 8px;cursor:pointer;font-size:.79rem;line-height:1;transition:opacity .15s,border-color .15s,background-color .15s}
+.act:hover{border-color:var(--rule-strong);border-left-color:var(--tc)}
+.act .nm{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.act .du{flex:none;color:var(--muted);font-size:.7rem;font-variant-numeric:tabular-nums}
+.act .live{flex:none;width:6px;height:6px;border-radius:50%;background:var(--tc)}
+.dimmed .act{opacity:.28}
+.dimmed .act.sel,.dimmed .act.dep,.dimmed .act.unl,.dimmed .act.match{opacity:1}
+.act.sel{box-shadow:0 0 0 2px var(--ink)}
+.act.dep{box-shadow:0 0 0 1px var(--ink);border-style:dashed;border-left-style:solid}
+.act.unl{background:var(--surface-2)}
+.rel-key{display:flex;gap:16px;flex-wrap:wrap;font-size:.8rem;color:var(--muted);padding:10px 0 0}
+.rel-key i{display:inline-block;width:14px;height:10px;border-radius:2px;vertical-align:-1px;margin-right:6px}
+
+.ur{margin-top:8px;font-size:.78rem;color:var(--muted);max-width:30ch}
+.ur b{color:var(--ink);font-weight:600}
+.costs{margin-top:34px}
+.costs h2{font-family:var(--serif);font-weight:600;font-size:1.3rem;margin:0 0 4px}
+.costs p{margin:0 0 12px;color:var(--muted);font-size:.9rem;max-width:72ch}
+.cost-wrap{overflow-x:auto}
+.cost-table{border-collapse:collapse;min-width:640px;width:100%;font-variant-numeric:tabular-nums;font-size:.9rem}
+.cost-table th,.cost-table td{padding:9px 12px;border-bottom:1px solid var(--rule);text-align:right;white-space:nowrap}
+.cost-table th:first-child,.cost-table td:first-child{text-align:left}
+.cost-table thead th{font-weight:600;color:var(--muted);font-size:.8rem;border-bottom-color:var(--rule-strong)}
+.cost-table tfoot td{font-weight:600;border-bottom:0;border-top:1px solid var(--rule-strong)}
+.cost-table .sw{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:8px}
+.d-sum{font-size:1rem;margin:-6px 0 14px;font-variant-numeric:tabular-nums;color:var(--muted)}
+.d-sum b{color:var(--ink);font-weight:600}
+.chip small{color:var(--muted);margin-left:6px;font-variant-numeric:tabular-nums}
+.phase-filter{display:flex;flex-wrap:wrap;gap:6px;margin:0 0 14px;align-items:center;font-size:.86rem;color:var(--muted)}
+.phase-filter button{background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:4px 12px;cursor:pointer;font-size:.84rem}
+.phase-filter button[aria-pressed="true"]{border-color:var(--ink);color:var(--ink)}
+.matrix.filtering .unc{opacity:.3}
+.matrix.filtering .unc.tgt{opacity:1;box-shadow:0 0 0 2px var(--ink)}
+.totals{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:0;margin-top:28px;border-top:1px solid var(--rule)}
+.totals div{padding:16px 16px 0 0}
+.totals h3{margin:0 0 4px;font-family:var(--serif);font-size:1.05rem;font-weight:600}
+.totals p{margin:0;color:var(--muted);font-size:.9rem;max-width:44ch}
+
+/* Drawer */
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.25);opacity:0;pointer-events:none;transition:opacity .2s;z-index:20}
+.scrim.open{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(470px,100%);background:var(--surface);border-left:1px solid var(--rule);z-index:21;transform:translateX(102%);transition:transform .25s ease;display:flex;flex-direction:column;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+.drawer.open{transform:none}
+.drawer-head{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;border-bottom:1px solid var(--rule)}
+.drawer-head .crumb{font-size:.84rem;color:var(--muted);display:flex;align-items:center;gap:8px}
+.close{background:none;border:1px solid var(--rule);border-radius:999px;padding:4px 12px;cursor:pointer;font-size:.85rem}
+.drawer-body{overflow-y:auto;padding:20px 22px 40px}
+.drawer h2{font-family:var(--serif);font-weight:500;font-size:1.65rem;line-height:1.12;margin:0 0 14px}
+.facts{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);margin-bottom:18px}
+.facts div{padding:10px 10px 10px 0}
+.facts span{display:block;font-size:.76rem;color:var(--muted)}
+.facts b{font-weight:600;font-size:.95rem;font-variant-numeric:tabular-nums}
+.estimate-note{font-size:.8rem;color:var(--draft);margin:-8px 0 18px}
+.drawer h3{font-size:.86rem;font-weight:600;margin:20px 0 6px;color:var(--muted)}
+.drawer p{margin:0 0 8px;max-width:62ch}
+.scope p{padding-left:12px;border-left:2px solid var(--rule)}
+.scope p b{font-weight:600}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{background:var(--surface-2);border:1px solid var(--rule);border-radius:999px;padding:4px 10px;font-size:.82rem;cursor:pointer;text-align:left}
+.chip:hover{border-color:var(--rule-strong)}
+.chip .swatch{margin-right:6px}
+.empty{color:var(--muted);font-size:.88rem}
+
+/* Uncertainty view */
+.unc-intro{padding:28px 0 20px;max-width:68ch}
+.unc-intro h1{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,3.4vw,2.6rem);margin:0 0 10px;line-height:1.1}
+.unc-intro p{color:var(--muted);margin:0 0 8px}
+.matrix-wrap{overflow-x:auto}
+.matrix{display:grid;grid-template-columns:44px repeat(3,minmax(210px,1fr));min-width:720px}
+.mx-y{writing-mode:vertical-rl;transform:rotate(180deg);display:flex;align-items:center;justify-content:center;font-size:.8rem;color:var(--muted)}
+.mx-cell{border:1px solid var(--rule);margin:-1px 0 0 -1px;padding:10px;min-height:120px;display:flex;flex-direction:column;gap:6px;background:var(--surface)}
+.mx-cell.hot{background:var(--surface-2)}
+.mx-lab{font-size:.74rem;color:var(--muted);margin-bottom:2px}
+.mx-x{text-align:center;font-size:.8rem;color:var(--muted);padding-top:6px}
+.unc{display:block;text-align:left;background:var(--ground);border:1px solid var(--rule);border-left:3px solid var(--tc);border-radius:3px 6px 6px 3px;padding:6px 9px;font-size:.84rem;cursor:pointer;line-height:1.3}
+.unc:hover{border-color:var(--rule-strong);border-left-color:var(--tc)}
+.axis-note{font-size:.84rem;color:var(--muted);margin-top:14px;max-width:70ch}
+
+/* About view */
+.about{display:grid;grid-template-columns:minmax(0,1fr) 260px;gap:56px;padding:28px 0}
+.about article{max-width:66ch}
+.about h1{font-family:var(--serif);font-weight:500;font-size:clamp(1.8rem,3.4vw,2.6rem);margin:0 0 16px;line-height:1.1}
+.about h2{font-family:var(--serif);font-weight:600;font-size:1.3rem;margin:34px 0 8px}
+.about p{margin:0 0 12px;font-family:var(--serif);font-size:1.08rem;line-height:1.62}
+.about aside{border-left:1px solid var(--rule);padding-left:20px;font-size:.9rem;color:var(--muted);align-self:start;position:sticky;top:80px}
+.about aside h3{color:var(--ink);font-size:.9rem;margin:0 0 6px}
+.about aside p{margin:0 0 16px}
+.gate-list p{padding-left:14px;border-left:2px solid var(--rule-strong)}
+
+/* The herd */
+.steppe-wrap{position:relative;isolation:isolate;margin:0 0 6px}
+.steppe{position:relative;height:140px;overflow:hidden;isolation:isolate}
+.hills{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hills .far{fill:var(--hill-far)}
+.hills .near{fill:var(--hill-near)}
+.beast{position:absolute;left:-160px;bottom:var(--b);width:var(--sz);color:var(--herd);opacity:var(--op);animation:run var(--dur) linear infinite;animation-delay:var(--dl)}
+.beast svg{display:block;width:100%;height:auto;overflow:visible}
+.beast .bd{animation:bob var(--gait) ease-in-out infinite alternate}
+.beast .fur{stroke:currentColor;stroke-width:3.4;stroke-dasharray:.4 3;stroke-linecap:round;stroke-linejoin:round}
+.beast .horn{fill:none;stroke:currentColor;stroke-width:2.8;stroke-linecap:round}
+.beast .pale{fill:var(--pale)}
+.beast .t2{fill:var(--herd2)}
+.beast .t2-fur{fill:var(--herd2);stroke:var(--herd2);stroke-width:3.4;stroke-dasharray:.4 3;stroke-linecap:round;stroke-linejoin:round}
+.beast .dk-fur{fill:var(--herd);stroke:var(--herd);stroke-width:3.4;stroke-dasharray:.4 3;stroke-linecap:round;stroke-linejoin:round}
+.beast .horn.t2s{stroke:var(--herd2)}
+.beast .horn.pale-h{stroke:var(--pale)}
+.beast .pale-s{fill:none;stroke:var(--pale);stroke-width:3;stroke-linecap:round}
+.beast .pale-fur{fill:var(--pale);stroke:var(--pale);stroke-width:3;stroke-dasharray:.4 3;stroke-linecap:round;stroke-linejoin:round}
+.beast .tusk{fill:none;stroke:var(--tusk);stroke-width:3.4;stroke-linecap:round}
+.beast .lg{transform-box:fill-box;transform-origin:50% 0;animation:swing var(--gait) ease-in-out infinite alternate}
+.beast .lg.b{animation-direction:alternate-reverse}
+@keyframes swing{from{transform:rotate(-24deg)}to{transform:rotate(24deg)}}
+@keyframes bob{from{transform:translateY(0)}to{transform:translateY(-1.6px)}}
+@keyframes run{from{left:-160px}to{left:calc(100% + 20px)}}
+.steppe.paused .beast,.steppe.paused .beast *{animation-play-state:paused}
+.herd-btn{position:absolute;right:0;top:6px;z-index:2;background:var(--surface);border:1px solid var(--rule);border-radius:999px;padding:4px 11px;font-size:.8rem;color:var(--muted);cursor:pointer}
+.herd-btn:hover{color:var(--ink)}
+
+@media (max-width:820px){
+  .top-inner{padding:10px 16px;gap:10px}
+  nav{margin-left:0;width:100%;order:3}
+  .theme-btn{margin-left:auto}
+  main{padding:4px 16px 48px}
+  .draft-note{padding:8px 16px 0}
+  .intro{grid-template-columns:1fr;gap:16px;padding:20px 0}
+  .about{grid-template-columns:1fr;gap:24px}
+  .about aside{position:static;border-left:0;border-top:1px solid var(--rule);padding:16px 0 0}
+  .facts{grid-template-columns:1fr 1fr}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">AFEI <span>Arctic Rewilding Research Roadmap</span></div>
+    <nav aria-label="Sections">
+      <button data-view="roadmap" aria-current="page">Roadmap</button>
+      <button data-view="unc">Uncertainties</button>
+      <button data-view="about">About and method</button>
+    </nav>
+    <button class="theme-btn" id="themeBtn" type="button">Theme</button>
+  </div>
+</header>
+<p class="draft-note">Mockup (v0.2) for discussion only. This is not the actual research roadmap. Activities, costs and timelines are placeholders that haven’t been scoped with outside experts yet.</p>
+
+<main>
+  <section class="view" id="view-roadmap">
+    <div class="intro">
+      <h1>Could restoring large herbivores to the Arctic measurably slow climate change?</h1>
+      <div>
+        <p id="introSummary"></p>
+        <p>Hover over an activity to trace what it depends on and what it unlocks. Select it for details, or select a gate to see the evidence test for moving on.</p>
+        <div class="legend" id="legend" aria-label="Filter by research track"></div>
+      </div>
+    </div>
+    <div class="steppe-wrap">
+      <div class="steppe" id="steppe" aria-hidden="true">
+        <svg class="hills" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path class="far" d="M0 70 C120 52 220 60 330 48 C450 36 560 58 680 50 C800 42 900 30 1020 44 C1100 52 1160 46 1200 50 L1200 120 L0 120Z"/>
+          <path class="near" d="M0 96 C160 88 300 98 460 92 C640 86 780 100 960 94 C1080 90 1150 96 1200 94 L1200 120 L0 120Z"/>
+        </svg>
+      </div>
+      <button class="herd-btn" id="herdBtn" type="button" aria-pressed="false">Pause the herd</button>
+    </div>
+    <div class="rm-wrap"><div class="rm" id="rm"></div></div>
+    <div class="rel-key" aria-hidden="true">
+      <span><svg width="28" height="10" style="vertical-align:-1px;margin-right:6px"><path d="M1 5H21" style="stroke:var(--ink);stroke-width:1.5"/><path d="M20 1L27 5L20 9z" style="fill:var(--ink)"/></svg>Depends on</span>
+      <span><svg width="28" height="10" style="vertical-align:-1px;margin-right:6px"><path d="M1 5H21" style="stroke:var(--muted);stroke-width:1.5;stroke-dasharray:4 3"/><path d="M20 1L27 5L20 9z" style="fill:var(--muted)"/></svg>Unlocks</span>
+      <span><i style="width:7px;height:7px;border-radius:50%;background:var(--muted)"></i>In progress</span>
+    </div>
+    <div class="totals" id="totals"></div>
+  </section>
+
+  <section class="view" id="view-unc" hidden>
+    <div class="unc-intro">
+      <h1>What we don’t know yet</h1>
+      <p>Each open question is placed by how much it matters to a decision about scaling up and by how poorly it is constrained today. Questions in the top right shape the roadmap most. Select one to see the activities that address it.</p>
+      <p>These ratings are a first draft based on the systematic review’s causal chains and the sensitivity analysis in AFEI’s Arctic rewilding model. They will be revised after the review and expert interviews.</p>
+    </div>
+    <div class="matrix-wrap"><div class="matrix" id="matrix"></div></div>
+  </section>
+
+  <section class="view" id="view-about" hidden>
+    <div class="about">
+      <article>
+        <h1>About this roadmap</h1>
+        <p>Arctic rewilding has a bold hypothesis behind it, one decades-long experiment at Pleistocene Park, and a scattered literature. What the field lacks is a shared account of what is known, what is contested, and what evidence would settle the question. This roadmap is a proposal for building that evidence, in order, with an honest price tag.</p>
+        <p>It works backward from a single decision: whether large-herbivore restoration should be scaled up as a nature-based climate solution. An activity belongs on the roadmap only if it reduces an uncertainty that matters to that decision, or is a necessary step toward work that does. A clear “no” would be a valuable outcome.</p>
+
+        <h2>How it is organized</h2>
+        <p>The work runs in three phases. Phase 0 gathers and tests existing evidence and designs decisive experiments. Phase 1 runs controlled, replicated experiments at several sites in contrasting Arctic landscapes. Phase 2 is a contingent deployment: if the evidence supports it, small founder herds are released into the wild.</p>
+        <p>Because herds released as small founder groups grow exponentially, they grow slowly for decades. That gives a window of roughly 40 years in which growth can be held steady, slowed or reversed while effects are measured at landscape scale. Every five years, outcomes are compared with projections and triggers agreed before release decide whether to continue, pause, reverse or end the deployment.</p>
+        <p>Between phases are gates. Moving on is never automatic: the full body of evidence is weighed against criteria agreed in advance. AFEI proposes draft criteria, but the final criteria and the judgment of whether a gate has been met should belong to an independent scientific steering committee. Some activities, such as community engagement, monitoring and governance, continue through the gates.</p>
+        <p>Activities are grouped into four research tracks: ecosystem dynamics, climate outcomes, measurement and modeling, and implementation. Unlike some technical roadmaps, implementation includes engagement with Alaska Native organizations, Tribes, landholders and agencies, because research on shared land and wildlife can’t proceed without them.</p>
+
+        <h2>Where the content comes from</h2>
+        <p>The uncertainties follow the causal chains defined in the systematic literature review: herbivores to vegetation and carrying capacity; to snow, soil temperature and permafrost; to soil moisture and methane; to above- and below-ground carbon; and to albedo. Activities draw on AFEI’s planning documents, the Istanbul advisors’ meeting, and existing proposals.</p>
+        <p>Two uncertainties come from the sensitivity analysis in AFEI’s Arctic rewilding model rather than the review’s causal chains. Grazing that strips moss and shrubs from ice-rich permafrost could start thaw instead of preventing it, and this is one of the largest drivers of the model’s 2100 result. Fire is the only route by which boreal forest opens to grassland in the model, and the forest carbon given up where burned stands are held open offsets about half the modeled cooling by 2100.</p>
+        <p>Every cost and timeline here is a placeholder. The next step is to scope each activity with outside experts, cross-check their estimates, and replace these numbers with ranges the field can stand behind.</p>
+
+        <h2>How the estimates are built</h2>
+        <p>Each activity has a minimum scope, what it would take to answer its question at all, and an extended scope that would make the answer more robust. Once activities are scoped with outside experts, each cost estimate should cover personnel, equipment, supplies, animal care, travel to field sites, data and compute, and an indirect cost rate, without inflation. Durations run from the start of an activity to a preprint, since results are usually usable before formal publication.</p>
+        <p>A phase lasts as long as its longest chain of dependent activities. Work further in the future is less certain, so later estimates are marked low-confidence, and open-ended work is marked “ongoing” or “not yet scoped.” Deployment costs are shown for the first decade only.</p>
+        <h2>One headline metric</h2>
+        <p>To show what each phase buys, the roadmap will track one quantity: the uncertainty in global cooling impact, meaning the change in global mean temperature that Arctic rewilding could deliver at scale, combining permafrost, carbon, methane, albedo and fire effects across the area herds could plausibly occupy. It is poorly constrained today, it depends on several other uncertainties (carrying capacity, the snow effect, soil carbon, grazing-triggered thaw, the boreal fire pathway), and it is what any decision to scale up is ultimately about.</p>
+        <p>Two large drivers of that range can’t be narrowed by rewilding research: climate sensitivity, meaning how much the planet warms or cools per unit of radiative forcing, and which warming scenario the world follows. In AFEI’s Arctic rewilding model, climate sensitivity is the largest single driver of the 2100 result and the warming scenario is among the larger ones. The roadmap therefore reports them separately. Cooling is stated under a named warming scenario with climate sensitivity held at a central value, and each phase’s uncertainty reduction counts only the rewilding-specific inputs its experiments would narrow. Today that range can be estimated from the spread across the back-of-the-envelope and geospatial models. Those numbers haven’t been calculated yet, so the phase headers say “not yet estimated.”</p>
+        <p>A single cooling number leaves out uncertainties that matter just as much to a decision: effects on biodiversity, other wildlife, fire and hydrology; effects on communities, subsistence, food security and Indigenous rights; animal welfare; and how governance would work across jurisdictions. These aren’t reduced to a figure here. They’re tracked alongside the climate questions in the uncertainty view, and they weigh on every gate and deployment review.</p>
+        <h2>Integrity commitments</h2>
+        <p>AFEI both convenes this field and plans to run an experimental site in it. To keep those roles separate, results from AFEI’s own site will go through independent review before they carry weight in gate decisions. Site data will be open on published terms, outside researchers will be able to work at the site, and AFEI will say which role it is speaking in.</p>
+
+        <h2 id="gates-h">Draft gate criteria</h2>
+        <div class="gate-list" id="gateList"></div>
+      </article>
+      <aside>
+        <h3>Status</h3>
+        <p>Draft v0.2, November 2026. Not reviewed by advisors or outside experts. Changes since v0.1: two uncertainties added from the sensitivity analysis in AFEI’s Arctic rewilding model (grazing-triggered thaw on ice-rich permafrost, and the boreal fire pathway), with two Phase 0 activities to address them; the headline metric now separates out climate sensitivity and the warming scenario.</p>
+        <h3>Feedback</h3>
+        <p>Leave comments directly on this page, or send them to the AFEI science team.</p>
+        <h3>Not included yet</h3>
+        <p>Detailed scoping with outside experts, a critical-path calculation, and decisions on which non-scientific work belongs in the published version.</p>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true" aria-labelledby="dTitle">
+  <div class="drawer-head">
+    <div class="crumb" id="dCrumb"></div>
+    <button class="close" id="dClose" type="button">Close</button>
+  </div>
+  <div class="drawer-body" id="dBody"></div>
+</aside>
+
+<script>
+(function(){
+const TRACKS = [
+  {id:"eco", name:"Ecosystem dynamics", desc:"Herds, vegetation change, carrying capacity"},
+  {id:"cli", name:"Climate outcomes", desc:"Permafrost, snow, albedo, carbon, methane"},
+  {id:"mea", name:"Measurement and modeling", desc:"Models, validation, MRV"},
+  {id:"imp", name:"Implementation", desc:"Sites, animals, permits, people"}
+];
+const PHASES = [
+  {n:0, name:"Foundational evidence", q:"What does existing evidence show, and can decisive experiments be designed?", time:"1.5–2.5 yrs"},
+  {n:1, name:"Controlled experiments at several sites", q:"At realistic densities, do large herbivores shift vegetation, snow and soil temperatures as predicted, across contrasting Arctic landscapes?", time:"4–7 yrs"},
+  {n:2, name:"Contingent deployment", q:"As released herds grow slowly in the wild, do measured effects match projections, and should growth continue, pause or reverse?", time:"~40 yrs", deploy:true}
+];
+const GATES = [
+  {id:"g1", from:0, name:"Gate 1", label:"Build and stock experiments", text:"Existing evidence and models leave a plausible pathway to net cooling. The design can detect effects of the size that would matter across sites. Baselines are complete, and land access, permits and community consent are in place at each site."},
+  {id:"g2", from:1, name:"Gate 2", label:"Release into the wild", text:"Independently reviewed results from several sites show the predicted shifts in vegetation and soil temperature, without methane or albedo losses that cancel them out. A measurement protocol works beyond the instrumented plots. Release agreements are in place with landholders, Tribes and agencies, along with a management plan that defines in advance what would trigger pausing or reversing herd growth, and the capacity to act on it."}
+];
+const REVIEW_NOTE = "Herds released as small founder groups grow exponentially, which means slowly for decades. Through roughly the first 40 years, numbers stay small enough that growth can be held steady, slowed or reversed by relocation, fertility control or community harvest. Every five years, measured outcomes are compared with projections and pre-agreed triggers decide whether to continue, pause, reverse or end the deployment.";
+const UNC = [
+  {id:"U1", tr:"eco", rel:3, unc:3, t:"Carrying capacity", q:"Can present-day tundra support herbivore densities high enough to change vegetation?"},
+  {id:"U2", tr:"eco", rel:3, unc:3, t:"State-shift thresholds", q:"At what density, and how quickly, do moss and shrubs give way to grasses?"},
+  {id:"U3", tr:"cli", rel:3, unc:3, t:"Winter snow effect", q:"Does trampling compact snow enough to cool soils and protect permafrost?"},
+  {id:"U4", tr:"cli", rel:3, unc:2, t:"Summer warming offset", q:"Does removing vegetation warm soils in summer and cancel part of the winter cooling?"},
+  {id:"U5", tr:"cli", rel:2, unc:2, t:"Net albedo", q:"Is the year-round change in surface reflectivity net cooling?"},
+  {id:"U6", tr:"cli", rel:3, unc:3, t:"Ecosystem carbon", q:"Do herbivores increase total carbon stored above and below ground?"},
+  {id:"U7", tr:"cli", rel:2, unc:3, t:"Methane", q:"Do changes in soil moisture raise or lower methane emissions?"},
+  {id:"U8", tr:"mea", rel:3, unc:3, t:"Scalability", q:"How much land, how many animals, and what cost per tonne at scale?"},
+  {id:"U9", tr:"eco", rel:2, unc:3, t:"Herd persistence", q:"Can herds stay at high density with predators and limited management?"},
+  {id:"U10", tr:"mea", rel:3, unc:2, t:"Measurability", q:"Can effects be measured credibly beyond a single instrumented site?"},
+  {id:"U11", tr:"imp", rel:3, unc:2, t:"Consent and governance", q:"On what terms would landholders, Tribes and agencies support rewilding?"},
+  {id:"U12", tr:"eco", rel:2, unc:3, t:"Local co-effects", q:"What are the effects on local fire risk, hydrology and biodiversity?"},
+  {id:"U13", tr:"cli", rel:3, unc:3, t:"Grazing-triggered thaw", q:"Where grazing strips moss and shrubs from ice-rich (Yedoma) permafrost, does it start thaw and ground collapse that offsets the cooling?"},
+  {id:"U14", tr:"cli", rel:3, unc:3, t:"Boreal fire pathway", q:"How much burned boreal forest could herbivores hold open as grassland, and how much carbon is given up where trees don’t regrow?"}
+];
+// c = [low, high] in $ thousands; null = not yet scoped. pe = last phase an activity runs into.
+const ACTS = [
+  // Phase 0
+  {id:"pp-data", tr:"eco", p:0, t:"Pleistocene Park data inventory and publication", dur:"6–12 mo", c:[60,180], st:"In progress",
+   why:"Pleistocene Park is the only long-running large-herbivore enclosure in the Arctic. Its record has never been fully inventoried or published, and every model needs it as a test case.",
+   min:"Inventory existing measurements, analyze the soil-core dataset, and publish the results that are ready.",
+   ext:"Harmonize historical records into an open dataset with documented error bars.", u:["U1","U2","U6"], dep:[]},
+  {id:"herb-data", tr:"eco", p:0, t:"Pan-Arctic herbivore population dataset", dur:"6–9 mo", c:[20,60], st:"In progress",
+   why:"Carrying-capacity and scaling estimates need real densities from living herds of reindeer, caribou, muskox, bison, horses and moose.",
+   min:"Compile documented populations with area, density and management regime.",
+   ext:"Add diet, seasonal range and predator pressure for each population.", u:["U1","U8"], dep:[]},
+  {id:"carry", tr:"eco", p:0, t:"Carrying capacity synthesis", dur:"9–12 mo", c:[60,150], st:"Planned",
+   why:"If present-day tundra can’t support high enough densities, the mechanism never starts. This is the first link in the causal chain.",
+   min:"Estimate supportable densities from productivity and diet overlap across major tundra and boreal types.",
+   ext:"Map how capacity could rise as vegetation shifts toward grasses.", u:["U1","U2"], dep:["herb-data","slr"]},
+  {id:"slr", tr:"cli", p:0, t:"Systematic literature review", dur:"12–18 mo", c:[80,200], st:"In progress",
+   why:"Establishes what the empirical record actually shows for each causal link, including evidence against the hypothesis.",
+   min:"Screen and extract empirical studies for the five causal chains; publish evidence maps and confidence ratings.",
+   ext:"Meta-analysis of effect sizes where enough comparable studies exist.", u:["U1","U2","U3","U4","U5","U6","U7","U13"], dep:[]},
+  {id:"snow-field", tr:"cli", p:0, t:"Snow trampling measurements at existing herds", dur:"1–2 yr", c:[150,400], st:"Planned",
+   why:"Winter snow compaction is the hypothesis’s main cooling lever, yet the review found only two benchmark studies.",
+   min:"Measure snow depth, density and winter soil temperature inside and outside grazed areas at three or four existing herds.",
+   ext:"Extend to a density gradient over several winters.", u:["U3"], dep:["slr"]},
+  {id:"thermal-contrast", tr:"cli", p:0, t:"Soil temperature at existing grazed and ungrazed contrasts", dur:"1–2 yr", c:[200,500], st:"Planned",
+   why:"Existing exclosures and herding boundaries are natural experiments that can test thermal effects years before new sites mature.",
+   min:"Instrument paired plots at existing exclosures for year-round soil temperature and active-layer depth.",
+   ext:"Add summer energy-balance measurements to capture warming offsets.", u:["U3","U4"], dep:["slr"]},
+  {id:"yedoma", tr:"cli", p:0, t:"Grazing disturbance on ice-rich permafrost", dur:"1–2 yr", c:[150,400], st:"Planned",
+   why:"Where grazing strips moss or shrubs from ice-rich Yedoma ground, it could start thaw and ground collapse instead of preventing it. In AFEI’s Arctic rewilding model this is one of the largest drivers of the 2100 result, and it pushes toward warming.",
+   min:"Measure moss and shrub cover, active-layer depth and ground subsidence at grazed and ungrazed sites on ice-rich ground, including Pleistocene Park and Yedoma near existing herds.",
+   ext:"Add repeat lidar or InSAR surveys to track subsidence over several years and across grazing densities.", u:["U13","U3"], dep:["slr"]},
+  {id:"fire-path", tr:"cli", p:0, t:"Boreal fire pathway and forest carbon synthesis", dur:"9–12 mo", c:[80,200], st:"Planned",
+   why:"In AFEI’s Arctic rewilding model, fire is the only route by which boreal forest opens to grassland, and the forest carbon given up where burned stands are held open offsets about half the modeled cooling by 2100.",
+   min:"Compile burned-area records and post-fire succession studies across Alaska, Yukon and Siberia; estimate how much burned forest grazing could hold open and the carbon given up where trees don’t regrow.",
+   ext:"Survey existing burns used by bison, horses or reindeer to test whether grazing slows tree regrowth.", u:["U14","U12"], dep:[]},
+  {id:"boe", tr:"mea", p:0, t:"Back-of-the-envelope climate model", dur:"6–12 mo", c:[20,60], st:"In progress",
+   why:"A transparent first estimate of whether the climate effect could matter at scale, and which parameters drive the answer.",
+   min:"Document assumptions, run a sensitivity analysis, and submit the model for outside critique.",
+   ext:"Release as an open tool that shows uncertainty ranges rather than a single number.", u:["U1","U5","U6","U8"], dep:[]},
+  {id:"geo-model", tr:"mea", p:0, t:"Geospatial ecosystem model", dur:"2 yr", c:[500,700], st:"Proposed",
+   why:"A process-based model to project where and how fast herbivores could shift Arctic ecosystems, and with what climate effect.",
+   min:"Build and parameterize the model; publish scenario results with uncertainty ranges.",
+   ext:"Couple to permafrost and carbon models for circumpolar projections.", u:["U1","U2","U5","U6","U8","U13","U14"], dep:["boe","pp-data"]},
+  {id:"hindcast", tr:"mea", p:0, t:"Model validation against the Pleistocene Park record", dur:"6–12 mo", c:[50,150], st:"Planned",
+   why:"A model that can’t reproduce the one long-run record we have isn’t ready to inform decisions.",
+   min:"Run both models for Chersky conditions and compare them with measured outcomes.",
+   ext:"Add paleoecological hindcasts of the mammoth steppe transition.", u:["U2","U6"], dep:["pp-data","geo-model"]},
+  {id:"uncert-db", tr:"mea", p:0, pe:2, t:"Living uncertainty inventory", dur:"Updated yearly", c:[30,80], st:"Planned",
+   why:"Turns the review and interviews into a ranked list of unknowns, so every later activity points to the gap it closes. It stays live through deployment.",
+   min:"Rate each uncertainty for decision relevance and degree of uncertainty, and publish it openly.",
+   ext:"Update annually as new evidence arrives.", u:["U1","U2","U3","U4","U5","U6","U7","U8","U9","U10","U11","U12","U13","U14"], dep:["slr","interviews"]},
+  {id:"interviews", tr:"imp", p:0, t:"Expert interviews and horizon scan", dur:"4–6 mo", c:[60,150], st:"Planned",
+   why:"Brings in proponents, skeptics and experts from adjacent fields so the roadmap reflects the field, not one organization.",
+   min:"About 100 structured interviews across permafrost, herbivory, carbon and albedo science.",
+   ext:"Follow-up workshops on the most contested links.", u:["U8","U10"], dep:["slr"]},
+  {id:"engage", tr:"imp", p:0, pe:2, t:"Alaska Native and community engagement", dur:"Throughout", c:[150,400], st:"In progress",
+   why:"Research on Native lands, and with wildlife that people depend on, needs consent and co-produced questions from the start and for as long as herds are on the land.",
+   min:"Regular engagement with landholders, Tribes and communities near candidate sites.",
+   ext:"Co-designed research questions and shared data agreements.", u:["U11"], dep:[]},
+  {id:"site-select", tr:"imp", p:0, t:"Site selection, land agreements and permits", dur:"1–2 yr", c:[200,600], st:"In progress",
+   why:"Several sites in contrasting landscapes need land, research access and wildlife permits before any experiment can begin.",
+   min:"Choose a portfolio of sites spanning permafrost and vegetation types; finalize land agreements covering access, data rights and duration; secure wildlife and veterinary approvals.",
+   ext:"Keep alternate sites ready in case one falls through.", u:["U11"], dep:["engage"]},
+  {id:"design", tr:"imp", p:0, t:"Experimental design and power analysis", dur:"3–6 mo", c:[20,60], st:"Planned",
+   why:"Pleistocene Park is a single, unreplicated site. The next experiments have to detect the effect sizes that matter, within and across sites.",
+   min:"Specify treatments, replication within and across sites, controls, and the smallest effects the design can detect.",
+   ext:"Pre-register hypotheses and analysis plans.", u:["U2","U3"], dep:["slr","boe"]},
+  {id:"baseline", tr:"imp", p:0, t:"Pre-treatment baselines at each site", dur:"1–2 yr", c:[400,1200], st:"Planned",
+   why:"Effects can only be attributed to animals if conditions before they arrive are measured.",
+   min:"Survey vegetation, soils, permafrost, snow and carbon stocks across treatment and control areas at each site.",
+   ext:"Add drone and lidar mapping and a reconstruction of fire history.", u:["U6"], dep:["site-select","design"]},
+  // Phase 1
+  {id:"build", tr:"imp", p:1, t:"Construction at several sites", dur:"1–3 yr", c:[1300,12000], st:"Planned",
+   why:"Fencing, power, access and monitoring infrastructure for replicated enclosure experiments in contrasting landscapes.",
+   min:"Soft-release enclosures with basic infrastructure at about three sites (the current plan for the first is about $440k).",
+   ext:"Full build-out with replicated paddocks and monitoring towers at each site.", u:[], dep:["site-select","design"]},
+  {id:"protocol", tr:"imp", p:1, t:"Shared protocol with partner sites", dur:"Ongoing", c:[300,900], st:"Planned",
+   why:"Results only add up across sites if everyone measures the same things the same way.",
+   min:"A common design, measurement protocol and data standard across AFEI and partner sites, including Pleistocene Park.",
+   ext:"Partner sites in Canada and Scandinavia.", u:["U8","U10"], dep:["design"]},
+  {id:"animals", tr:"imp", p:1, pe:2, t:"Animal sourcing and husbandry program", dur:"Ongoing", c:[800,2500], st:"Planned",
+   why:"Animal welfare and herd health decide whether the experiments run long enough, and they supply the founder herds for any later release.",
+   min:"Source founder animals; set veterinary, welfare and handling protocols at every site.",
+   ext:"Multi-species stocking to test the effect of community composition.", u:["U9"], dep:["build"]},
+  {id:"data-gov", tr:"imp", p:1, t:"Open data and site-access policy", dur:"3–6 mo", c:[10,40], st:"Planned",
+   why:"Deciding who owns the data, and how outside researchers use the sites, before the first sensor goes in protects the program’s credibility.",
+   min:"Publish data ownership, embargo and access terms.",
+   ext:"An independent scientific steering committee for the sites.", u:["U10"], dep:["site-select"]},
+  {id:"governance", tr:"imp", p:1, pe:2, t:"Governance, co-management and release agreements", dur:"Ongoing", c:[500,1500], st:"Planned",
+   why:"Releasing animals into the wild involves state, federal, Tribal and First Nations authorities over land and wildlife. Agreements must be in place before release and kept up through deployment.",
+   min:"Co-management agreements with Tribes, agencies and landholders for candidate release landscapes.",
+   ext:"International coordination across Arctic nations.", u:["U11"], dep:["engage"]},
+  {id:"mgmt-plan", tr:"imp", p:1, t:"Adaptive management plan with pause and reversal triggers", dur:"1–2 yr", c:[100,300], st:"Planned",
+   why:"Deployment is only contingent if everyone agrees in advance what would trigger slowing, reversing or ending it, and who decides.",
+   min:"Define monitoring thresholds, triggers and responses, from holding herds steady to removing them.",
+   ext:"Test management responses at the experimental sites.", u:["U9","U11"], dep:["calibrate","governance"]},
+  {id:"veg-exp", tr:"eco", p:1, t:"Herbivore density and vegetation response experiments", dur:"4–6 yr", c:[2500,7500], st:"Planned",
+   why:"The central test: do realistic densities shift moss and shrub tundra toward grassland, how fast, and does it hold across landscapes?",
+   min:"Paired enclosure and exclosure plots with repeated vegetation surveys at each site.",
+   ext:"A density gradient and multi-species treatments.", u:["U2","U9"], dep:["build","animals","baseline"]},
+  {id:"nutrients", tr:"eco", p:1, t:"Nutrient cycling and forage quality", dur:"3–5 yr", c:[700,2000], st:"Planned",
+   why:"The proposed feedback loop runs through faster nutrient turnover and better forage.",
+   min:"Measure soil nutrients, decomposition and forage quality across treatments.",
+   ext:"Isotope tracing of nutrient pathways.", u:["U1","U2"], dep:["veg-exp"]},
+  {id:"thermal", tr:"cli", p:1, pe:2, t:"Soil thermal and active-layer monitoring", dur:"4–7 yr, then ongoing", c:[1000,3000], st:"Planned",
+   why:"Permafrost protection is the largest proposed climate benefit. It has to be measured directly, in winter and summer, and the record continues into deployment.",
+   min:"Year-round soil temperature profiles and active-layer depth across treatments at every site.",
+   ext:"Ground-ice and thermokarst monitoring.", u:["U3","U4","U13"], dep:["build","baseline"]},
+  {id:"flux", tr:"cli", p:1, t:"Carbon dioxide and methane flux towers", dur:"4–6 yr", c:[2000,5000], st:"Planned",
+   why:"The net greenhouse effect depends on whether carbon gains are offset by methane or respiration.",
+   min:"Paired eddy-covariance towers in treatment and control areas at each site.",
+   ext:"Chamber networks to find fine-scale methane hotspots.", u:["U6","U7"], dep:["build","baseline"]},
+  {id:"albedo", tr:"cli", p:1, t:"Albedo and snow property monitoring", dur:"3–5 yr", c:[500,1500], st:"Planned",
+   why:"Brighter winter landscapes are a proposed benefit; darker bare ground in summer could offset it.",
+   min:"Radiometers and repeat drone surveys across seasons.",
+   ext:"Link plot measurements to satellite albedo products.", u:["U3","U5"], dep:["build"]},
+  {id:"carbon-stock", tr:"cli", p:1, pe:2, t:"Ecosystem carbon stock resurveys", dur:"Every 2–3 yr", c:[500,1300], st:"Planned",
+   why:"Carbon change above and below ground is slow and has to be tracked for decades.",
+   min:"Repeat soil coring and biomass surveys against the baselines.",
+   ext:"Deep-soil and permafrost carbon cores.", u:["U6"], dep:["baseline"]},
+  {id:"mrv", tr:"mea", p:1, pe:2, t:"Measurement, reporting and verification protocol", dur:"2–3 yr, then ongoing", c:[300,800], st:"Planned",
+   why:"Agencies and carbon markets need a credible way to measure effects beyond instrumented plots, which deployment depends on.",
+   min:"Draft and test a protocol using site data.",
+   ext:"Submit it for independent review by a registry.", u:["U10"], dep:["thermal","flux","carbon-stock"]},
+  {id:"calibrate", tr:"mea", p:1, t:"Model calibration with experimental data", dur:"1–2 yr", c:[150,400], st:"Planned",
+   why:"Experimental results constrain the parameters that drive scaling projections.",
+   min:"Recalibrate the models with results from every site and publish revised projections.",
+   ext:"Formal data assimilation as results accumulate.", u:["U2","U8"], dep:["geo-model","veg-exp","thermal"]},
+  {id:"scenarios", tr:"mea", p:1, pe:2, t:"Herd growth and climate scenarios", dur:"Updated each review", c:[500,1500], st:"Planned",
+   why:"Projections of herd growth, range and climate effect are the yardstick each deployment review is measured against.",
+   min:"Scenario modeling of herd growth, suitable area and cost per tonne of CO₂e.",
+   ext:"Add co-benefits for biodiversity and food security.", u:["U8"], dep:["calibrate"]},
+  {id:"review", tr:"mea", p:1, pe:2, t:"Independent review of findings", dur:"At each gate and review", c:[50,150], st:"Planned",
+   why:"AFEI both runs sites and convenes the field. Outside review keeps its own results from getting automatic weight in gate and review decisions.",
+   min:"An external panel reviews results before they enter gate decisions and five-year deployment reviews.",
+   ext:"Pre-registration audits and replication by outside teams.", u:["U10"], dep:["veg-exp","thermal","flux"]},
+  // Phase 2: contingent deployment
+  {id:"release", tr:"imp", p:2, t:"Founder herd releases", dur:"Years 0–5", c:[2000,8000], st:"Planned", low:true,
+   why:"Small founder herds released into large landscapes start the slow-growth phase while numbers are still easy to manage.",
+   min:"Release founder herds of wood bison and other species in one or two landscapes.",
+   ext:"Additional landscapes and species as review points allow.", u:["U9"], dep:["mgmt-plan","governance","review"]},
+  {id:"pop-mgmt", tr:"imp", p:2, t:"Population management: hold, slow or reverse", dur:"Ongoing", c:[500,2000], per:"first decade", st:"Planned",
+   why:"Because growth is slow for decades, herds can be held steady or reduced while they’re small. That capacity has to be maintained, not assumed.",
+   min:"Keep relocation, fertility control and community-managed harvest ready to use.",
+   ext:"Practice drills with agencies and communities before they’re needed.", u:["U9","U11"], dep:["release","mgmt-plan"]},
+  {id:"handoff", tr:"imp", p:2, t:"Hand-off to wildlife agencies and co-managers", dur:"Years 20–40", c:null, st:"Not yet scoped",
+   why:"If deployment continues, long-term stewardship belongs with wildlife agencies, Tribes and landholders rather than a single nonprofit.",
+   min:"Plan a staged transfer of management responsibility.", ext:"", u:["U11"], dep:["governance","reviews"]},
+  {id:"herd-track", tr:"eco", p:2, t:"Herd growth, movement and range tracking", dur:"Ongoing", c:[1500,4000], per:"first decade", st:"Planned",
+   why:"Population size and range are the dials the whole deployment is steered by.",
+   min:"Collars, aerial counts and genetic monitoring of each herd.",
+   ext:"Community-based monitoring with local hunters and observers.", u:["U1","U9"], dep:["release"]},
+  {id:"herd-dyn", tr:"eco", p:2, t:"Herd dynamics and predator interactions", dur:"Ongoing", c:[1000,3000], per:"first decade", st:"Planned",
+   why:"Long-term effects depend on whether herds persist at useful densities alongside wolves and bears with limited management.",
+   min:"Track survival, reproduction and predation in released herds.",
+   ext:"Compare managed and lightly managed landscapes.", u:["U9"], dep:["release"]},
+  {id:"co-effects", tr:"eco", p:2, t:"Fire, hydrology and biodiversity co-effects", dur:"Ongoing", c:[500,1500], per:"first decade", st:"Planned",
+   why:"Effects on fire risk, streams and other wildlife may matter locally as much as the climate signal.",
+   min:"Monitor fuels, hydrology and biodiversity in release landscapes.",
+   ext:"Downstream effects on rivers and fish.", u:["U12"], dep:["release"]},
+  {id:"landscape", tr:"cli", p:2, t:"Landscape-scale net climate assessment", dur:"Every 5 yr", c:[2000,6000], per:"first decade", st:"Planned",
+   why:"Combines permafrost, carbon, methane and albedo into one net climate effect as herds and their footprint grow.",
+   min:"Remote sensing and flux synthesis across release landscapes.",
+   ext:"Regional atmospheric inversion studies.", u:["U5","U6","U7","U8","U13","U14"], dep:["release","mrv"]},
+  {id:"permafrost-track", tr:"cli", p:2, t:"Permafrost and carbon outcome tracking", dur:"Ongoing", c:[1000,3000], per:"first decade", st:"Planned",
+   why:"Climate claims need continuous evidence that permafrost and carbon respond as projected where herds actually roam.",
+   min:"Track permafrost, carbon and methane outcomes across release landscapes.",
+   ext:"", u:["U3","U6","U7","U13"], dep:["thermal","release"]},
+  {id:"reviews", tr:"mea", p:2, t:"Five-year deployment reviews", dur:"Every 5 yr", c:[200,600], per:"first decade", st:"Planned",
+   why:"At each review point, measured outcomes are compared with projections, and pre-agreed triggers decide whether growth continues, pauses, reverses or ends.",
+   min:"A public review every five years, with the decision and its evidence published.",
+   ext:"", u:["U10"], dep:["landscape","scenarios","review"]},
+  {id:"credits", tr:"mea", p:2, t:"Carbon and biodiversity credit methodology", dur:"2–3 yr", c:[300,1000], st:"Planned",
+   why:"A credible market pathway could fund long-term stewardship, if the science supports it.",
+   min:"Develop a methodology with registries based on the validated protocol.",
+   ext:"Pilot issuance under independent verification.", u:["U10"], dep:["mrv","landscape"]}
+];
+ACTS.forEach(a=>{ if(a.pe==null) a.pe=a.p; });
+const SHORT = {
+  "pp-data":"Pleistocene Park data inventory", "herb-data":"Pan-Arctic herbivore dataset", "snow-field":"Snow trampling measurements",
+  "thermal-contrast":"Soil temperature at existing contrasts", "yedoma":"Grazing on ice-rich permafrost", "fire-path":"Boreal fire pathway synthesis", "geo-model":"Geospatial ecosystem model", "hindcast":"Model validation at Pleistocene Park",
+  "interviews":"Expert interviews and horizon scan", "engage":"Alaska Native and community engagement", "site-select":"Sites, land agreements and permits",
+  "design":"Experimental design and power analysis", "baseline":"Baselines at each site", "build":"Construction at several sites", "protocol":"Shared protocol with partner sites",
+  "animals":"Animal sourcing and husbandry", "data-gov":"Open data and site access", "governance":"Governance, co-management and release agreements",
+  "mgmt-plan":"Management plan with pause triggers", "veg-exp":"Density and vegetation experiments", "nutrients":"Nutrient cycling and forage",
+  "thermal":"Soil thermal monitoring", "flux":"CO₂ and methane flux towers", "albedo":"Albedo and snow monitoring",
+  "carbon-stock":"Carbon stock resurveys", "mrv":"MRV protocol", "calibrate":"Model calibration", "scenarios":"Herd growth and climate scenarios",
+  "review":"Independent review of findings", "release":"Founder herd releases", "pop-mgmt":"Hold, slow or reverse herd growth",
+  "handoff":"Hand-off to agencies and co-managers", "herd-track":"Herd growth and range tracking", "herd-dyn":"Herd dynamics and predators",
+  "co-effects":"Fire, hydrology and biodiversity", "landscape":"Net climate assessment", "permafrost-track":"Permafrost and carbon tracking",
+  "reviews":"Five-year deployment reviews", "credits":"Credit methodology"
+};
+const byId = Object.fromEntries(ACTS.map(a=>[a.id,a]));
+const trackById = Object.fromEntries(TRACKS.map(t=>[t.id,t]));
+const uncById = Object.fromEntries(UNC.map(u=>[u.id,u]));
+ACTS.forEach(a=>a.unl=[]);
+ACTS.forEach(a=>a.dep.forEach(d=>byId[d] && byId[d].unl.push(a.id)));
+
+const tc = tr => `var(--${tr})`;
+const fmt = k => k>=1000 ? "$"+(k/1000).toFixed(k>=10000?0:1).replace(/\.0$/,"")+"M" : "$"+k+"k";
+const fmtRange = c => c ? fmt(c[0])+"–"+fmt(c[1]) : "Not yet scoped";
+const esc = s => String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+
+function phaseCost(n){
+  let lo=0, hi=0, any=false;
+  ACTS.filter(a=>a.p===n && a.c).forEach(a=>{lo+=a.c[0];hi+=a.c[1];any=true});
+  return any ? [lo,hi] : null;
+}
+
+// Intro summary
+(function(){
+  const [lo,hi] = [0,1].map(phaseCost).reduce((s,c)=>[s[0]+c[0],s[1]+c[1]],[0,0]);
+  document.getElementById("introSummary").innerHTML =
+    `A draft, stage-gated plan with <strong>${ACTS.length} activities</strong> in three phases. Reaching a well-informed decision on whether to release animals would take roughly <strong>6–10 years</strong> and, by today’s rough placeholders, <strong>${fmt(lo)}–${fmt(hi)}</strong>. If the evidence supports it, a <strong>contingent deployment of about 40 years</strong> follows, in which slow herd growth leaves room to monitor, course-correct or stop.`;
+})();
+
+// The herd: mammoths, musk oxen, wood bison and calves, horses, reindeer, camels and a moose
+(function(){
+  // Legs: o.fur shaggy outline, o.t2 lighter tone, o.sock pale lower leg (o.sh = sock height), o.pace lateral gait
+  const L = (xs,y,h,w,o={}) => xs.map((x,i)=>{
+    const a = o.pace ? (i===0||i===2) : (i===0||i===3);
+    const cls = o.fur ? (o.t2 ? "t2-fur" : "fur") : (o.t2 ? "t2" : "");
+    const sh = o.sh || 7;
+    return `<g class="lg ${a?"a":"b"}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${w/2}"${cls?` class="${cls}"`:""}/>${o.sock?`<rect x="${x}" y="${y+h-sh}" width="${w}" height="${sh}" rx="${w/2}" class="pale"/>`:""}</g>`;
+  }).join("");
+  const BEASTS = {
+    // Wood bison: dark shaggy cape, hump and hanging head; paler hindquarters; short horns on top of the head
+    bison: `${L([26,34],46,21,6,{fur:1,t2:1})}${L([78,86],46,21,6,{fur:1})}<g class="bd">
+      <path class="t2-fur" d="M18 40 C16 30 24 25 36 25 L62 23 L64 52 L40 52 C30 54 20 50 18 40Z"/>
+      <path class="horn t2s" d="M19 36 C13 37 11 43 13 50" style="stroke-width:3"/>
+      <path class="fur" d="M57 52 C51 46 55 36 51 29 C58 13 77 7 89 13 C96 17 99 24 99 31 C103 34 105 40 105 48 C105 54 102 58 98 57 C95 56 93 53 92 51 C87 54 81 55 75 52Z"/>
+      <path class="fur" d="M72 47 L74 60 L77 57 L80 62 L83 57 L86 61 L90 47Z"/>
+      <path class="fur" d="M95 52 C94 59 97 64 101 62 C103 60 103 56 101 53Z"/>
+      <path class="horn pale-h" d="M97 33 C95 29 96 26 99 25"/>
+      <path class="horn pale-h" d="M101 35 C103 31 105 30 107 31"/></g>`,
+    // Wood bison calf: rust coat, darker face and legs
+    calf: `${L([38,44,72,78],40,27,4.5,{dk:1})}<g class="bd">
+      <path class="fur" d="M30 36 C28 28 38 24 50 24 C62 22 74 24 80 28 C86 26 92 28 94 34 C96 40 92 44 88 44 C84 46 78 46 72 46 L44 46 C34 46 30 43 30 36Z"/>
+      <path class="dk-fur" d="M86 29 C93 29 100 33 102 40 C103 45 99 47 95 46 L86 42Z"/>
+      <path class="horn" d="M31 33 C27 34 26 38 27 41" style="stroke-width:2.5"/></g>`,
+    // Yakutian horse: dun body, dark mane, tail, dorsal stripe and legs, pale muzzle
+    horse: `${L([34,40,72,78],40,27,4)}<g class="bd">
+      <path class="t2-fur" d="M28 34 C28 25 40 22 55 23 C66 23 74 24 78 22 L88 10 C91 6 97 6 100 9 L106 15 C108 18 106 20 103 19 L97 17 L90 30 C88 38 82 44 72 44 L40 44 C32 44 28 40 28 34Z"/>
+      <path class="horn" d="M42 24 L76 23" style="stroke-width:2"/>
+      <path class="pale" d="M101 12 L106 15 C108 18 106 20 103 19 L99 17Z"/>
+      <path class="horn" d="M80 22 L90 7" style="stroke-width:5"/>
+      <path class="horn" d="M29 30 C20 32 17 43 20 52" style="stroke-width:5"/></g>`,
+    // Reindeer: brown body, white neck mane and rump, dark legs and antlers
+    reindeer: `${L([36,42,70,76],36,31,3.5)}<g class="bd">
+      <path class="t2-fur" d="M30 32 C30 25 40 23 54 23 L72 23 L82 12 C84 9 90 9 92 12 L97 18 C98 20 96 21 94 20 L89 19 L82 30 C80 37 74 40 66 40 L40 40 C34 40 30 37 30 32Z"/>
+      <path class="pale-fur" d="M82 25 L80 35 L83 32 L85 36 L88 30 L89 24Z"/>
+      <path class="pale-fur" d="M31 27 C29 31 30 36 34 38 L36 29Z"/>
+      <path class="horn" d="M86 10 C84 3 79 -1 72 -3 M83 4 L78 5 M80 1 L77 -3 M88 10 C89 3 93 -1 99 -4 M91 4 L96 4 M94 0 L97 -5" style="stroke-width:2"/></g>`,
+    // Musk ox: dark skirt, pale saddle, pale horn boss hooking down and up, pale stockings
+    muskox: `${L([32,40,74,82],50,17,6,{fur:1,sock:1})}<g class="bd">
+      <path class="fur" d="M22 38 C20 24 34 18 50 18 C62 14 78 16 86 24 C90 28 92 33 92 40 L92 52 L86 54 L80 58 L72 55 L64 59 L56 55 L48 59 L40 55 L32 58 L26 52 C22 48 22 44 22 38Z"/>
+      <path class="pale-fur" d="M48 21 C55 17 66 17 73 21 C66 24 55 25 48 21Z" opacity=".8"/>
+      <path class="fur" d="M86 30 C94 31 99 38 100 46 C101 53 97 57 93 55 L88 48Z"/>
+      <path class="pale-s" d="M86 31 C90 27 96 28 97 33" style="stroke-width:5"/>
+      <path class="pale-s" d="M95 32 C98 37 94 43 96 47 C98 50 102 48 103 44" style="stroke-width:3.4"/></g>`,
+    // Moose: dark body and bell, long pale legs, palmate antlers in a lighter tone
+    moose: `${L([34,40,74,80],38,29,4,{sock:1,sh:17})}<g class="bd">
+      <path class="fur" d="M26 30 C26 22 36 18 50 19 C60 12 74 12 80 18 L86 22 C90 22 96 26 100 30 C104 33 104 38 100 39 L96 38 C94 42 90 42 88 40 L84 34 C80 40 72 42 62 42 L38 42 C30 42 26 37 26 30Z"/>
+      <path d="M88 38 L87 47 L92 44 Z"/>
+      <path class="t2" d="M84 19 C80 8 70 3 61 6 L64 9 L62 11 L67 12 L66 15 C71 16 76 17 80 20Z M87 18 C91 7 101 2 110 5 L107 8 L109 10 L104 11 L105 14 C100 15 95 16 91 20Z"/></g>`,
+    // Woolly mammoth: lighter reddish body, dark top-knot, dark hair skirt and legs, ivory tusks
+    mammoth: `${L([26,36,82,90],46,21,8,{fur:1})}<g class="bd">
+      <path class="t2-fur" d="M18 44 C16 32 24 24 38 22 C52 20 64 14 78 8 C88 3 100 4 106 12 C110 18 111 26 109 34 L107 40 C106 46 104 52 102 56 L98 56 C99 50 99 46 98 42 C94 48 88 50 84 50 L24 50 C20 49 18 47 18 44Z"/>
+      <path class="fur" d="M22 45 C40 41 66 40 86 44 L86 57 L78 55 L72 59 L64 55 L56 59 L48 55 L40 59 L32 55 L26 57 L21 51Z"/>
+      <path class="fur" d="M76 9 C86 3 99 4 105 11 C107 14 107 18 105 20 C97 14 87 12 76 9Z"/>
+      <path class="horn t2s" d="M100 55 C100 61 105 62 107 58" style="stroke-width:4"/>
+      <path class="horn" d="M19 40 C15 41 14 45 15 48" style="stroke-width:2.5"/>
+      <path class="tusk" d="M101 40 C104 52 113 55 117 45"/></g>`,
+    // Bactrian camel: tan body and legs, dark wool on humps, neck and forelegs; paces
+    camel: `${L([32,38,74,80],42,25,4,{pace:1,t2:1})}<g class="bd">
+      <path class="t2-fur" d="M24 38 C22 30 28 26 34 26 C36 16 44 14 48 22 C52 14 60 14 62 24 C70 26 78 28 82 32 C86 26 88 18 90 12 C92 8 98 8 102 10 L108 14 C110 16 108 18 106 18 L100 18 C98 26 94 36 88 40 C84 44 76 46 68 46 L36 46 C28 46 24 43 24 38Z"/>
+      <path class="fur" d="M35 25 C37 16 44 14 48 22 C52 14 60 14 62 24 C55 22 44 23 35 25Z"/>
+      <path class="fur" d="M92 30 L90 40 L93 37 L95 42 L97 34 L98 26Z"/>
+      <path class="fur" d="M72 44 L73 52 L76 49 L79 53 L82 44Z"/>
+      <path class="horn" d="M24 34 C20 36 19 42 20 46" style="stroke-width:2.5"/></g>`
+  };
+  // Groups move together at one speed, spaced so individuals stay distinct.
+  const HERD = [];
+  const group = (k, dur, g, members) => members.forEach(([dl,b,sz,extra])=>HERD.push(Object.assign({k,dur,dl,b,sz,g},extra||{})));
+  group("mammoth", 84, .46, [[-2,10,150],[-9,20,132],[-5.5,6,84]]);
+  group("muskox",  70, .42, [[-50,7,84],[-53.5,17,76],[-57,11,80],[-60.5,21,72]]);
+  // Wood bison herd: cows and bulls with calves at heel
+  group("bison",   50, .33, [[-12,8,104],[-15.2,20,90],[-18.4,12,98],[-21.6,23,86],[-24.8,6,106],[-28,16,94]]);
+  group("calf",    50, .22, [[-10.6,4,48,{c:"calf"}],[-17,9,46,{c:"calf"}],[-23.4,3,50,{c:"calf"}]]);
+  group("reindeer",36, .25, [[-29,12,66],[-30.5,25,56],[-32,18,60],[-33.5,23,54],[-35,8,64]]);
+  group("camel",   44, .3,  [[-20,14,108],[-23.5,22,98]]);
+  group("horse",   27, .19, [[-12,10,86]]);
+  group("horse",   30, .21, [[-3,24,72]]);
+  group("moose",   58, .38, [[-40,13,104]]);
+  const st = document.getElementById("steppe");
+  HERD.forEach(h=>{
+    const op = h.op ?? Math.max(.7, 1-(h.b-6)*.014);
+    const d = document.createElement("div"); d.className = "beast";
+    d.style.cssText = `--sz:${h.sz}px;--b:${h.b}px;--dur:${h.dur}s;--dl:${h.dl}s;--gait:${h.g}s;--op:${op};z-index:${40-h.b};${h.c?`color:var(--${h.c});`:""}`;
+    d.innerHTML = `<svg viewBox="0 -8 120 78" fill="currentColor">${BEASTS[h.k]}</svg>`;
+    st.appendChild(d);
+  });
+  const btn = document.getElementById("herdBtn");
+  const setPaused = p => { st.classList.toggle("paused",p); btn.textContent = p ? "Let the herd run" : "Pause the herd"; btn.setAttribute("aria-pressed", String(p)); };
+  setPaused(matchMedia("(prefers-reduced-motion: reduce)").matches);
+  btn.addEventListener("click",()=>setPaused(!st.classList.contains("paused")));
+})();
+
+// Legend / track filter
+let trackFilter = null;
+const legend = document.getElementById("legend");
+TRACKS.forEach(t=>{
+  const b = document.createElement("button");
+  b.type="button"; b.setAttribute("aria-pressed","false"); b.dataset.track=t.id;
+  b.innerHTML = `<span class="swatch" style="background:${tc(t.id)}"></span>${esc(t.name)}`;
+  b.addEventListener("click",()=>{
+    trackFilter = trackFilter===t.id ? null : t.id;
+    legend.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed", String(x.dataset.track===trackFilter)));
+    applyHighlight();
+  });
+  legend.appendChild(b);
+});
+
+// Roadmap grid
+// Scheduling, as in Reflective's method: an activity starts when its dependencies finish
+// (or start, for work that runs alongside), no phase begins before its gate, and each
+// phase lasts as long as its longest chain. Entries: [low yrs, high yrs, ongoing, run-alongside deps, fixed start after phase start]
+const SCHED = {
+  "pp-data":[.5,1], "herb-data":[.5,.75], "carry":[.75,1], "slr":[1,1.5], "snow-field":[1,2], "thermal-contrast":[1,2], "yedoma":[1,2], "fire-path":[.75,1],
+  "boe":[.5,1], "geo-model":[1.5,2.5], "hindcast":[.5,1], "uncert-db":[.5,.5,1], "interviews":[.33,.5], "engage":[.5,.5,1],
+  "site-select":[1,2,0,["engage"]], "design":[.25,.5], "baseline":[1,2],
+  "build":[1,3], "protocol":[.5,1,1], "animals":[1,1.5,1,["build"]], "data-gov":[.25,.5], "governance":[2,4,1],
+  "mgmt-plan":[1,2,0,["calibrate"]], "veg-exp":[4,6], "nutrients":[3,5,0,["veg-exp"]], "thermal":[4,7,1], "flux":[4,6],
+  "albedo":[3,5], "carbon-stock":[2,3,1], "mrv":[2,3,1,["thermal","flux"]], "calibrate":[1,2], "scenarios":[1,1.5,1,["calibrate"]],
+  "review":[.5,.5,1], "release":[2,5], "pop-mgmt":[1,1,1,["release"]], "handoff":[20,20,0,null,20],
+  "herd-track":[1,1,1,["release"]], "herd-dyn":[3,5,1,["release"]], "co-effects":[3,5,1,["release"]],
+  "landscape":[5,5,1,["release"]], "permafrost-track":[1,1,1,["release"]], "reviews":[.5,.5,1,null,5], "credits":[2,3]
+};
+function schedule(mode){ // 0 = low, 1 = high, 2 = midpoint
+  const S={}, E={}, G=[0];
+  const dOf = id => { const s=SCHED[id]; return mode===2 ? (s[0]+s[1])/2 : s[mode]; };
+  const visit = a => {
+    if(S[a.id]!=null) return;
+    const s = SCHED[a.id]; let st = G[a.p] + (s[4]||0);
+    a.dep.forEach(d=>{ visit(byId[d]); st = Math.max(st, (s[3]||[]).includes(d) ? S[d] : E[d]); });
+    S[a.id]=st; E[a.id]=st+dOf(a.id);
+  };
+  PHASES.forEach((ph,p)=>{
+    const acts = ACTS.filter(a=>a.p===p); acts.forEach(visit);
+    if(p<PHASES.length-1) G[p+1] = Math.max(...acts.map(a=>E[a.id]));
+  });
+  return {S,E,G};
+}
+const SCH = [schedule(0), schedule(1)], MID = schedule(2);
+const half = x => Math.round(x*2)/2;
+const yrs = (a,b) => { a=half(a); b=half(b); return a===b ? `${a} yrs` : `${a}–${b} yrs`; };
+function phaseTime(n){
+  if(PHASES[n].deploy) return PHASES[n].time;
+  return yrs(SCH[0].G[n+1]-SCH[0].G[n], SCH[1].G[n+1]-SCH[1].G[n]);
+}
+function startText(a){
+  const g = a.p===PHASES.length-1, off = x => g ? x - (SCH[0].G[a.p]) : x;
+  const lo = g ? SCH[0].S[a.id]-SCH[0].G[a.p] : SCH[0].S[a.id], hi = g ? SCH[1].S[a.id]-SCH[1].G[a.p] : SCH[1].S[a.id];
+  if(g) return lo===0 && hi===0 ? "starts at release" : `starts ${yrs(lo,hi)} after release`;
+  return hi<0.01 ? "can start now" : `earliest start in year ${half(lo)}${half(hi)!==half(lo)?"–"+half(hi):""}`;
+}
+// Intro summary, computed from the schedule
+(function(){
+  const [lo,hi] = [0,1].map(phaseCost).reduce((s,c)=>[s[0]+c[0],s[1]+c[1]],[0,0]);
+  document.getElementById("introSummary").innerHTML =
+    `A draft, stage-gated plan with <strong>${ACTS.length} activities</strong> in three phases. Following the longest chains of dependent work, reaching a well-informed decision on whether to release animals would take roughly <strong>${yrs(SCH[0].G[2],SCH[1].G[2])}</strong> and, by today’s rough placeholders, <strong>${fmt(lo)}–${fmt(hi)}</strong>. If the evidence supports it, a <strong>contingent deployment of about 40 years</strong> follows, in which slow herd growth leaves room to monitor, course-correct or stop.`;
+})();
+
+const rm = document.getElementById("rm");
+function el(tag, cls, html){const e=document.createElement(tag); if(cls) e.className=cls; if(html!=null) e.innerHTML=html; return e;}
+const col = n => 2 + 2*n;              // grid column of phase n in the main grid
+const NT = TRACKS.length;
+function growthSVG(){
+  const W=300, H=78, x0=8, x1=292, yb=58, ytop=8, cap=24, r=0.085, T=40;
+  const yOf = t => yb - (yb-ytop) * (Math.exp(r*t)-1)/(Math.exp(r*T)-1) * 1.12;
+  let d=""; for(let t=0;t<=T;t+=1){ const x=x0+(x1-x0)*t/T, y=Math.max(ytop-4,yOf(t)); d+=(t?" L":"M")+x.toFixed(1)+" "+y.toFixed(1); }
+  let ticks=""; for(let t=5;t<=T;t+=5){ const x=x0+(x1-x0)*t/T; ticks+=`<line x1="${x}" y1="${yb}" x2="${x}" y2="${yb+5}" class="gt"/><circle cx="${x}" cy="${yOf(t)>ytop?yOf(t):ytop}" r="2.2" class="gp"/>`; }
+  return `<svg class="growth" viewBox="0 0 ${W} ${H}" role="img" aria-label="Herd size grows slowly for decades, staying within management capacity, with review points every five years">
+    <line x1="${x0}" y1="${cap}" x2="${x1}" y2="${cap}" class="gcap"/>
+    <text x="${x0}" y="${cap-5}" class="gtx">Within reach of management</text>
+    <line x1="${x0}" y1="${yb}" x2="${x1}" y2="${yb}" class="gax"/>${ticks}
+    <path d="${d}" class="gcurve"/>
+    <text x="${x0}" y="${H-3}" class="gtx">Release</text><text x="${(x0+x1)/2}" y="${H-3}" class="gtx" text-anchor="middle">Review every 5 years</text><text x="${x1}" y="${H-3}" class="gtx" text-anchor="end">~40 yrs</text>
+  </svg>`;
+}
+rm.insertAdjacentHTML("afterbegin",`<svg class="grass-bg" aria-hidden="true"><defs><pattern id="grassPat" width="140" height="84" patternUnits="userSpaceOnUse">
+  <path d="M22 70 C21 63 18 58 14 55 M22 70 C22 62 23 56 26 51 M22 70 C24 64 28 61 32 59 M22 70 C20 65 17 63 12 62"/>
+  <path d="M92 30 C91 25 89 22 86 20 M92 30 C92 24 93 20 95 17 M92 30 C94 26 97 24 100 23"/>
+  <path d="M120 78 C119 72 117 68 114 66 M120 78 C121 72 123 68 126 65 M120 78 C118 74 115 73 111 73"/>
+  <path d="M54 44 C54 40 53 38 51 36 M54 44 C55 40 57 38 59 37"/>
+  <path d="M8 20 C8 16 7 14 5 12 M8 20 C9 16 11 14 13 13"/>
+</pattern></defs><rect width="100%" height="100%" fill="url(#grassPat)"/></svg>`);
+rm.appendChild(el("div","corner"));
+PHASES.forEach((ph,i)=>{
+  const c = phaseCost(ph.n);
+  const costLabel = ph.deploy ? "First decade" : "Cost";
+  const h = el("div","phase-head"+(ph.deploy?" deploy":""),
+    `<div class="phase-num">${ph.n}</div><div class="phase-name">${esc(ph.name)}</div><p class="phase-q">${esc(ph.q)}</p>
+     ${ph.deploy ? growthSVG() : ""}
+     <div class="phase-stats"><div><span>Time</span><b>${phaseTime(ph.n)}</b></div><div><span>${costLabel}</span><b>${c?("~"+fmt(c[0])+"–"+fmt(c[1])):"Not yet scoped"}</b></div></div>
+     ${ph.n>0 ? '<div class="ur">Est. reduction in rewilding-specific uncertainty, global cooling impact: <b>not yet estimated</b>. Climate sensitivity and warming scenario are reported separately. Biodiversity and social impacts are tracked, not quantified.</div>' : ""}
+     ${ph.deploy ? '<button type="button" class="how-btn" id="howDeploy">How contingent deployment works</button>' : ""}`);
+  h.style.gridColumn = col(ph.n); h.style.gridRow = 1;
+  rm.appendChild(h);
+  if(i<GATES.length){
+    const g = el("div","gate-head");
+    g.style.gridColumn = col(ph.n)+1; g.style.gridRow = 1;
+    const btn = el("button","gate-btn",`${GATES[i].name}: ${esc(GATES[i].label)}`);
+    btn.type="button"; btn.addEventListener("click",()=>openGate(GATES[i]));
+    g.appendChild(btn); rm.appendChild(g);
+    const f = el("div","fence"); f.style.gridColumn = col(ph.n)+1; f.style.gridRow = `2 / ${3+NT}`;
+    rm.appendChild(f);
+  }
+});
+const actEls = {};
+const ruler = el("div","ruler"); ruler.style.gridRow = 2; rm.appendChild(ruler);
+TRACKS.forEach((t,ti)=>{
+  const lab = el("div","track-label",`<b><span class="swatch" style="background:${tc(t.id)}"></span>${esc(t.name)}</b><small>${esc(t.desc)}</small>`);
+  lab.style.gridRow = 3+ti; lab.style.gridColumn = 1;
+  rm.appendChild(lab);
+  const row = el("div","track-row"); row.style.gridRow = 3+ti; row.dataset.tr = t.id;
+  ACTS.filter(a=>a.tr===t.id).forEach(a=>{
+    const og = !!SCHED[a.id][2];
+    const b = el("button","act"+(og?" og":"")+(a.pe>a.p?" span":""));
+    b.type="button"; b.style.setProperty("--tc",tc(a.tr)); b.dataset.id=a.id;
+    const live = a.st==="In progress";
+    b.title = a.t + (live ? " (in progress)" : "");
+    b.setAttribute("aria-label", a.t + ", " + a.dur + (live ? ", in progress" : ""));
+    b.innerHTML = `${live?'<span class="live" aria-hidden="true"></span>':""}<span class="nm">${esc(SHORT[a.id]||a.t)}</span><span class="du">${esc(a.dur)}</span>`;
+    b.addEventListener("click",()=>openAct(a.id));
+    b.addEventListener("mouseenter",()=>{hoverId=a.id; applyHighlight();});
+    b.addEventListener("mouseleave",()=>{hoverId=null; applyHighlight();});
+    b.addEventListener("focus",()=>{hoverId=a.id; applyHighlight();});
+    b.addEventListener("blur",()=>{hoverId=null; applyHighlight();});
+    actEls[a.id]=b; row.appendChild(b);
+  });
+  rm.appendChild(row);
+});
+
+// Timeline layout: bars sit where their work falls in time, so chains read left to right and long work runs through gates
+const MINW = 160, LANE = 28;
+function layoutRoadmap(){
+  const heads = [...rm.querySelectorAll(".phase-head")];
+  const g1 = MID.G[1], g2 = MID.G[2];
+  const geom = base => heads.map(h=>({l:h.offsetLeft-base+4, r:h.offsetLeft-base+h.offsetWidth-4}));
+  const xOf = (t,c,start) => {
+    const e = 1e-9;
+    if(start ? t < g1-e : t <= g1+e) return c[0].l + (c[0].r-c[0].l)*(t/g1);
+    if(start ? t < g2-e : t <= g2+e) return c[1].l + (c[1].r-c[1].l)*((t-g1)/(g2-g1));
+    const dt=t-g2, f = dt<=10 ? .6*dt/10 : .6+.4*Math.min(1,(dt-10)/30);
+    return c[2].l + (c[2].r-c[2].l)*f;
+  };
+  // ruler
+  const rc = geom(ruler.offsetLeft); let rh = "";
+  for(let y=0; y<=Math.floor(g2+1e-9); y++){ const x=xOf(y,rc,true); rh += `<i style="left:${x}px"></i>${(y<g1 || y%2===0)?`<span style="left:${x}px">Yr ${y}</span>`:""}`; }
+  for(let y=5; y<=40; y+=5){ const x=xOf(g2+y,rc,true); rh += `<i style="left:${x}px"></i>${(y<=10||y%10===0)?`<span style="left:${x}px">+${y} yrs</span>`:""}`; }
+  ruler.innerHTML = rh;
+  rm.querySelectorAll(".track-row").forEach(row=>{
+    const base = row.offsetLeft, c = geom(base), W = row.clientWidth;
+    const items = ACTS.filter(a=>a.tr===row.dataset.tr).map(a=>{
+      const og = !!SCHED[a.id][2];
+      let xs = xOf(MID.S[a.id],c,true), xe = og ? c[a.pe].r : xOf(MID.E[a.id],c);
+      if(xe-xs < MINW) xe = xs + MINW;
+      if(xe > W-2){ xe = W-2; xs = Math.min(xs, xe-MINW); }
+      return {a, xs, xe};
+    }).sort((p,q)=>p.xs-q.xs);
+    const lanes = [], laneOf = {};
+    items.forEach(it=>{
+      const free = i => lanes[i] == null || lanes[i] + 6 <= it.xs;
+      let lane = -1;
+      for(const d of it.a.dep){ if(laneOf[d]!=null && free(laneOf[d])){ lane = laneOf[d]; break; } }
+      if(lane<0){ lane = 0; while(!free(lane)) lane++; }
+      lanes[lane] = it.xe; laneOf[it.a.id] = lane;
+      const b = actEls[it.a.id];
+      b.style.left = it.xs+"px"; b.style.width = (it.xe-it.xs)+"px"; b.style.top = (8+lane*LANE)+"px";
+      b.classList.toggle("narrow", it.xe-it.xs < 210);
+    });
+    row.style.height = (16 + Math.max(1,lanes.length)*LANE)+"px";
+  });
+}
+layoutRoadmap();
+if(document.fonts && document.fonts.ready) document.fonts.ready.then(()=>{ layoutRoadmap(); });
+let lastW = rm.clientWidth;
+new ResizeObserver(()=>{ if(rm.clientWidth!==lastW){ lastW=rm.clientWidth; layoutRoadmap(); if(typeof drawLinks==="function") drawLinks(hoverId||selected); } }).observe(rm);
+
+// Totals
+const totals = document.getElementById("totals");
+[
+  ["How to read the costs","Every figure is a rough placeholder. Costs are counted in the phase where an activity starts. Deployment costs cover only the first decade. All of it will change once activities are scoped with outside experts."],
+  ["Reading the timeline","Bars sit where their work falls in time: each starts when what it requires is done, so chains read left to right. Ongoing work fades out, and work that carries on past a gate runs through the fence. Phase lengths come from the longest chain of dependent work."],
+  ["Who decides","AFEI proposes draft criteria for gates and deployment reviews. An independent scientific steering committee, with Tribal and agency co-managers for deployment, should set the final criteria and make the calls."]
+].forEach(([h,p])=>totals.appendChild(el("div",null,`<h3>${h}</h3><p>${p}</p>`)));
+
+// Cost table by track and phase
+(function(){
+  const sum = (f) => { let lo=0,hi=0,any=false; ACTS.filter(f).forEach(a=>{ if(a.c){lo+=a.c[0];hi+=a.c[1];any=true;} }); return any?[lo,hi]:null; };
+  const cell = c => c ? `${fmt(c[0])}–${fmt(c[1])}` : "—";
+  const heads = PHASES.map(p=>`<th>Phase ${p.n}${p.deploy?", first decade":""}</th>`).join("");
+  let rows = TRACKS.map(t=>{
+    const tot = sum(a=>a.tr===t.id);
+    return `<tr><td><span class="sw" style="background:${tc(t.id)}"></span>${esc(t.name)}</td>${PHASES.map(p=>`<td>${cell(sum(a=>a.tr===t.id&&a.p===p.n))}</td>`).join("")}<td>${cell(tot)}</td></tr>`;
+  }).join("");
+  const foot = `<tr><td>All tracks</td>${PHASES.map(p=>`<td>${cell(sum(a=>a.p===p.n))}</td>`).join("")}<td>${cell(sum(()=>true))}</td></tr>`;
+  const sec = el("section","costs",`<h2>Estimated costs</h2>
+    <p>Direct costs by research track and phase, summed from activity estimates and counted in the phase where each activity starts. Tracks answer different questions and will often have different funders, so a funder can pick up a coherent slice. Every figure is a placeholder until activities are scoped with outside experts.</p>
+    <div class="cost-wrap"><table class="cost-table"><thead><tr><th>Track</th>${heads}<th>Total</th></tr></thead><tbody>${rows}</tbody><tfoot>${foot}</tfoot></table></div>`);
+  totals.after(sec);
+})();
+
+// Highlighting
+let selected = null, hoverId = null;
+
+// Dependency arrows
+const NS = "http://www.w3.org/2000/svg";
+const svg = document.createElementNS(NS,"svg");
+svg.setAttribute("class","links"); svg.setAttribute("aria-hidden","true");
+svg.innerHTML = `<defs>
+  <marker id="ah-dep" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" class="mk-dep"/></marker>
+  <marker id="ah-unl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" class="mk-unl"/></marker>
+</defs><g id="linkG"></g>`;
+rm.appendChild(svg);
+function drawLinks(id){
+  const old = svg.querySelector("#linkG");
+  const g = document.createElementNS(NS,"g"); g.id = "linkG";
+  old.replaceWith(g);
+  if(!id || !actEls[id] || !actEls[id].offsetParent) return;
+  const a = byId[id], base = rm.getBoundingClientRect();
+  const box = k => { const r = actEls[k].getBoundingClientRect(); return {l:r.left-base.left, r:r.right-base.left, t:r.top-base.top, b:r.bottom-base.top, y:r.top-base.top+r.height/2}; };
+  const link = (from,to,kind) => {
+    if(!actEls[from] || !actEls[to]) return;
+    const s = box(from), e = box(to); let d;
+    if(s.r < e.l - 4){
+      const dx = Math.max(22,(e.l-s.r)/2);
+      d = `M${s.r},${s.y} C${s.r+dx},${s.y} ${e.l-dx},${e.y} ${e.l-1},${e.y}`;
+    } else if(e.r < s.l - 4){
+      const dx = Math.max(22,(s.l-e.r)/2);
+      d = `M${s.l},${s.y} C${s.l-dx},${s.y} ${e.r+dx},${e.y} ${e.r+1},${e.y}`;
+    } else if(e.l - 30 > s.l + 8){
+      const sx = Math.min(s.r-8, e.l-30), sy = e.y > s.y ? s.b : s.t;
+      d = `M${sx},${sy} C${sx},${(sy+e.y)/2} ${sx},${e.y} ${e.l-1},${e.y}`;
+    } else {
+      const x = Math.min(s.l,e.l), bulge = Math.min(64, 20 + Math.abs(e.y-s.y)*0.15);
+      d = `M${s.l},${s.y} C${x-bulge},${s.y} ${x-bulge},${e.y} ${e.l-1},${e.y}`;
+    }
+    const p = document.createElementNS(NS,"path");
+    p.setAttribute("d",d); p.setAttribute("class","l-"+kind); p.setAttribute("marker-end",`url(#ah-${kind})`);
+    g.appendChild(p);
+  };
+  a.dep.forEach(d=>link(d,id,"dep"));
+  a.unl.forEach(u=>link(id,u,"unl"));
+}
+window.addEventListener("resize",()=>drawLinks(hoverId||selected));
+
+function applyHighlight(){
+  const cur = hoverId || selected;
+  const hasSel = !!cur, hasF = !!trackFilter;
+  rm.classList.toggle("dimmed", hasSel || hasF);
+  Object.entries(actEls).forEach(([id,b])=>{
+    b.classList.remove("sel","dep","unl","match");
+    if(hasSel){
+      const a = byId[cur];
+      if(id===cur) b.classList.add("sel");
+      else if(a.dep.includes(id)) b.classList.add("dep");
+      else if(a.unl.includes(id)) b.classList.add("unl");
+    } else if(hasF && byId[id].tr===trackFilter){ b.classList.add("match"); }
+  });
+  drawLinks(hasSel ? cur : null);
+}
+
+// Drawer
+const drawer = document.getElementById("drawer"), scrim=document.getElementById("scrim"), dBody=document.getElementById("dBody"), dCrumb=document.getElementById("dCrumb");
+let lastFocus = null;
+function showDrawer(){ lastFocus = document.activeElement; drawer.classList.add("open"); scrim.classList.add("open"); drawer.setAttribute("aria-hidden","false"); document.getElementById("dClose").focus({preventScroll:true}); }
+function closeDrawer(){
+  drawer.classList.remove("open"); scrim.classList.remove("open"); drawer.setAttribute("aria-hidden","true");
+  selected=null; applyHighlight();
+  if(location.hash) history.replaceState(null,"",location.pathname+location.search);
+  if(lastFocus && lastFocus.focus) lastFocus.focus({preventScroll:true});
+}
+document.getElementById("dClose").addEventListener("click",closeDrawer);
+scrim.addEventListener("click",closeDrawer);
+document.addEventListener("keydown",e=>{ if(e.key==="Escape" && drawer.classList.contains("open")) closeDrawer(); });
+
+function actChip(id){
+  const a = byId[id];
+  return `<button class="chip" type="button" data-act="${a.id}"><span class="swatch" style="background:${tc(a.tr)}"></span>${esc(a.t)}<small>${esc(a.dur)}</small></button>`;
+}
+function uncChip(id){
+  const u = uncById[id];
+  return `<button class="chip" type="button" data-unc="${u.id}"><span class="swatch" style="background:${tc(u.tr)}"></span>${esc(u.t)}</button>`;
+}
+function wireChips(){
+  dBody.querySelectorAll("[data-act]").forEach(b=>b.addEventListener("click",()=>{ switchView("roadmap"); openAct(b.dataset.act); }));
+  dBody.querySelectorAll("[data-unc]").forEach(b=>b.addEventListener("click",()=>openUnc(b.dataset.unc)));
+}
+
+function openAct(id){
+  const a = byId[id]; if(!a) return;
+  selected = id; applyHighlight();
+  const ph = PHASES[a.p], tr = trackById[a.tr];
+  dCrumb.innerHTML = `<span class="swatch" style="background:${tc(a.tr)}"></span>${esc(tr.name)}, ${a.pe>a.p?`Phases ${a.p}–${a.pe}`:`Phase ${ph.n}`}`;
+  dBody.innerHTML = `
+    <h2>${esc(a.t)}</h2>
+    <p class="d-sum"><b>${fmtRange(a.c)}</b> · ${esc(a.dur)} · ${startText(a)}${a.per?` · cost shown for the ${a.per}`:""}</p>
+    <div class="facts">
+      <div><span>Status</span><b>${esc(a.st)}</b></div>
+      <div><span>Est. duration</span><b>${esc(a.dur)}</b></div>
+      <div><span>Est. direct cost${a.per?", "+a.per:""}</span><b>${fmtRange(a.c)}</b></div>
+    </div>
+    <p class="estimate-note">${a.c ? (a.low ? "Low-confidence placeholder. Scope depends on what the experiments show." : "Placeholder estimate, not yet scoped with outside experts.") : "Too early to estimate."}</p>
+    <h3>Why it matters</h3><p>${esc(a.why)}</p>
+    <h3>Scope</h3>
+    <div class="scope"><p><b>Minimum:</b> ${esc(a.min)}</p>${a.ext?`<p><b>Extended:</b> ${esc(a.ext)}</p>`:""}</div>
+    <h3>Addresses</h3>
+    <div class="chips">${a.u.length? a.u.map(uncChip).join("") : '<span class="empty">An enabling step for other activities.</span>'}</div>
+    <h3>Requires</h3>
+    <div class="chips">${a.dep.length? a.dep.map(actChip).join("") : '<span class="empty">Can start now.</span>'}</div>
+    <h3>Unlocks</h3>
+    <div class="chips">${a.unl.length? a.unl.map(actChip).join("") : '<span class="empty">Nothing downstream yet.</span>'}</div>`;
+  wireChips();
+  if(!drawer.classList.contains("open")) showDrawer(); else dBody.scrollTop=0;
+  history.replaceState(null,"","#"+id);
+  if(actEls[id]) actEls[id].scrollIntoView({block:"nearest",inline:"nearest",behavior:"smooth"});
+}
+
+function openGate(g){
+  selected=null; applyHighlight();
+  dCrumb.textContent = `Between Phase ${g.from} and Phase ${g.from+1}`;
+  dBody.innerHTML = `<h2>${esc(g.name)}</h2>
+    <h3>Proposed evidence test</h3><p>${esc(g.text)}</p>
+    <h3>Uncertainties this gate tests</h3><p>Proposed rule: every high-relevance question the preceding phase targets should move from high to medium uncertainty or lower before the gate is cleared.</p>
+    <div class="chips">${UNC.filter(u=>u.rel===3 && ACTS.some(a=>a.p<=g.from && a.pe>=g.from && a.u.includes(u.id))).map(u=>uncChip(u.id)).join("")}</div>
+    <h3>Who decides</h3><p>These are AFEI’s draft criteria. Final criteria, and the judgment of whether they have been met, should belong to an independent scientific steering committee, agreed before the phase begins.</p>
+    <h3>If the test isn’t met</h3><p>The work is repeated, redesigned, or the program stops. A well-supported “no” is a useful result.</p>`;
+  wireChips();
+  if(!drawer.classList.contains("open")) showDrawer(); else dBody.scrollTop=0;
+}
+
+function openDeploy(){
+  selected=null; applyHighlight();
+  dCrumb.textContent = "Phase 2";
+  dBody.innerHTML = `<h2>How contingent deployment works</h2><p>${esc(REVIEW_NOTE)}</p>
+    <h3>Why the window exists</h3><p>A small founder herd growing a few percent a year takes decades to become large. Early on, removing or relocating a handful of animals is enough to hold numbers steady or reverse course. The window closes as herds grow large and spread, so the decisions that matter most come early.</p>
+    <h3>At each five-year review</h3><p>Measured herd size, range, vegetation, permafrost, carbon and methane are compared with projections. Triggers agreed before release decide whether to continue, hold steady, reduce herds, or end the deployment.</p>
+    <h3>Who decides</h3><p>Reviews should be led by an independent scientific committee together with Tribal and agency co-managers, with each decision and its evidence published.</p>`;
+  if(!drawer.classList.contains("open")) showDrawer(); else dBody.scrollTop=0;
+}
+document.getElementById("howDeploy").addEventListener("click",openDeploy);
+
+function openUnc(id){
+  const u = uncById[id]; if(!u) return;
+  selected=null; applyHighlight();
+  const lv = ["","Low","Medium","High"];
+  const acts = ACTS.filter(a=>a.u.includes(id));
+  dCrumb.innerHTML = `<span class="swatch" style="background:${tc(u.tr)}"></span>Open question`;
+  dBody.innerHTML = `<h2>${esc(u.t)}</h2><p>${esc(u.q)}</p>
+    <div class="facts" style="grid-template-columns:1fr 1fr;margin-top:14px">
+      <div><span>Decision relevance</span><b>${lv[u.rel]}</b></div>
+      <div><span>Degree of uncertainty</span><b>${lv[u.unc]}</b></div>
+    </div>
+    <p class="estimate-note">Draft rating, to be revised after the review and interviews.</p>
+    <h3>Activities that address it</h3>
+    <div class="chips">${acts.length? acts.map(a=>actChip(a.id)).join("") : '<span class="empty">No activity yet. This is a gap in the roadmap.</span>'}</div>`;
+  wireChips();
+  if(!drawer.classList.contains("open")) showDrawer(); else dBody.scrollTop=0;
+}
+
+// Uncertainty matrix
+(function(){
+  const m = document.getElementById("matrix"); const lv=["","Low","Medium","High"];
+  const pf = el("div","phase-filter","<span>Show what each phase targets:</span>");
+  [["All",null]].concat(PHASES.map(p=>[`Phase ${p.n}`,p.n])).forEach(([lab,n])=>{
+    const b = el("button",null,lab); b.type="button"; b.setAttribute("aria-pressed", String(n===null));
+    b.addEventListener("click",()=>{
+      pf.querySelectorAll("button").forEach(x=>x.setAttribute("aria-pressed","false")); b.setAttribute("aria-pressed","true");
+      m.classList.toggle("filtering", n!==null);
+      const set = new Set(); ACTS.filter(a=>n!==null && a.p<=n && a.pe>=n).forEach(a=>a.u.forEach(u=>set.add(u)));
+      m.querySelectorAll(".unc").forEach(x=>x.classList.toggle("tgt", set.has(x.dataset.u)));
+    });
+    pf.appendChild(b);
+  });
+  m.parentNode.before(pf);
+  for(let rel=3; rel>=1; rel--){
+    const y = el("div","mx-y", rel===2 ? "Decision relevance" : ""); m.appendChild(y);
+    for(let unc=1; unc<=3; unc++){
+      const cell = el("div","mx-cell"+(rel===3&&unc===3?" hot":""));
+      cell.appendChild(el("div","mx-lab",`${lv[rel]} relevance, ${lv[unc].toLowerCase()} uncertainty`));
+      UNC.filter(u=>u.rel===rel && u.unc===unc).forEach(u=>{
+        const b = el("button","unc",esc(u.t)); b.type="button"; b.style.setProperty("--tc",tc(u.tr)); b.dataset.u=u.id;
+        b.title = u.q; b.addEventListener("click",()=>openUnc(u.id)); cell.appendChild(b);
+      });
+      m.appendChild(cell);
+    }
+  }
+  m.appendChild(el("div"));
+  ["Low","Medium","High"].forEach((l,i)=>m.appendChild(el("div","mx-x", i===1 ? "Degree of uncertainty: "+l.toLowerCase() : l)));
+  const note = el("p","axis-note","Colors match the research tracks. The shaded cell holds the questions that matter most and are least understood.");
+  m.parentNode.after(note);
+})();
+
+// Gate list on About page
+const gl = document.getElementById("gateList");
+GATES.forEach(g=>gl.appendChild(el("p",null,`<b>${g.name}, Phase ${g.from} to ${g.from+1}.</b> ${esc(g.text)}`)));
+
+// Views
+const views = {roadmap:"view-roadmap", unc:"view-unc", about:"view-about"};
+function switchView(v){
+  Object.entries(views).forEach(([k,id])=>document.getElementById(id).hidden = k!==v);
+  document.querySelectorAll("nav button").forEach(b=>b.setAttribute("aria-current", b.dataset.view===v ? "page" : "false"));
+}
+document.querySelectorAll("nav button").forEach(b=>b.addEventListener("click",()=>{ if(drawer.classList.contains("open")) closeDrawer(); switchView(b.dataset.view); window.scrollTo({top:0}); }));
+
+// Theme
+const root = document.documentElement, themeBtn = document.getElementById("themeBtn");
+function currentTheme(){ return root.dataset.theme || (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light"); }
+function labelTheme(){ themeBtn.textContent = currentTheme()==="dark" ? "Light mode" : "Dark mode"; }
+try{ const s = localStorage.getItem("afei-rm-theme"); if(s==="light"||s==="dark") root.dataset.theme=s; }catch(e){}
+labelTheme();
+themeBtn.addEventListener("click",()=>{ const n = currentTheme()==="dark"?"light":"dark"; root.dataset.theme=n; try{localStorage.setItem("afei-rm-theme",n)}catch(e){} labelTheme(); });
+
+// Deep link
+if(location.hash && byId[location.hash.slice(1)]) openAct(location.hash.slice(1));
+})();
+</script>
+</body>
+</html>
