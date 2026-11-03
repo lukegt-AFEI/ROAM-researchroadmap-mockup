@@ -255,6 +255,44 @@ main{max-width:1360px;margin:0 auto;padding:8px 24px 64px}
   .facts{grid-template-columns:1fr 1fr}
 }
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* Compact layout: fit the roadmap on a laptop screen */
+body{font-size:14px}
+.top-inner{padding:7px 20px}
+.brand{font-size:1.05rem}
+nav button{padding:5px 11px;font-size:.88rem}
+.draft-note{padding:5px 20px 0;font-size:.78rem}
+main{padding:2px 20px 48px}
+.intro{grid-template-columns:minmax(0,1fr) minmax(0,1.6fr);gap:32px;align-items:center;padding:10px 0 8px}
+.intro h1{font-size:clamp(1.35rem,2.2vw,1.9rem);max-width:24ch}
+.intro p{font-size:.9rem;margin:0 0 5px;max-width:90ch}
+.legend{margin-top:6px;gap:6px}
+.legend button{padding:2px 10px 2px 8px;font-size:.78rem}
+.steppe{height:78px}
+.beast{width:calc(var(--sz)*.55);bottom:calc(var(--b)*.55)}
+.steppe-wrap{margin:0 0 2px}
+.herd-btn{top:0;padding:2px 9px;font-size:.72rem}
+.rm-wrap{padding:0 20px}
+.rm{grid-template-columns:124px minmax(360px,5fr) 38px minmax(380px,5fr) 38px minmax(300px,3.2fr);min-width:1240px}
+.phase-head{padding:8px 10px 9px}
+.phase-title{display:flex;align-items:baseline;gap:8px}
+.phase-num{font-size:1.55rem;line-height:1}
+.phase-name{font-size:1rem;margin:0;line-height:1.2}
+.phase-q{font-size:.8rem;margin:3px 0 5px;max-width:52ch;line-height:1.35}
+.phase-stats{gap:14px;font-size:.8rem}
+.phase-stats div span{display:inline;margin-right:5px;font-size:.74rem}
+.ur{margin-top:3px;font-size:.72rem;max-width:52ch;line-height:1.35}
+.phase-head.deploy .phase-q{max-width:60ch}
+.phase-head.deploy>.growth{max-width:250px;margin:2px 0 4px}
+.how-btn{margin-top:5px;padding:2px 9px;font-size:.72rem;justify-self:start}
+.gate-head{padding-bottom:8px}
+.gate-btn{padding:8px 4px;font-size:.7rem;max-height:160px}
+.track-label{padding:7px 10px 7px 0}
+.track-label b{font-size:.92rem;gap:6px}
+.track-label small{font-size:.7rem;line-height:1.3;margin-top:2px}
+.ruler{height:22px}
+.track-row .act{height:20px}
+.act .du{font-size:.66rem}
 </style>
 </head>
 <body>
@@ -796,10 +834,10 @@ PHASES.forEach((ph,i)=>{
   const c = phaseCost(ph.n);
   const costLabel = ph.deploy ? "First decade" : "Cost";
   const h = el("div","phase-head"+(ph.deploy?" deploy":""),
-    `<div class="phase-num">${ph.n}</div><div class="phase-name">${esc(ph.name)}</div><p class="phase-q">${esc(ph.q)}</p>
+    `<div class="phase-title"><span class="phase-num">${ph.n}</span><span class="phase-name">${esc(ph.name)}</span></div><p class="phase-q">${esc(ph.q)}</p>
      ${ph.deploy ? growthSVG() : ""}
      <div class="phase-stats"><div><span>Time</span><b>${phaseTime(ph.n)}</b></div><div><span>${costLabel}</span><b>${c?("~"+fmt(c[0])+"–"+fmt(c[1])):"Not yet scoped"}</b></div></div>
-     ${ph.n>0 ? '<div class="ur">Est. reduction in rewilding-specific uncertainty, global cooling impact: <b>not yet estimated</b>. Climate sensitivity and warming scenario are reported separately. Biodiversity and social impacts are tracked, not quantified.</div>' : ""}
+     ${ph.n>0 ? '<div class="ur">Est. reduction in rewilding-specific cooling uncertainty: <b>not yet estimated</b>.</div>' : ""}
      ${ph.deploy ? '<button type="button" class="how-btn" id="howDeploy">How contingent deployment works</button>' : ""}`);
   h.style.gridColumn = col(ph.n); h.style.gridRow = 1;
   rm.appendChild(h);
@@ -839,7 +877,7 @@ TRACKS.forEach((t,ti)=>{
 });
 
 // Timeline layout: bars sit where their work falls in time, so chains read left to right and long work runs through gates
-const MINW = 160, LANE = 28;
+const MINW = 120, LANE = 23;
 function layoutRoadmap(){
   const heads = [...rm.querySelectorAll(".phase-head")];
   const g1 = MID.G[1], g2 = MID.G[2];
