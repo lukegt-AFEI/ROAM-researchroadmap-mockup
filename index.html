@@ -358,7 +358,7 @@ main{padding:2px 20px 48px}
     <button class="theme-btn" id="themeBtn" type="button">Theme</button>
   </div>
 </header>
-<p class="draft-note">Mockup (v0.3) for discussion only. This is not the actual research roadmap. Activities, costs and timelines are placeholders that haven’t been scoped with outside experts yet.</p>
+<p class="draft-note">Mockup (v0.4) for discussion only. This is not the actual research roadmap. Activities, costs and timelines are placeholders that haven’t been scoped with outside experts yet.</p>
 
 <main>
   <section class="view" id="view-roadmap">
@@ -395,7 +395,7 @@ main{padding:2px 20px 48px}
       <p>These ratings are a first draft based on the systematic review’s causal chains and the sensitivity analysis in ROAM’s Arctic rewilding model. They will be revised after the review and expert interviews. The model tests one input at a time from an optimistic central case and covers only cooling, so social and ecological questions are rated but not charted.</p>
     </div>
     <div class="ul-wrap"><div class="ul" id="uncList"></div></div>
-    <div class="ul-key"><span><i style="background:color-mix(in srgb,var(--draft) 75%,var(--surface))"></i>Less cooling than the central estimate</span><span><i style="background:color-mix(in srgb,var(--focus) 75%,var(--surface))"></i>More cooling</span><span>Model run of October 25, 2026, warming scenario SSP3-7.0. Figures will move as the model is revised.</span></div>
+    <div class="ul-key"><span><i style="background:color-mix(in srgb,var(--draft) 75%,var(--surface))"></i>Less cooling than the central estimate</span><span><i style="background:color-mix(in srgb,var(--focus) 75%,var(--surface))"></i>More cooling</span><span>Model run of November 3, 2026 (version f6c1cfd), warming scenario SSP3-7.0. Figures will move as the model is revised.</span></div>
   </section>
 
   <section class="view" id="view-about" hidden>
@@ -406,7 +406,7 @@ main{padding:2px 20px 48px}
         <p>It works backward from a single decision: whether large-herbivore restoration should be scaled up as a nature-based climate solution. An activity belongs on the roadmap only if it reduces an uncertainty that matters to that decision, or is a necessary step toward work that does. A clear “no” would be a valuable outcome.</p>
 
         <h2>How it is organized</h2>
-        <p>The work runs in four phases. Phase 0 gathers and tests existing evidence and designs decisive experiments. Phase 1 runs controlled, replicated experiments at several sites in contrasting Arctic landscapes. Phase 2 is a pilot release: if the evidence supports it, small founder herds are released into one landscape and followed for a decade. Phase 3, contingent scale-up, extends releases to further landscapes only if the pilot clears another gate.</p>
+        <p>The work runs in four phases. Phase 0 gathers and tests existing evidence and designs decisive experiments. Phase 1 runs controlled, replicated experiments at several sites in contrasting Arctic landscapes. Wild releases are not new: muskox and wood bison have been reintroduced for decades, but herds are growing far too slowly to matter. Phase 2 accelerates that work in several landscapes at once and at higher densities, while herds stay small enough to reverse. Phase 3 is the decision about scale: whether herds grow on their own, are pushed toward millions of animals, or are capped.</p>
         <p>Because herds released as small founder groups grow exponentially, they grow slowly for decades. That gives a window of roughly 40 years in which growth can be held steady, slowed or reversed while effects are measured at landscape scale. Every five years, outcomes are compared with projections and triggers agreed before release decide whether to continue, pause, reverse or end the deployment.</p>
         <p>Between phases are gates. Moving on is never automatic: the full body of evidence is weighed against criteria agreed in advance. ROAM proposes draft criteria, but the final criteria and the judgment of whether a gate has been met should belong to an independent scientific steering committee. Some activities, such as community engagement, monitoring and governance, continue through the gates.</p>
         <p>Activities are grouped into four research tracks: ecosystem dynamics, climate outcomes, measurement and modeling, and implementation. Unlike some technical roadmaps, implementation includes engagement with Alaska Native organizations, Tribes, landholders and agencies, because research on shared land and wildlife can’t proceed without them.</p>
@@ -461,13 +461,13 @@ const TRACKS = [
 const PHASES = [
   {n:0, name:"Foundational evidence", q:"What does existing evidence show, and can decisive experiments be designed?", time:"1.5–2.5 yrs"},
   {n:1, name:"Controlled experiments at several sites", q:"At realistic densities, do large herbivores shift vegetation, snow and soil temperatures as predicted, across contrasting Arctic landscapes?", time:"4–7 yrs"},
-  {n:2, name:"Pilot release", q:"In one pilot landscape, do released herds and their effects track projections through the first decade?", time:"~10 yrs", deploy:true, pilot:true, fixed:10},
-  {n:3, name:"Contingent scale-up", q:"If the pilot holds up, do herds in more landscapes deliver measurable effects, and should growth continue, pause or reverse?", time:"~30 yrs", deploy:true}
+  {n:2, name:"Accelerated releases", q:"Building on reintroductions already under way, can herds in several landscapes grow faster and reach higher densities, with effects measured and still reversible?", time:"~10 yrs", deploy:true, pilot:true, fixed:10},
+  {n:3, name:"Herd size decision", q:"Should herds be left to grow on their own, pushed toward millions of animals, or capped, and do measured effects justify it?", time:"~30 yrs", deploy:true}
 ];
 const GATES = [
   {id:"g1", from:0, name:"Gate 1", label:"Build and stock experiments", text:"Existing evidence and models leave a plausible pathway to net cooling. The design can detect effects of the size that would matter across sites. Baselines are complete, and land access, permits and community consent are in place at each site."},
-  {id:"g2", from:1, name:"Gate 2", label:"Release into the wild", text:"Independently reviewed results from several sites show the predicted shifts in vegetation and soil temperature, without methane or albedo losses that cancel them out. A measurement protocol works beyond the instrumented plots. Release agreements are in place with landholders, Tribes and agencies, along with a management plan that defines in advance what would trigger pausing or reversing herd growth, and the capacity to act on it."},
-  {id:"g3", from:2, name:"Gate 3", label:"Expand beyond the pilot", text:"A decade of monitoring in the pilot landscape shows herd numbers held within management capacity, measured effects within the projected range, and no pre-agreed pause or reversal trigger met. An independent review confirms the measurement protocol works at landscape scale, and agreements are in place with landholders, Tribes and agencies in each new landscape."}
+  {id:"g2", from:1, name:"Gate 2", label:"Accelerate releases", text:"Independently reviewed results from several sites show the predicted shifts in vegetation and soil temperature, without methane or albedo losses that cancel them out. A measurement protocol works beyond the instrumented plots. Release agreements are in place with landholders, Tribes and agencies, along with a management plan that defines in advance what would trigger pausing or reversing herd growth, and the capacity to act on it."},
+  {id:"g3", from:2, name:"Gate 3", label:"Set herd size targets", text:"A decade of accelerated releases in several landscapes shows herd numbers held within management capacity, measured effects within the projected range, and no pre-agreed pause or reversal trigger met. On that evidence, an independent committee with Tribal and agency co-managers decides whether herds grow on their own, are pushed toward much larger numbers, or are capped."}
 ];
 const REVIEW_NOTE = "Herds released as small founder groups grow exponentially, which means slowly for decades. Through roughly the first 40 years, numbers stay small enough that growth can be held steady, slowed or reversed by relocation, fertility control or community harvest. Every five years, measured outcomes are compared with projections and pre-agreed triggers decide whether to continue, pause, reverse or end the deployment.";
 const UNC = [
@@ -479,7 +479,7 @@ const UNC = [
   {id:"U6", tr:"cli", rel:3, unc:3, t:"Ecosystem carbon", q:"Do herbivores increase total carbon stored above and below ground?"},
   {id:"U7", tr:"cli", rel:2, unc:3, t:"Methane", q:"Do changes in soil moisture raise or lower methane emissions?"},
   {id:"U8", tr:"mea", rel:3, unc:3, t:"Scalability", q:"How much land, how many animals, and what cost per tonne at scale?"},
-  {id:"U9", tr:"eco", rel:2, unc:3, t:"Herd persistence", q:"Can herds stay at high density with predators and limited management?"},
+  {id:"U9", tr:"eco", rel:2, unc:3, t:"Herd growth and persistence", q:"How fast can reintroduced herds grow, and can they stay at high density with predators and limited management?"},
   {id:"U10", tr:"mea", rel:3, unc:2, t:"Measurability", q:"Can effects be measured credibly beyond a single instrumented site?"},
   {id:"U11", tr:"imp", rel:3, unc:2, t:"Consent and governance", q:"On what terms would landholders, Tribes and agencies support rewilding?"},
   {id:"U12", tr:"eco", rel:2, unc:3, t:"Local co-effects", q:"What are the effects on local fire risk, hydrology and biodiversity?"},
@@ -581,7 +581,7 @@ const ACTS = [
   {id:"mgmt-plan", tr:"imp", p:1, t:"Adaptive management plan with pause and reversal triggers", dur:"1–2 yr", c:[100,300], st:"Planned",
    why:"Deployment is only contingent if everyone agrees in advance what would trigger slowing, reversing or ending it, and who decides.",
    min:"Define monitoring thresholds, triggers and responses, from holding herds steady to removing them.",
-   ext:"Test management responses at the experimental sites.", u:["U9","U11"], dep:["calibrate","governance"]},
+   ext:"Test management responses at the experimental sites.", u:["U9","U11"], dep:["calibrate","governance","reintro-lessons"]},
   {id:"veg-exp", tr:"eco", p:1, t:"Herbivore density and vegetation response experiments", dur:"4–6 yr", c:[2500,7500], st:"Planned",
    why:"The central test: do realistic densities shift moss and shrub tundra toward grassland, how fast, and does it hold across landscapes?",
    min:"Paired enclosure and exclosure plots with repeated vegetation surveys at each site.",
@@ -623,10 +623,10 @@ const ACTS = [
    min:"An external panel reviews results before they enter gate decisions and five-year deployment reviews.",
    ext:"Pre-registration audits and replication by outside teams.", u:["U10"], dep:["veg-exp","thermal","flux"]},
   // Phase 2: contingent deployment
-  {id:"release", tr:"imp", p:2, t:"Founder herd releases", dur:"Years 0–5", c:[2000,8000], st:"Planned", low:true,
-   why:"Small founder herds released into large landscapes start the slow-growth phase while numbers are still easy to manage.",
-   min:"Release founder herds of wood bison and other species in one pilot landscape.",
-   ext:"A second herd or species in the same landscape if reviews allow.", u:["U9"], dep:["mgmt-plan","governance","review"]},
+  {id:"release", tr:"imp", p:2, t:"Accelerated releases in several landscapes", dur:"Years 0–5", c:[2000,8000], st:"Planned", low:true,
+   why:"Wild releases already exist: muskox since the 1930s–70s, wood bison in Yakutia since 2006 and in Alaska since 2015. They are growing far too slowly to matter for climate. This phase adds animals to those efforts and founds new herds so numbers and densities rise much faster, while herds are still small enough to manage or reverse.",
+   min:"Add animals to existing reintroduced herds and found new ones in two or three contrasting landscapes, at higher densities than current programs.",
+   ext:"A second species or herd in each landscape if reviews allow.", u:["U9"], dep:["mgmt-plan","governance","review"]},
   {id:"pop-mgmt", tr:"imp", p:2, t:"Population management: hold, slow or reverse", dur:"Ongoing", c:[500,2000], per:"first decade", st:"Planned",
    why:"Because growth is slow for decades, herds can be held steady or reduced while they’re small. That capacity has to be maintained, not assumed.",
    min:"Keep relocation, fertility control and community-managed harvest ready to use.",
@@ -662,11 +662,19 @@ const ACTS = [
    why:"A credible market pathway could fund long-term stewardship, if the science supports it.",
    min:"Develop a methodology with registries based on the validated protocol.",
    ext:"Pilot issuance under independent verification.", u:["U10"], dep:["mrv","landscape"]},
-  // Phase 3: contingent scale-up
-  {id:"expand", tr:"imp", p:3, t:"Releases in additional landscapes", dur:"Years 10–30", c:[4000,15000], per:"per decade", st:"Planned", low:true,
-   why:"If the pilot clears Gate 3, herds are established in further contrasting landscapes one at a time, each with its own agreements, baselines and pause triggers.",
-   min:"Two or three additional landscapes, chosen with landholders, Tribes and agencies.",
-   ext:"Coordinated releases across Alaska, Yukon and Siberia under shared protocols.", u:["U8","U9","U11"], dep:["reviews","release"]},
+  {id:"reintro-lessons", tr:"eco", p:0, t:"Lessons from existing reintroductions", dur:"6–12 mo", c:[60,150], st:"Planned",
+   why:"Reintroduced muskox across the Arctic and wood bison in Yakutia and Alaska are decades-long natural experiments in how fast herds grow, what holds them back and how management works. Herd growth rate is one of the largest drivers of the model result.",
+   min:"Compile growth, survival, dispersal and management records for reintroduced muskox and wood bison herds.",
+   ext:"Interview the agencies and communities that run them about what slowed growth and what would speed it up.", u:["U9","U1","U11"], dep:[]},
+  {id:"burn-exp", tr:"eco", p:1, t:"Grazing on recent burns", dur:"3–5 yr", c:[400,1200], st:"Planned",
+   why:"Fire is the only route from boreal forest to grassland in the model, and none of the other planned experiments tests it. Grazing recent burns tests whether herbivores can hold them open instead of letting forest return.",
+   min:"Stock fenced plots on one or two recent burns and track tree regrowth, grass cover and carbon against ungrazed controls.",
+   ext:"Burns of different ages and severities.", u:["U14","U12","U2"], dep:["fire-path","build"]},
+  // Phase 3: herd size decision
+  {id:"expand", tr:"imp", p:3, t:"Herd size targets and growth management", dur:"Years 10–30", c:[4000,15000], per:"per decade", st:"Planned", low:true,
+   why:"The decision in this phase is about scale: let herds grow on their own, push them toward millions of animals with more releases and support, or cap them.",
+   min:"Set herd size targets for each landscape with co-managers, and carry them out through further releases, harvest or relocation.",
+   ext:"Coordinated targets across Alaska, Yukon and Siberia under shared protocols.", u:["U1","U8","U9","U11"], dep:["reviews","release"]},
   {id:"regional", tr:"cli", p:3, t:"Regional climate effect assessment", dur:"Every 10 yr", c:[3000,8000], per:"per decade", st:"Planned",
    why:"At scale, the net climate effect has to show up regionally, not only at instrumented sites.",
    min:"Combine remote sensing, flux networks and atmospheric inversions across all release landscapes.",
@@ -682,30 +690,31 @@ const SHORT = {
   "mgmt-plan":"Management plan with pause triggers", "veg-exp":"Density and vegetation experiments", "nutrients":"Nutrient cycling and forage",
   "thermal":"Soil thermal monitoring", "flux":"CO₂ and methane flux towers", "albedo":"Albedo and snow monitoring",
   "carbon-stock":"Carbon stock resurveys", "mrv":"MRV protocol", "calibrate":"Model calibration", "scenarios":"Herd growth and climate scenarios",
-  "review":"Independent review of findings", "release":"Founder herd releases", "pop-mgmt":"Hold, slow or reverse herd growth",
+  "review":"Independent review of findings", "release":"Accelerated releases", "pop-mgmt":"Hold, slow or reverse herd growth",
   "handoff":"Hand-off to agencies and co-managers", "herd-track":"Herd growth and range tracking", "herd-dyn":"Herd dynamics and predators",
   "co-effects":"Fire, hydrology and biodiversity", "landscape":"Net climate assessment", "permafrost-track":"Permafrost and carbon tracking",
-  "reviews":"Five-year deployment reviews", "credits":"Credit methodology", "expand":"Releases in more landscapes", "regional":"Regional climate assessment"
+  "reviews":"Five-year deployment reviews", "credits":"Credit methodology", "expand":"Herd size targets", "reintro-lessons":"Lessons from reintroductions", "burn-exp":"Grazing on recent burns", "regional":"Regional climate assessment"
 };
 const byId = Object.fromEntries(ACTS.map(a=>[a.id,a]));
 const trackById = Object.fromEntries(TRACKS.map(t=>[t.id,t]));
 const uncById = Object.fromEntries(UNC.map(u=>[u.id,u]));
-// One-at-a-time sensitivity of modeled cooling at 2100 in ROAM's Arctic rewilding model (warming scenario SSP3-7.0, run of Oct 25, 2026):
+// One-at-a-time sensitivity of modeled cooling at 2100 in ROAM's Arctic rewilding model (warming scenario SSP3-7.0, run of Nov 3, 2026, version f6c1cfd):
 // % change from the central estimate at the low (lo) and high (hi) end of each input's tested range.
 const SENS = {
-  U1:{p:"Maximum herbivore density",lo:-60,hi:5},
-  U5:{p:"Spring snow-albedo effect",lo:-44,hi:44},
-  U13:{p:"Strength of grazing-triggered thaw",lo:19,hi:-44},
-  U9:{p:"Wild herd growth rate",lo:-42,hi:8},
-  U3:{p:"Share of thaw that can be prevented",lo:-42,hi:20},
-  U6:{p:"Soil carbon accumulation rate",lo:-41,hi:21},
-  U2:{p:"Density at which land converts",lo:12,hi:-35},
-  U11:{p:"Permitting and start delay",lo:6,hi:-32},
-  U14:{p:"Share of burned forest that converts",lo:-23,hi:14}
+  U1:{p:"Maximum herbivore density",lo:-68,hi:6},
+  U9:{p:"Wild herd growth rate",lo:-48,hi:7},
+  U13:{p:"Strength of grazing-triggered thaw",lo:17,hi:-41},
+  U3:{p:"Share of thaw that can be prevented",lo:-39,hi:18},
+  U2:{p:"Density at which land converts",lo:11,hi:-39},
+  U6:{p:"Soil carbon accumulation rate",lo:-38,hi:19},
+  U5:{p:"Spring snow-albedo effect",lo:-33,hi:33},
+  U11:{p:"Permitting and start delay",lo:5,hi:-31},
+  U14:{p:"Share of burned forest that converts",lo:-26,hi:15}
 };
 const REF_SENS = [
   {t:"Climate sensitivity",q:"How much the planet warms or cools per unit of forcing. Not reducible by rewilding research.",p:"IPCC range",lo:-33,hi:67},
-  {t:"Warming scenario",q:"Which emissions path the world follows. A choice, not an unknown research can narrow.",p:"SSP1-2.6 to SSP5-8.5",lo:-33,hi:17}
+  {t:"Permafrost thaw without herbivores",q:"When and how much permafrost carbon thaws in the do-nothing case. Narrowed by permafrost science, not by this roadmap.",p:"Timing of peak release",lo:0,hi:38},
+  {t:"Warming scenario",q:"Which emissions path the world follows. A choice, not an unknown research can narrow.",p:"SSP1-2.6 to SSP5-8.5",lo:-28,hi:14}
 ];
 ACTS.forEach(a=>a.unl=[]);
 ACTS.forEach(a=>a.dep.forEach(d=>byId[d] && byId[d].unl.push(a.id)));
@@ -725,7 +734,7 @@ function phaseCost(n){
 (function(){
   const [lo,hi] = [0,1].map(phaseCost).reduce((s,c)=>[s[0]+c[0],s[1]+c[1]],[0,0]);
   document.getElementById("introSummary").innerHTML =
-    `A draft, stage-gated plan with <strong>${ACTS.length} activities</strong> in three phases. Reaching a well-informed decision on whether to release animals would take roughly <strong>6–10 years</strong> and, by today’s rough placeholders, <strong>${fmt(lo)}–${fmt(hi)}</strong>. If the evidence supports it, a <strong>ten-year pilot release</strong> follows and then, only if it clears another gate, <strong>scale-up over about 30 years</strong>. Slow herd growth leaves room to monitor, course-correct or stop throughout.`;
+    `A draft, stage-gated plan with <strong>${ACTS.length} activities</strong> in three phases. Reaching a well-informed decision on whether to accelerate wild releases would take roughly <strong>6–10 years</strong> and, by today’s rough placeholders, <strong>${fmt(lo)}–${fmt(hi)}</strong>. If the evidence supports it, a <strong>decade of accelerated releases</strong> follows, building on reintroductions already under way, and then a <strong>decision on herd size</strong>: let herds grow, push them toward millions, or cap them. Slow herd growth leaves room to monitor, course-correct or stop throughout.`;
 })();
 
 // The herd: mammoths, musk oxen, wood bison and calves, horses, reindeer, camels and a moose
@@ -848,7 +857,7 @@ const SCHED = {
   "albedo":[3,5], "carbon-stock":[2,3,1], "mrv":[2,3,1,["thermal","flux"]], "calibrate":[1,2], "scenarios":[1,1.5,1,["calibrate"]],
   "review":[.5,.5,1], "release":[2,5], "pop-mgmt":[1,1,1,["release"]], "handoff":[20,20,0,null,10],
   "herd-track":[1,1,1,["release"]], "herd-dyn":[3,5,1,["release"]], "co-effects":[3,5,1,["release"]],
-  "landscape":[5,5,1,["release"]], "permafrost-track":[1,1,1,["release"]], "reviews":[.5,.5,1,null,5], "credits":[2,3], "expand":[15,20,0,null,0], "regional":[10,10,1,["landscape"]]
+  "landscape":[5,5,1,["release"]], "permafrost-track":[1,1,1,["release"]], "reviews":[.5,.5,1,null,5], "credits":[2,3], "expand":[15,20,0,null,0], "reintro-lessons":[.5,1], "burn-exp":[3,5], "regional":[10,10,1,["landscape"]]
 };
 ACTS.forEach(a=>{ if(a.pe===2 && SCHED[a.id] && SCHED[a.id][2]) a.pe=3; });
 function schedule(mode){ // 0 = low, 1 = high, 2 = midpoint
@@ -883,7 +892,7 @@ function startText(a){
 (function(){
   const [lo,hi] = [0,1].map(phaseCost).reduce((s,c)=>[s[0]+c[0],s[1]+c[1]],[0,0]);
   document.getElementById("introSummary").innerHTML =
-    `A draft, stage-gated plan with <strong>${ACTS.length} activities</strong> in four phases. Following the longest chains of dependent work, reaching a well-informed decision on whether to release animals would take roughly <strong>${yrs(SCH[0].G[2],SCH[1].G[2])}</strong> and, by today’s rough placeholders, <strong>${fmt(lo)}–${fmt(hi)}</strong>. If the evidence supports it, a <strong>ten-year pilot release</strong> follows and then, only if it clears another gate, <strong>scale-up over about 30 years</strong>. Slow herd growth leaves room to monitor, course-correct or stop throughout.`;
+    `A draft, stage-gated plan with <strong>${ACTS.length} activities</strong> in four phases. Following the longest chains of dependent work, reaching a well-informed decision on whether to accelerate wild releases would take roughly <strong>${yrs(SCH[0].G[2],SCH[1].G[2])}</strong> and, by today’s rough placeholders, <strong>${fmt(lo)}–${fmt(hi)}</strong>. If the evidence supports it, a <strong>decade of accelerated releases</strong> follows, building on reintroductions already under way, and then a <strong>decision on herd size</strong>: let herds grow, push them toward millions, or cap them. Slow herd growth leaves room to monitor, course-correct or stop throughout.`;
 })();
 
 const rm = document.getElementById("rm");
@@ -1035,7 +1044,7 @@ new ResizeObserver(()=>{ if(rm.clientWidth!==lastW){ lastW=rm.clientWidth; layou
 // Totals
 const totals = document.getElementById("totals");
 [
-  ["How to read the costs","Every figure is a rough placeholder. Costs are counted in the phase where an activity starts. Pilot costs cover its first decade; scale-up costs are per decade of new work. All of it will change once activities are scoped with outside experts."],
+  ["How to read the costs","Every figure is a rough placeholder. Costs are counted in the phase where an activity starts. Phase 2 costs cover its first decade; Phase 3 costs are per decade of new work. All of it will change once activities are scoped with outside experts."],
   ["Reading the timeline","Bars sit where their work falls in time: each starts when what it requires is done, so chains read left to right. Ongoing work fades out, and work that carries on past a gate runs through the fence. Phase lengths come from the longest chain of dependent work."],
   ["Who decides","ROAM proposes draft criteria for gates and deployment reviews. An independent scientific steering committee, with Tribal and agency co-managers for deployment, should set the final criteria and make the calls."]
 ].forEach(([h,p])=>totals.appendChild(el("div",null,`<h3>${h}</h3><p>${p}</p>`)));
