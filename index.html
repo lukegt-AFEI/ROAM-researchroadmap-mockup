@@ -390,7 +390,7 @@ main{padding:2px 20px 48px}
     <button class="theme-btn" id="themeBtn" type="button">Theme</button>
   </div>
 </header>
-<p class="draft-note">Mockup (v0.6) for discussion only. This is not the actual research roadmap. Activities, costs and timelines are placeholders that haven’t been scoped with outside experts yet.</p>
+<p class="draft-note">Mockup (v0.7) for discussion only. This is not the actual research roadmap. Activities, costs and timelines are placeholders that haven’t been scoped with outside experts yet.</p>
 
 <main>
   <section class="view" id="view-roadmap">
@@ -439,7 +439,7 @@ main{padding:2px 20px 48px}
         <p>It works backward from a single decision: whether large-herbivore restoration should be scaled up as a nature-based climate solution. An activity belongs on the roadmap only if it reduces an uncertainty that matters to that decision, or is a necessary step toward work that does. A clear “no” would be a valuable outcome.</p>
 
         <h2>How it is organized</h2>
-        <p>The work runs in four phases. Phase 0 gathers and tests existing evidence and designs decisive experiments. Phase 1 runs controlled, replicated experiments at several sites in contrasting Arctic landscapes. Wild releases are not new: muskox and wood bison have been reintroduced for decades, but herds are growing far too slowly to matter. Phase 2 accelerates that work in several landscapes at once and at higher densities, while herds stay small enough to reverse. Phase 3 is the decision about scale: whether herds grow on their own, are pushed toward millions of animals, or are capped.</p>
+        <p>The structure is adapted from Reflective’s <a href="https://roadmap.reflective.org" target="_blank" rel="noopener">SAI Research Roadmap</a>, which borrows the phase-and-gate logic of clinical trials. The work runs in four phases. Phase 0 gathers and tests existing evidence and designs decisive experiments. Phase 1 runs controlled, replicated experiments at several sites in contrasting Arctic landscapes. Wild releases are not new: muskox and wood bison have been reintroduced for decades, but herds are growing far too slowly to matter. Phase 2 accelerates that work in several landscapes at once and at higher densities, while herds stay small enough to reverse. Phase 3 is the decision about scale: whether herds grow on their own, are pushed toward millions of animals, or are capped.</p>
         <p>Because herds released as small founder groups grow exponentially, they grow slowly for decades. That gives a window of roughly 40 years in which growth can be held steady, slowed or reversed while effects are measured at landscape scale. Every five years, outcomes are compared with projections and triggers agreed before release decide whether to continue, pause, reverse or end the deployment.</p>
         <p>Between phases are gates. Moving on is never automatic: the full body of evidence is weighed against criteria agreed in advance. ROAM proposes draft criteria, but the final criteria and the judgment of whether a gate has been met should belong to an independent scientific steering committee. Some activities, such as community engagement, monitoring and governance, continue through the gates.</p>
         <p>Activities are grouped into four research tracks: ecosystem dynamics, climate outcomes, measurement and modeling, and implementation. Unlike some technical roadmaps, implementation includes engagement with Alaska Native organizations, Tribes, landholders and agencies, because research on shared land and wildlife can’t proceed without them.</p>
@@ -464,9 +464,10 @@ main{padding:2px 20px 48px}
       </article>
       <aside>
         <h3>Status</h3>
-        <p>Draft v0.6, November 2026. Not reviewed by advisors or outside experts.</p>
+        <p>Draft v0.7, November 2026. Not reviewed by advisors or outside experts.</p>
         <h3>Changelog</h3>
         <ul class="changelog">
+          <li><b>v0.7</b> Phase 1 costed for three to five sites (about $50M–$150M to the decision); longer experiments, so the decision is about 12–23 years out; whole years only; credit to Reflective and the clinical-trial model.</li>
           <li><b>v0.6</b> Questions ranked by their effect on modeled cooling, with the evidence behind each range; sources from the model’s evidence table on every question and activity.</li>
           <li><b>v0.5</b> Ratings derived from the model with a stated rule; reference drivers shown first; boreal transition broadened beyond fire; guided tour, keyboard navigation, feedback links, this changelog.</li>
           <li><b>v0.4</b> Phase 2 becomes accelerated releases building on existing reintroductions; Phase 3 the herd size decision. Lessons from reintroductions and boreal grazing experiments added. Model sensitivity refreshed.</li>
@@ -474,6 +475,8 @@ main{padding:2px 20px 48px}
           <li><b>v0.2</b> Grazing-triggered thaw and boreal pathways added from the model; headline metric separates climate sensitivity and warming scenario.</li>
           <li><b>v0.1</b> First draft, October 2026.</li>
         </ul>
+        <h3>Credits</h3>
+        <p>Phases, gates, dependency-driven timing and the uncertainty-reduction metric follow Reflective’s <a href="https://roadmap.reflective.org" target="_blank" rel="noopener">SAI Research Roadmap</a> (2026), itself modeled on clinical trials. Lessons also from Spark Climate Solutions’ iron salt aerosol roadmap and Renaissance Philanthropy’s Scientific Field Creation playbook.</p>
         <h3>Feedback</h3>
         <p>Use “Suggest a change” on any activity (opens a GitHub issue), or send comments to the ROAM science team.</p>
         <h3>Keyboard</h3>
@@ -585,11 +588,11 @@ const ACTS = [
    why:"Brings in proponents, skeptics and experts from adjacent fields so the roadmap reflects the field, not one organization.",
    min:"About 100 structured interviews across permafrost, herbivory, carbon and albedo science.",
    ext:"Follow-up workshops on the most contested links.", u:["U8","U10"], dep:["slr"]},
-  {id:"engage", tr:"imp", p:0, pe:2, t:"Alaska Native and community engagement", dur:"Throughout", c:[150,400], st:"In progress",
+  {id:"engage", tr:"imp", p:0, pe:2, t:"Alaska Native and community engagement", dur:"Throughout", c:[300,1000], st:"In progress",
    why:"Research on Native lands, and with wildlife that people depend on, needs consent and co-produced questions from the start and for as long as herds are on the land.",
    min:"Regular engagement with landholders, Tribes and communities near candidate sites.",
    ext:"Co-designed research questions and shared data agreements.", u:["U11"], dep:[]},
-  {id:"site-select", tr:"imp", p:0, t:"Site selection, land agreements and permits", dur:"1–2 yr", c:[200,600], st:"In progress",
+  {id:"site-select", tr:"imp", p:0, t:"Site selection, land agreements and permits", dur:"1–2 yr", c:[400,1200], st:"In progress",
    why:"Several sites in contrasting landscapes need land, research access and wildlife permits before any experiment can begin.",
    min:"Choose a portfolio of sites spanning permafrost and vegetation types; finalize land agreements covering access, data rights and duration; secure wildlife and veterinary approvals.",
    ext:"Keep alternate sites ready in case one falls through.", u:["U11"], dep:["engage"]},
@@ -597,20 +600,20 @@ const ACTS = [
    why:"Pleistocene Park is a single, unreplicated site. The next experiments have to detect the effect sizes that matter, within and across sites.",
    min:"Specify treatments, replication within and across sites, controls, and the smallest effects the design can detect.",
    ext:"Pre-register hypotheses and analysis plans.", u:["U2","U3"], dep:["slr","boe"]},
-  {id:"baseline", tr:"imp", p:0, t:"Pre-treatment baselines at each site", dur:"1–2 yr", c:[400,1200], st:"Planned",
+  {id:"baseline", tr:"imp", p:0, t:"Pre-treatment baselines at each site", dur:"1–2 yr", c:[1200,4000], st:"Planned",
    why:"Effects can only be attributed to animals if conditions before they arrive are measured.",
    min:"Survey vegetation, soils, permafrost, snow and carbon stocks across treatment and control areas at each site.",
    ext:"Add drone and lidar mapping and a reconstruction of fire history.", u:["U6"], dep:["site-select","design"]},
   // Phase 1
-  {id:"build", tr:"imp", p:1, t:"Construction at several sites", dur:"1–3 yr", c:[1300,12000], st:"Planned",
+  {id:"build", tr:"imp", p:1, t:"Construction at several sites", dur:"2–4 yr", c:[20000,50000], st:"Planned",
    why:"Fencing, power, access and monitoring infrastructure for replicated enclosure experiments in contrasting landscapes.",
-   min:"Soft-release enclosures with basic infrastructure at about three sites (the current plan for the first is about $440k).",
+   min:"Soft-release enclosures with basic infrastructure at three to five sites (the current plan for the first is about $440k).",
    ext:"Full build-out with replicated paddocks and monitoring towers at each site.", u:[], dep:["site-select","design"]},
   {id:"protocol", tr:"imp", p:1, t:"Shared protocol with partner sites", dur:"Ongoing", c:[300,900], st:"Planned",
    why:"Results only add up across sites if everyone measures the same things the same way.",
    min:"A common design, measurement protocol and data standard across ROAM and partner sites, including Pleistocene Park.",
    ext:"Partner sites in Canada and Scandinavia.", u:["U8","U10"], dep:["design"]},
-  {id:"animals", tr:"imp", p:1, pe:2, t:"Animal sourcing and husbandry program", dur:"Ongoing", c:[800,2500], st:"Planned",
+  {id:"animals", tr:"imp", p:1, pe:2, t:"Animal sourcing and husbandry program", dur:"Ongoing", c:[4000,12000], st:"Planned",
    why:"Animal welfare and herd health decide whether the experiments run long enough, and they supply the founder herds for any later release.",
    min:"Source founder animals; set veterinary, welfare and handling protocols at every site.",
    ext:"Multi-species stocking to test the effect of community composition.", u:["U9"], dep:["build"]},
@@ -618,7 +621,7 @@ const ACTS = [
    why:"Deciding who owns the data, and how outside researchers use the sites, before the first sensor goes in protects the program’s credibility.",
    min:"Publish data ownership, embargo and access terms.",
    ext:"An independent scientific steering committee for the sites.", u:["U10"], dep:["site-select"]},
-  {id:"governance", tr:"imp", p:1, pe:2, t:"Governance, co-management and release agreements", dur:"Ongoing", c:[500,1500], st:"Planned",
+  {id:"governance", tr:"imp", p:1, pe:2, t:"Governance, co-management and release agreements", dur:"Ongoing", c:[1000,4000], st:"Planned",
    why:"Releasing animals into the wild involves state, federal, Tribal and First Nations authorities over land and wildlife. Agreements must be in place before release and kept up through deployment.",
    min:"Co-management agreements with Tribes, agencies and landholders for candidate release landscapes.",
    ext:"International coordination across Arctic nations.", u:["U11"], dep:["engage"]},
@@ -626,27 +629,27 @@ const ACTS = [
    why:"Deployment is only contingent if everyone agrees in advance what would trigger slowing, reversing or ending it, and who decides.",
    min:"Define monitoring thresholds, triggers and responses, from holding herds steady to removing them.",
    ext:"Test management responses at the experimental sites.", u:["U9","U11"], dep:["calibrate","governance","reintro-lessons"]},
-  {id:"veg-exp", tr:"eco", p:1, t:"Herbivore density and vegetation response experiments", dur:"4–6 yr", c:[2500,7500], st:"Planned",
+  {id:"veg-exp", tr:"eco", p:1, t:"Herbivore density and vegetation response experiments", dur:"6–12 yr", c:[8000,25000], st:"Planned",
    why:"The central test: do realistic densities shift moss and shrub tundra toward grassland, how fast, and does it hold across landscapes?",
    min:"Paired enclosure and exclosure plots with repeated vegetation surveys at each site.",
    ext:"A density gradient and multi-species treatments.", u:["U2","U9"], dep:["build","animals","baseline"]},
-  {id:"nutrients", tr:"eco", p:1, t:"Nutrient cycling and forage quality", dur:"3–5 yr", c:[700,2000], st:"Planned",
+  {id:"nutrients", tr:"eco", p:1, t:"Nutrient cycling and forage quality", dur:"4–8 yr", c:[1500,6000], st:"Planned",
    why:"The proposed feedback loop runs through faster nutrient turnover and better forage.",
    min:"Measure soil nutrients, decomposition and forage quality across treatments.",
    ext:"Isotope tracing of nutrient pathways.", u:["U1","U2"], dep:["veg-exp"]},
-  {id:"thermal", tr:"cli", p:1, pe:2, t:"Soil thermal and active-layer monitoring", dur:"4–7 yr, then ongoing", c:[1000,3000], st:"Planned",
+  {id:"thermal", tr:"cli", p:1, pe:2, t:"Soil thermal and active-layer monitoring", dur:"6–12 yr, then ongoing", c:[3500,12000], st:"Planned",
    why:"Permafrost protection is the largest proposed climate benefit. It has to be measured directly, in winter and summer, and the record continues into deployment.",
    min:"Year-round soil temperature profiles and active-layer depth across treatments at every site.",
    ext:"Ground-ice and thermokarst monitoring.", u:["U3","U4","U13"], dep:["build","baseline"]},
-  {id:"flux", tr:"cli", p:1, t:"Carbon dioxide and methane flux towers", dur:"4–6 yr", c:[2000,5000], st:"Planned",
+  {id:"flux", tr:"cli", p:1, t:"Carbon dioxide and methane flux towers", dur:"5–10 yr", c:[4500,15000], st:"Planned",
    why:"The net greenhouse effect depends on whether carbon gains are offset by methane or respiration.",
    min:"Paired eddy-covariance towers in treatment and control areas at each site.",
    ext:"Chamber networks to find fine-scale methane hotspots.", u:["U6","U7"], dep:["build","baseline"]},
-  {id:"albedo", tr:"cli", p:1, t:"Albedo and snow property monitoring", dur:"3–5 yr", c:[500,1500], st:"Planned",
+  {id:"albedo", tr:"cli", p:1, t:"Albedo and snow property monitoring", dur:"4–8 yr", c:[1000,4000], st:"Planned",
    why:"Brighter winter landscapes are a proposed benefit; darker bare ground in summer could offset it.",
    min:"Radiometers and repeat drone surveys across seasons.",
    ext:"Link plot measurements to satellite albedo products.", u:["U3","U5"], dep:["build"]},
-  {id:"carbon-stock", tr:"cli", p:1, pe:2, t:"Ecosystem carbon stock resurveys", dur:"Every 2–3 yr", c:[500,1300], st:"Planned",
+  {id:"carbon-stock", tr:"cli", p:1, pe:2, t:"Ecosystem carbon stock resurveys", dur:"Every 2–3 yr", c:[1000,4000], st:"Planned",
    why:"Carbon change above and below ground is slow and has to be tracked for decades.",
    min:"Repeat soil coring and biomass surveys against the baselines.",
    ext:"Deep-soil and permafrost carbon cores.", u:["U6"], dep:["baseline"]},
@@ -710,7 +713,7 @@ const ACTS = [
    why:"Reintroduced muskox across the Arctic and wood bison in Yakutia and Alaska are decades-long natural experiments in how fast herds grow, what holds them back and how management works. Herd growth rate is one of the largest drivers of the model result.",
    min:"Compile growth, survival, dispersal and management records for reintroduced muskox and wood bison herds.",
    ext:"Interview the agencies and communities that run them about what slowed growth and what would speed it up.", u:["U9","U1","U11"], dep:[]},
-  {id:"burn-exp", tr:"eco", p:1, t:"Grazing on burns and open boreal land", dur:"3–5 yr", c:[400,1200], st:"Planned",
+  {id:"burn-exp", tr:"eco", p:1, t:"Grazing on burns and open boreal land", dur:"4–8 yr", c:[1000,3000], st:"Planned",
    why:"None of the other planned experiments tests boreal conversion. The model assumes boreal land opens only after fire; grazing a recent burn alongside unburned shrubland or wetland tests whether herbivores can open boreal land with and without fire.",
    min:"Stock fenced plots on a recent burn and on unburned boreal shrubland or wetland, and track tree and shrub cover, grass, snow and carbon against ungrazed controls.",
    ext:"Burns of different ages and severities, and more boreal cover types.", u:["U14","U12","U2"], dep:["fire-path","build"]},
@@ -935,12 +938,12 @@ const SCHED = {
   "pp-data":[.5,1], "herb-data":[.5,.75], "carry":[.75,1], "slr":[1,1.5], "snow-field":[1,2], "thermal-contrast":[1,2], "yedoma":[1,2], "fire-path":[.75,1],
   "boe":[.5,1], "geo-model":[1.5,2.5], "hindcast":[.5,1], "uncert-db":[.5,.5,1], "interviews":[.33,.5], "engage":[.5,.5,1],
   "site-select":[1,2,0,["engage"]], "design":[.25,.5], "baseline":[1,2],
-  "build":[1,3], "protocol":[.5,1,1], "animals":[1,1.5,1,["build"]], "data-gov":[.25,.5], "governance":[2,4,1],
-  "mgmt-plan":[1,2,0,["calibrate"]], "veg-exp":[4,6], "nutrients":[3,5,0,["veg-exp"]], "thermal":[4,7,1], "flux":[4,6],
-  "albedo":[3,5], "carbon-stock":[2,3,1], "mrv":[2,3,1,["thermal","flux"]], "calibrate":[1,2], "scenarios":[1,1.5,1,["calibrate"]],
+  "build":[2,4], "protocol":[.5,1,1], "animals":[1.5,3,1,["build"]], "data-gov":[.25,.5], "governance":[2,4,1],
+  "mgmt-plan":[1,2,0,["calibrate"]], "veg-exp":[6,12], "nutrients":[4,8,0,["veg-exp"]], "thermal":[6,12,1], "flux":[5,10],
+  "albedo":[4,8], "carbon-stock":[2,3,1], "mrv":[2,3,1,["thermal","flux"]], "calibrate":[1,2], "scenarios":[1,1.5,1,["calibrate"]],
   "review":[.5,.5,1], "release":[2,5], "pop-mgmt":[1,1,1,["release"]], "handoff":[20,20,0,null,10],
   "herd-track":[1,1,1,["release"]], "herd-dyn":[3,5,1,["release"]], "co-effects":[3,5,1,["release"]],
-  "landscape":[5,5,1,["release"]], "permafrost-track":[1,1,1,["release"]], "reviews":[.5,.5,1,null,5], "credits":[2,3], "expand":[15,20,0,null,0], "reintro-lessons":[.5,1], "burn-exp":[3,5], "regional":[10,10,1,["landscape"]]
+  "landscape":[5,5,1,["release"]], "permafrost-track":[1,1,1,["release"]], "reviews":[.5,.5,1,null,5], "credits":[2,3], "expand":[15,20,0,null,0], "reintro-lessons":[.5,1], "burn-exp":[4,8], "regional":[10,10,1,["landscape"]]
 };
 ACTS.forEach(a=>{ if(a.pe===2 && SCHED[a.id] && SCHED[a.id][2]) a.pe=3; });
 function schedule(mode){ // 0 = low, 1 = high, 2 = midpoint
@@ -959,7 +962,7 @@ function schedule(mode){ // 0 = low, 1 = high, 2 = midpoint
   return {S,E,G};
 }
 const SCH = [schedule(0), schedule(1)], MID = schedule(2);
-const half = x => Math.round(x*2)/2;
+const half = x => Math.round(x);
 const yrs = (a,b) => { a=half(a); b=half(b); return a===b ? `${a} yrs` : `${a}–${b} yrs`; };
 function phaseTime(n){
   if(PHASES[n].deploy) return PHASES[n].time;
@@ -1150,7 +1153,7 @@ rm.addEventListener("keydown",e=>{
   const STEPS=[
     ["A plan for reaching an informed decision","Restoring large herbivores to the Arctic could slow permafrost thaw, brighten snowy landscapes and store soil carbon. Or the effects could be small, offset by other changes, or impossible to scale. This roadmap sets out the evidence needed to decide: which questions, in what order, and at what cost."],
     ["Not a silver bullet","Arctic rewilding won\u2019t solve climate change on its own. Its effects would build over decades, broadly on the pace and scale of other carbon-removal approaches, and could offset a meaningful share of warming if the evidence holds up. Its distinctive promise is protecting permafrost carbon that emissions cuts can\u2019t reach. It belongs alongside decarbonization and carbon removal, not instead of them."],
-    ["Why it\u2019s staged","The roadmap borrows the logic of clinical trials: learn what you can at one scale before moving to the next. Phase 0 tests existing evidence and designs experiments. Phase 1 runs replicated experiments at several sites. Phase 2 accelerates wild releases that are already under way, while herds are small enough to reverse. Phase 3 decides how large herds should become."],
+    ["Why it\u2019s staged","This structure is adapted from Reflective\u2019s SAI Research Roadmap, which in turn borrows the logic of clinical trials: learn what you can at one scale before moving to the next. Phase 0 tests existing evidence and designs experiments. Phase 1 runs replicated experiments at several sites. Phase 2 accelerates wild releases that are already under way, while herds are small enough to reverse. Phase 3 decides how large herds should become."],
     ["The gates","Between phases sit gates where the full body of evidence is measured against criteria set in advance by an independent committee. If the criteria aren\u2019t met, the work is repeated or it stops. If the research shows rewilding isn\u2019t worth scaling up, the roadmap has done its job."],
     ["Faster, not looser",`Muskox and wood bison have been reintroduced for decades, but far too slowly to tell whether herds can matter for climate. With work run in parallel and funded in the right order, a well-informed decision on accelerating releases is reachable in about ${yrs(SCH[0].G[2],SCH[1].G[2])}, for ${fmt(lo)}\u2013${fmt(hi)} at today\u2019s placeholder costs. Funding and coordination change the timeline, not the evidence: no gate is skipped.`]
   ];
@@ -1177,7 +1180,7 @@ rm.addEventListener("keydown",e=>{
 // Totals
 const totals = document.getElementById("totals");
 [
-  ["How to read the costs","Every figure is a rough placeholder. Costs are counted in the phase where an activity starts. Phase 2 costs cover its first decade; Phase 3 costs are per decade of new work. All of it will change once activities are scoped with outside experts."],
+  ["How to read the costs","Every figure is a rough placeholder. Phase 1 assumes three to five experimental sites. Costs are counted in the phase where an activity starts. Phase 2 costs cover its first decade; Phase 3 costs are per decade of new work. All of it will change once activities are scoped with outside experts."],
   ["Reading the timeline","Bars sit where their work falls in time: each starts when what it requires is done, so chains read left to right. Ongoing work fades out, and work that carries on past a gate runs through the fence. Phase lengths come from the longest chain of dependent work."],
   ["Who decides","ROAM proposes draft criteria for gates and deployment reviews. An independent scientific steering committee, with Tribal and agency co-managers for deployment, should set the final criteria and make the calls."]
 ].forEach(([h,p])=>totals.appendChild(el("div",null,`<h3>${h}</h3><p>${p}</p>`)));
