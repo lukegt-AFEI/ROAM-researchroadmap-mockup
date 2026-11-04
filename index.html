@@ -367,6 +367,15 @@ main{padding:2px 20px 48px}
 .changelog{margin:0;padding-left:16px;font-size:.84rem;color:var(--muted)}
 .changelog li{margin-bottom:6px}
 .changelog b{color:var(--ink);font-weight:600}
+
+/* v0.6: swing-ranked list with evidence column and sources */
+.ul-head,.ul-row{grid-template-columns:26px minmax(0,1.4fr) 190px minmax(300px,1.15fr)}
+.ul-ev{font-size:.74rem;color:var(--muted);line-height:1.35}
+.ul-row.ref{cursor:pointer}
+.ul-row.ref:hover{background:var(--surface)}
+.tz-lab em{font-style:normal;color:var(--muted)}
+.srcs{margin:0 0 6px;padding-left:16px;font-size:.84rem}
+.srcs li{margin-bottom:4px}
 </style>
 </head>
 <body>
@@ -381,7 +390,7 @@ main{padding:2px 20px 48px}
     <button class="theme-btn" id="themeBtn" type="button">Theme</button>
   </div>
 </header>
-<p class="draft-note">Mockup (v0.5) for discussion only. This is not the actual research roadmap. Activities, costs and timelines are placeholders that haven’t been scoped with outside experts yet.</p>
+<p class="draft-note">Mockup (v0.6) for discussion only. This is not the actual research roadmap. Activities, costs and timelines are placeholders that haven’t been scoped with outside experts yet.</p>
 
 <main>
   <section class="view" id="view-roadmap">
@@ -414,8 +423,8 @@ main{padding:2px 20px 48px}
   <section class="view" id="view-unc" hidden>
     <div class="unc-intro">
       <h1>What we don’t know yet</h1>
-      <p>Open questions ranked by their impact on a decision about scaling up, then by how poorly they are constrained, then by the size of their effect in ROAM’s Arctic rewilding model. Impact is high where an input moves modeled cooling by 30% or more at 2100 or 2325, medium for 15–30%; questions the model doesn’t represent are rated by judgment. Uncertainty is high where a value rests on judgment or a single study. The gray rows at the top are large drivers this roadmap can’t narrow, shown for scale. Select a question for the reasoning and the activities that address it.</p>
-      <p>These ratings are a first draft based on the systematic review’s causal chains and the sensitivity analysis in ROAM’s Arctic rewilding model. They will be revised after the review and expert interviews. The model tests one input at a time from an optimistic central case and covers only cooling, so social and ecological questions are rated but not charted.</p>
+      <p>Each question is ranked by how far it moves modeled cooling across its plausible range, taking the larger of its effects at 2100 and 2325. That one number combines how much an input matters with how uncertain it is: a well-known value, or a weak lever, barely moves the result. The ranking is only as good as the ranges, so the evidence behind each range is shown alongside. The gray rows at the top are large drivers this roadmap can’t narrow, shown for scale. Select any row for the reasoning, sources and activities.</p>
+      <p>The model tests one input at a time from an optimistic central case and covers only cooling. Questions it doesn’t represent, including the social and ecological ones, are listed last in draft order of importance until they can be measured or modeled.</p>
     </div>
     <div class="ul-wrap"><div class="ul" id="uncList"></div></div>
     <div class="ul-key"><span><i style="background:color-mix(in srgb,var(--draft) 75%,var(--surface))"></i>Less cooling than the central estimate</span><span><i style="background:color-mix(in srgb,var(--focus) 75%,var(--surface))"></i>More cooling</span><span>Model run of November 3, 2026 (version f6c1cfd), warming scenario SSP3-7.0. Figures will move as the model is revised.</span></div>
@@ -426,7 +435,7 @@ main{padding:2px 20px 48px}
       <article>
         <h1>About this roadmap</h1>
         <p>Arctic rewilding has a bold hypothesis behind it, one decades-long experiment at Pleistocene Park, and a scattered literature. What the field lacks is a shared account of what is known, what is contested, and what evidence would settle the question. This roadmap is a proposal for building that evidence, in order, with an honest price tag.</p>
-        <p>Arctic rewilding is not a substitute for cutting emissions. Even on optimistic assumptions it would slow warming modestly and over decades. Its distinctive promise is protecting permafrost carbon that emissions cuts can’t reach, alongside decarbonization and carbon removal, not instead of them.</p>
+        <p>Arctic rewilding is not a silver bullet, and not a substitute for cutting emissions. Its effects would build over decades, broadly on the pace and scale of other carbon-removal approaches, and could offset a meaningful share of warming if the evidence holds up. Its distinctive promise is protecting permafrost carbon that emissions cuts can’t reach, alongside decarbonization and carbon removal, not instead of them.</p>
         <p>It works backward from a single decision: whether large-herbivore restoration should be scaled up as a nature-based climate solution. An activity belongs on the roadmap only if it reduces an uncertainty that matters to that decision, or is a necessary step toward work that does. A clear “no” would be a valuable outcome.</p>
 
         <h2>How it is organized</h2>
@@ -455,9 +464,10 @@ main{padding:2px 20px 48px}
       </article>
       <aside>
         <h3>Status</h3>
-        <p>Draft v0.5, November 2026. Not reviewed by advisors or outside experts.</p>
+        <p>Draft v0.6, November 2026. Not reviewed by advisors or outside experts.</p>
         <h3>Changelog</h3>
         <ul class="changelog">
+          <li><b>v0.6</b> Questions ranked by their effect on modeled cooling, with the evidence behind each range; sources from the model’s evidence table on every question and activity.</li>
           <li><b>v0.5</b> Ratings derived from the model with a stated rule; reference drivers shown first; boreal transition broadened beyond fire; guided tour, keyboard navigation, feedback links, this changelog.</li>
           <li><b>v0.4</b> Phase 2 becomes accelerated releases building on existing reintroductions; Phase 3 the herd size decision. Lessons from reintroductions and boreal grazing experiments added. Model sensitivity refreshed.</li>
           <li><b>v0.3</b> Four phases with budgets and a third gate; ranked uncertainty list with tornado chart; tighter layout with cost on hover.</li>
@@ -469,7 +479,7 @@ main{padding:2px 20px 48px}
         <h3>Keyboard</h3>
         <p>Tab into the roadmap, then use the arrow keys to move between activities, Enter to open one and Escape to close it.</p>
         <h3>Not included yet</h3>
-        <p>Detailed scoping with outside experts, per-phase estimates of how much each phase narrows the cooling uncertainty, references for each activity, and decisions on which non-scientific work belongs in the published version.</p>
+        <p>Detailed scoping with outside experts, per-phase estimates of how much each phase narrows the cooling uncertainty, sources for the questions the model doesn’t cover, and decisions on which non-scientific work belongs in the published version.</p>
       </aside>
     </div>
   </section>
@@ -736,16 +746,33 @@ const FEEDBACK = "https://github.com/lukegt-AFEI/ROAM-researchroadmap-mockup/iss
 // One-at-a-time sensitivity of modeled cooling at 2100 in ROAM's Arctic rewilding model (warming scenario SSP3-7.0, run of Nov 3, 2026, version f6c1cfd):
 // % change from the central estimate at the low (lo) and high (hi) end of each input's tested range.
 const SENS = {
-  U1:{p:"Maximum herbivore density",lo:-68,hi:6},
-  U9:{p:"Wild herd growth rate",lo:-48,hi:7},
-  U13:{p:"Strength of grazing-triggered thaw",lo:17,hi:-41},
-  U3:{p:"Share of thaw that can be prevented",lo:-39,hi:18},
-  U2:{p:"Density at which land converts",lo:11,hi:-39},
-  U6:{p:"Soil carbon accumulation rate",lo:-38,hi:19},
-  U5:{p:"Spring snow-albedo effect",lo:-33,hi:33},
-  U11:{p:"Permitting and start delay",lo:5,hi:-31},
-  U14:{p:"Share of burned forest that converts (fire route only)",lo:-26,hi:15}
+  U1:{p:"Maximum herbivore density",lo:-68,hi:6,e:79,ev:"Published estimate from one region, extrapolated"},
+  U9:{p:"Wild herd growth rate",lo:-48,hi:7,e:6,ev:"Measured for bison and muskox; other species judgment"},
+  U3:{p:"Share of thaw that can be prevented",lo:-39,hi:18,e:47,ev:"One published model; its reading is disputed"},
+  U6:{p:"Soil carbon accumulation rate",lo:-38,hi:19,e:43,ev:"One site, unpublished"},
+  U13:{p:"Strength of grazing-triggered thaw",lo:17,hi:-41,e:25,ev:"Judgment on a well-documented mechanism"},
+  U2:{p:"Density at which land converts",lo:11,hi:-39,e:26,ev:"Judgment"},
+  U5:{p:"Spring snow-albedo effect",lo:-33,hi:33,e:17,ev:"Published dataset; surface change under review"},
+  U11:{p:"Permitting and start delay",lo:5,hi:-31,e:2,ev:"Judgment, anchored on one program"},
+  U14:{p:"Share of burned forest that converts (fire route only)",lo:-26,hi:15,e:20,ev:"Judgment from published ecology; routes without fire not modeled"}
 };
+// Sources, from the Arctic rewilding model's evidence table (workbook Tab 5 - Evidence)
+const REFS = {
+  U1:[{c:"Zimov et al. 2012, Quaternary Science Reviews 57:26–45",l:"https://doi.org/10.1016/j.quascirev.2012.10.005"},{c:"Macias-Fauria et al. 2020, Pleistocene Park census"}],
+  U9:[{c:"Gates & Larter 1990, Arctic 43:231 (Mackenzie wood bison growth)",l:"https://doi.org/10.14430/arctic1616"},{c:"Sakha (Yakutia) aerial muskox census, 2024"}],
+  U3:[{c:"Beer et al. 2020, Scientific Reports 10:4170",l:"https://doi.org/10.1038/s41598-020-60938-y"},{c:"Ylänne & Stark 2025, Environmental Research Communications 7:022004 (caution)"}],
+  U6:[{c:"N. Zimov, Pleistocene Park soil cores (unpublished, 2026)"},{c:"Schmitz et al. 2023, Nature Climate Change 13:324",l:"https://doi.org/10.1038/s41558-023-01631-6"},{c:"Windirsch et al. 2024, Arctic Science",l:"https://doi.org/10.1139/as-2023-0033"},{c:"Poeplau et al. 2011, Global Change Biology 17:2415"}],
+  U13:[{c:"Fedorov et al. 2019, Polar Science 22:100483"},{c:"Varlamov et al. 2022, Land 11:2331"},{c:"Nauta et al. 2015, Nature Climate Change 5:67"},{c:"Ulrich et al. 2017, Water Resources Research 53"}],
+  U2:[{c:"Kuzyk et al. 2009, Open Conservation Biology Journal 3:24–35 (Elk Island densities)"},{c:"Bork et al. 1997, Canadian Journal of Botany 75:1518",l:"https://doi.org/10.1139/b97-866"},{c:"Zimov 2005, Pleistocene Park core"}],
+  U5:[{c:"Bright & O’Halloran 2019, Geoscientific Model Development 12:3975 (CACK v1.0)",l:"https://doi.org/10.5194/gmd-12-3975-2019"},{c:"Soden et al. 2008, Journal of Climate 21:3504"}],
+  U11:[{c:"ADF&G 2013, Alaska wood bison environmental assessment"},{c:"ADF&G news release, 17 March 2015 (first Alaska wood bison release)"}],
+  U14:[{c:"Kharuk et al. 2023, Fire 6:301",l:"https://doi.org/10.3390/fire6080301"},{c:"Allred et al. 2011, Ecology and Evolution 1:132"},{c:"Baltzer et al. 2021, PNAS (black spruce regeneration failure)"},{c:"Krylov et al. 2014, Environmental Research Letters 9:105007",l:"https://doi.org/10.1088/1748-9326/9/10/105007"},{c:"Foote 1983, USDA Forest Service Research Paper PNW-307"}]
+};
+const sg = v => (v>0?"+":"")+v;
+function srcHTML(list, head){
+  if(!list || !list.length) return `<h3>${head||"Sources"}</h3><p class="empty">None compiled yet.</p>`;
+  return `<h3>${head||"Sources"}</h3><ul class="srcs">${list.map(r=>`<li>${r.l?`<a href="${r.l}" target="_blank" rel="noopener">${esc(r.c)}</a>`:esc(r.c)}</li>`).join("")}</ul><p class="estimate-note">From the evidence table of ROAM’s Arctic rewilding model.</p>`;
+}
 // Why each question is rated as it is. Impact: high if the input moves modeled cooling by 30% or more at 2100 or 2325, medium for 15–30%; judgment where the model is silent.
 // Uncertainty: high where the value rests on judgment or a single study, medium where it is measured but contested.
 const RATE = {
@@ -765,9 +792,12 @@ const RATE = {
   U14:"The model opens boreal land only through fire (the share of burns that convert moves cooling 26%). Shrubland, wetland and open woodland that animals could use without fire aren’t represented, so the real effect may be larger."
 };
 const REF_SENS = [
-  {t:"Climate sensitivity",q:"How much the planet warms or cools per unit of forcing. Not reducible by rewilding research.",p:"IPCC range",lo:-33,hi:67},
-  {t:"Permafrost thaw without herbivores",q:"When and how much permafrost carbon thaws in the do-nothing case. Narrowed by permafrost science, not by this roadmap.",p:"Timing of peak release",lo:0,hi:38},
-  {t:"Warming scenario",q:"Which emissions path the world follows. A choice, not an unknown research can narrow.",p:"SSP1-2.6 to SSP5-8.5",lo:-28,hi:14}
+  {t:"Climate sensitivity",q:"How much the planet warms or cools per unit of forcing. Not reducible by rewilding research.",p:"IPCC range",lo:-33,hi:67,e:67,ev:"Published assessment",
+   src:[{c:"IPCC AR6 WGI (2021), Chapter 7",l:"https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-7/"}]},
+  {t:"Permafrost thaw without herbivores",q:"When and how much permafrost carbon thaws in the do-nothing case. Narrowed by permafrost science, not by this roadmap.",p:"Timing and size of the do-nothing release",lo:0,hi:38,e:32,ev:"Calibrated to published syntheses",
+   src:[{c:"Schädel et al. 2026, Communications Earth & Environment 7:306",l:"https://doi.org/10.1038/s43247-026-03189-5"},{c:"McGuire et al. 2018, PNAS 115:3882"},{c:"Schuur et al. 2022, Annual Review of Environment and Resources 47:343",l:"https://doi.org/10.1146/annurev-environ-012220-011847"}]},
+  {t:"Warming scenario",q:"Which emissions path the world follows. A choice, not an unknown research can narrow.",p:"SSP1-2.6 to SSP5-8.5",lo:-28,hi:14,e:49,ev:"Scenario choice",
+   src:[{c:"IPCC AR6 WGI (2021), Summary for Policymakers"},{c:"Hausfather & Peters 2020, Nature 577:618–620",l:"https://doi.org/10.1038/d41586-020-00177-3"}]}
 ];
 ACTS.forEach(a=>a.unl=[]);
 ACTS.forEach(a=>a.dep.forEach(d=>byId[d] && byId[d].unl.push(a.id)));
@@ -1119,7 +1149,7 @@ rm.addEventListener("keydown",e=>{
   const [lo,hi]=[0,1].map(phaseCost).reduce((s,c)=>[s[0]+c[0],s[1]+c[1]],[0,0]);
   const STEPS=[
     ["A plan for reaching an informed decision","Restoring large herbivores to the Arctic could slow permafrost thaw, brighten snowy landscapes and store soil carbon. Or the effects could be small, offset by other changes, or impossible to scale. This roadmap sets out the evidence needed to decide: which questions, in what order, and at what cost."],
-    ["Not a substitute for cutting emissions","Even on optimistic assumptions, Arctic rewilding would slow warming modestly and over decades. Its distinctive promise is protecting permafrost carbon that emissions cuts can\u2019t reach. It belongs alongside decarbonization and carbon removal, not instead of them."],
+    ["Not a silver bullet","Arctic rewilding won\u2019t solve climate change on its own. Its effects would build over decades, broadly on the pace and scale of other carbon-removal approaches, and could offset a meaningful share of warming if the evidence holds up. Its distinctive promise is protecting permafrost carbon that emissions cuts can\u2019t reach. It belongs alongside decarbonization and carbon removal, not instead of them."],
     ["Why it\u2019s staged","The roadmap borrows the logic of clinical trials: learn what you can at one scale before moving to the next. Phase 0 tests existing evidence and designs experiments. Phase 1 runs replicated experiments at several sites. Phase 2 accelerates wild releases that are already under way, while herds are small enough to reverse. Phase 3 decides how large herds should become."],
     ["The gates","Between phases sit gates where the full body of evidence is measured against criteria set in advance by an independent committee. If the criteria aren\u2019t met, the work is repeated or it stops. If the research shows rewilding isn\u2019t worth scaling up, the roadmap has done its job."],
     ["Faster, not looser",`Muskox and wood bison have been reintroduced for decades, but far too slowly to tell whether herds can matter for climate. With work run in parallel and funded in the right order, a well-informed decision on accelerating releases is reachable in about ${yrs(SCH[0].G[2],SCH[1].G[2])}, for ${fmt(lo)}\u2013${fmt(hi)} at today\u2019s placeholder costs. Funding and coordination change the timeline, not the evidence: no gate is skipped.`]
@@ -1278,6 +1308,7 @@ function openAct(id){
     <div class="chips">${a.dep.length? a.dep.map(actChip).join("") : '<span class="empty">Can start now.</span>'}</div>
     <h3>Unlocks</h3>
     <div class="chips">${a.unl.length? a.unl.map(actChip).join("") : '<span class="empty">Nothing downstream yet.</span>'}</div>
+    ${(()=>{ const seen=new Set(), list=[]; a.u.forEach(u=>(REFS[u]||[]).forEach(r=>{ if(!seen.has(r.c) && list.length<6){ seen.add(r.c); list.push(r); } })); return list.length ? srcHTML(list,"Key sources for the questions it addresses") : ""; })()}
     <p class="fb"><a href="${FEEDBACK}${encodeURIComponent("Feedback: "+a.t)}" target="_blank" rel="noopener">Suggest a change to this activity</a> <span>opens GitHub</span></p>`;
   wireChips();
   if(!drawer.classList.contains("open")) showDrawer(); else dBody.scrollTop=0;
@@ -1312,24 +1343,33 @@ document.getElementById("howDeploy").addEventListener("click",openDeploy);
 function openUnc(id){
   const u = uncById[id]; if(!u) return;
   selected=null; applyHighlight();
-  const lv = ["","Low","Medium","High"];
+  const s = SENS[id], lv = ["","Low","Medium","High"];
   const acts = ACTS.filter(a=>a.u.includes(id));
   dCrumb.innerHTML = `<span class="swatch" style="background:${tc(u.tr)}"></span>Open question`;
   dBody.innerHTML = `<h2>${esc(u.t)}</h2><p>${esc(u.q)}</p>
     <div class="facts" style="grid-template-columns:1fr 1fr;margin-top:14px">
-      <div><span>Impact on the decision</span><b>${lv[u.rel]}</b></div>
-      <div><span>Degree of uncertainty</span><b>${lv[u.unc]}</b></div>
+      ${s ? `<div><span>Change in modeled cooling</span><b>${Math.max(Math.abs(s.lo),Math.abs(s.hi))}% at 2100 · ${s.e}% by 2325</b></div><div><span>Evidence behind the range</span><b>${esc(s.ev)}</b></div>`
+          : `<div><span>Not in the model yet</span><b>Draft impact: ${lv[u.rel]}</b></div><div><span>Draft judgment</span><b>Uncertainty: ${lv[u.unc]}</b></div>`}
     </div>
-    <p class="estimate-note">Draft rating, to be revised after the review and interviews.</p>
-    ${RATE[id]?`<h3>Why this rating</h3><p>${esc(RATE[id])}</p>`:""}
-    <h3>In ROAM’s Arctic rewilding model</h3><p>${SENS[id] ? `${esc(SENS[id].p)}: modeled cooling at 2100 changes by ${SENS[id].lo>0?"+":""}${SENS[id].lo}% at the low end of its range and ${SENS[id].hi>0?"+":""}${SENS[id].hi}% at the high end.` : "Not represented in the model yet."}</p>
+    ${RATE[id]?`<h3>Why it ranks here</h3><p>${esc(RATE[id])}</p>`:""}
+    ${s?`<p>${esc(s.p)}: modeled cooling at 2100 changes by ${sg(s.lo)}% at the low end of its range and ${sg(s.hi)}% at the high end.</p>`:""}
     <h3>Activities that address it</h3>
-    <div class="chips">${acts.length? acts.map(a=>actChip(a.id)).join("") : '<span class="empty">No activity yet. This is a gap in the roadmap.</span>'}</div>`;
+    <div class="chips">${acts.length? acts.map(a=>actChip(a.id)).join("") : '<span class="empty">No activity yet. This is a gap in the roadmap.</span>'}</div>
+    ${srcHTML(REFS[id])}`;
   wireChips();
   if(!drawer.classList.contains("open")) showDrawer(); else dBody.scrollTop=0;
 }
+function openRef(i){
+  const s = REF_SENS[i]; selected=null; applyHighlight();
+  dCrumb.textContent = "For scale: not reducible by this roadmap";
+  dBody.innerHTML = `<h2>${esc(s.t)}</h2><p>${esc(s.q)}</p>
+    <div class="facts" style="grid-template-columns:1fr 1fr;margin-top:14px"><div><span>Change in modeled cooling</span><b>${Math.max(Math.abs(s.lo),Math.abs(s.hi))}% at 2100 · ${s.e}% by 2325</b></div><div><span>Evidence behind the range</span><b>${esc(s.ev)}</b></div></div>
+    <p>${esc(s.p)}: modeled cooling at 2100 changes by ${sg(s.lo)}% to ${sg(s.hi)}% across the range.</p>
+    ${srcHTML(s.src)}`;
+  if(!drawer.classList.contains("open")) showDrawer(); else dBody.scrollTop=0;
+}
 
-// Uncertainty list with tornado chart, ranked by impact and uncertainty
+// Uncertainty list with tornado chart, ranked by how far each input moves modeled cooling
 (function(){
   const m = document.getElementById("uncList"); const lv=["","Low","Medium","High"];
   const pf = el("div","phase-filter","<span>Show what each phase targets:</span>");
@@ -1351,21 +1391,29 @@ function openUnc(id){
     const nw=Math.max(0,pos(Math.min(0,b))-pos(a)), pw=Math.max(0,pos(b)-pos(Math.max(0,a)));
     return `<div class="tz" title="${esc(s.p)}: ${pc(s.lo)} at the low end of its range, ${pc(s.hi)} at the high end"><span class="tz-axis"></span>`+
       (nw?`<span class="tz-neg" style="left:${pos(a)}%;width:${nw}%"></span>`:"")+(pw?`<span class="tz-pos" style="left:${pos(Math.max(0,a))}%;width:${pw}%"></span>`:"")+
-      `</div><div class="tz-lab">${esc(s.p)} <span>${pc(a)} to ${pc(b)}</span></div>`;
+      `</div><div class="tz-lab">${esc(s.p)} <span>${pc(a)} to ${pc(b)}</span>${s.e!=null?` <em>\u00b7 ${s.e}% by 2325</em>`:""}</div>`;
   };
-  const sw = u => SENS[u.id] ? Math.max(Math.abs(SENS[u.id].lo),Math.abs(SENS[u.id].hi)) : -1;
-  const rows = UNC.slice().sort((x,y)=>(y.rel*10+y.unc)-(x.rel*10+x.unc) || sw(y)-sw(x));
-  m.appendChild(el("div","ul-head",`<span>#</span><span>Question</span><span>Impact</span><span>Uncertainty</span><span>Change in modeled cooling at 2100<em><b>\u221270%</b><b>0</b><b>+70%</b></em></span>`));
+  const swing = s => Math.max(Math.abs(s.lo),Math.abs(s.hi),s.e||0);
+  const modeled = UNC.filter(u=>SENS[u.id]).sort((x,y)=>swing(SENS[y.id])-swing(SENS[x.id]));
+  const other = UNC.filter(u=>!SENS[u.id]).sort((x,y)=>(y.rel*10+y.unc)-(x.rel*10+x.unc));
+  m.appendChild(el("div","ul-head",`<span>#</span><span>Question</span><span>Evidence behind the range</span><span>Change in modeled cooling at 2100<em><b>\u221270%</b><b>0</b><b>+70%</b></em></span>`));
   m.appendChild(el("div","ul-sep","For scale: large drivers of the model result that rewilding research can\u2019t narrow"));
-  REF_SENS.forEach(s=>{
-    m.appendChild(el("div","ul-row ref",`<span class="ul-n"></span><span class="ul-q"><b>${esc(s.t)}</b><small>${esc(s.q)}</small></span><span class="ul-l"></span><span class="ul-l"></span><span class="ul-t">${bar({p:s.p,lo:s.lo,hi:s.hi})}</span>`));
+  REF_SENS.forEach((s,i)=>{
+    const r=el("button","ul-row ref"); r.type="button";
+    r.innerHTML=`<span class="ul-n"></span><span class="ul-q"><b>${esc(s.t)}</b><small>${esc(s.q)}</small></span><span class="ul-ev">${esc(s.ev)}</span><span class="ul-t">${bar(s)}</span>`;
+    r.addEventListener("click",()=>openRef(i)); m.appendChild(r);
   });
-  m.appendChild(el("div","ul-sep","Open questions this roadmap targets, ranked by impact, then uncertainty, then size of the modeled effect"));
-  rows.forEach((u,i)=>{
+  let n=0;
+  const row = u => {
+    n++; const s=SENS[u.id];
     const r=el("button","ul-row"); r.type="button"; r.dataset.u=u.id; r.style.setProperty("--tc",tc(u.tr));
-    r.innerHTML=`<span class="ul-n">${i+1}</span><span class="ul-q"><b>${esc(u.t)}</b><small>${esc(u.q)}</small></span><span class="ul-l l${u.rel}">${lv[u.rel]}</span><span class="ul-l l${u.unc}">${lv[u.unc]}</span><span class="ul-t">${bar(SENS[u.id])}</span>`;
+    r.innerHTML=`<span class="ul-n">${n}</span><span class="ul-q"><b>${esc(u.t)}</b><small>${esc(u.q)}</small></span><span class="ul-ev">${s?esc(s.ev):"Draft judgment: impact "+lv[u.rel].toLowerCase()+", uncertainty "+lv[u.unc].toLowerCase()}</span><span class="ul-t">${bar(s)}</span>`;
     r.addEventListener("click",()=>openUnc(u.id)); m.appendChild(r);
-  });;
+  };
+  m.appendChild(el("div","ul-sep","Open questions this roadmap targets, ranked by how far each moves modeled cooling (the larger of its 2100 and 2325 effects)"));
+  modeled.forEach(row);
+  m.appendChild(el("div","ul-sep","Not in the model yet, in draft order of importance"));
+  other.forEach(row);
 })();
 
 // Gate list on About page
