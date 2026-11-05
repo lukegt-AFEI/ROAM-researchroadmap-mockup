@@ -390,7 +390,7 @@ main{padding:2px 20px 48px}
     <button class="theme-btn" id="themeBtn" type="button">Theme</button>
   </div>
 </header>
-<p class="draft-note">Mockup (v0.7) for discussion only. This is not the actual research roadmap. Activities, costs and timelines are placeholders that haven’t been scoped with outside experts yet.</p>
+<p class="draft-note">Mockup (v0.8) for discussion only. This is not the actual research roadmap. Activities, costs and timelines are placeholders that haven’t been scoped with outside experts yet.</p>
 
 <main>
   <section class="view" id="view-roadmap">
@@ -423,11 +423,11 @@ main{padding:2px 20px 48px}
   <section class="view" id="view-unc" hidden>
     <div class="unc-intro">
       <h1>What we don’t know yet</h1>
-      <p>Each question is ranked by how far it moves modeled cooling across its plausible range, taking the larger of its effects at 2100 and 2325. That one number combines how much an input matters with how uncertain it is: a well-known value, or a weak lever, barely moves the result. The ranking is only as good as the ranges, so the evidence behind each range is shown alongside. The gray rows at the top are large drivers this roadmap can’t narrow, shown for scale. Select any row for the reasoning, sources and activities.</p>
-      <p>The model tests one input at a time from an optimistic central case and covers only cooling. Questions it doesn’t represent, including the social and ecological ones, are listed last in draft order of importance until they can be measured or modeled.</p>
+      <p>These are the model inputs we are least sure of, ranked by how far each moves modeled cooling across its plausible range, taking the larger of its effects at 2100 and 2325. That one number combines how much an input matters with how uncertain it is: a well-known value, or a weak lever, barely moves the result. The ranking is only as good as the ranges, so the evidence behind each range is shown alongside. The gray rows at the top are large drivers this roadmap can’t narrow, shown for scale. Select any row for the reasoning, sources and activities.</p>
+      <p>Only uncertain inputs are listed. Outcomes such as how many animals, how much land and how much cooling follow from them and are calculated by the model; measurement, co-effects and harvest are handled as roadmap activities. The model tests one input at a time from an optimistic central case.</p>
     </div>
     <div class="ul-wrap"><div class="ul" id="uncList"></div></div>
-    <div class="ul-key"><span><i style="background:color-mix(in srgb,var(--draft) 75%,var(--surface))"></i>Less cooling than the central estimate</span><span><i style="background:color-mix(in srgb,var(--focus) 75%,var(--surface))"></i>More cooling</span><span>Model run of November 3, 2026 (version f6c1cfd), warming scenario SSP3-7.0. Figures will move as the model is revised.</span></div>
+    <div class="ul-key"><span><i style="background:color-mix(in srgb,var(--draft) 75%,var(--surface))"></i>Less cooling than the central estimate</span><span><i style="background:color-mix(in srgb,var(--focus) 75%,var(--surface))"></i>More cooling</span><span>Model run of November 3, 2026 (version 08f82ff), warming scenario SSP3-7.0. Figures will move as the model is revised.</span></div>
   </section>
 
   <section class="view" id="view-about" hidden>
@@ -464,9 +464,10 @@ main{padding:2px 20px 48px}
       </article>
       <aside>
         <h3>Status</h3>
-        <p>Draft v0.7, November 2026. Not reviewed by advisors or outside experts.</p>
+        <p>Draft v0.8, November 2026. Not reviewed by advisors or outside experts.</p>
         <h3>Changelog</h3>
         <ul class="changelog">
+          <li><b>v0.8</b> Uncertainty list limited to uncertain model inputs; outcomes (scale, co-effects), measurement and duplicates removed. Figures from the latest model run (version 08f82ff).</li>
           <li><b>v0.7</b> Phase 1 costed for three to five sites (about $50M–$150M to the decision); longer experiments, so the decision is about 12–23 years out; whole years only; credit to Reflective and the clinical-trial model.</li>
           <li><b>v0.6</b> Questions ranked by their effect on modeled cooling, with the evidence behind each range; sources from the model’s evidence table on every question and activity.</li>
           <li><b>v0.5</b> Ratings derived from the model with a stated rule; reference drivers shown first; boreal transition broadened beyond fire; guided tour, keyboard navigation, feedback links, this changelog.</li>
@@ -521,15 +522,10 @@ const UNC = [
   {id:"U1", tr:"eco", rel:3, unc:3, t:"Carrying capacity", q:"Can present-day tundra support herbivore densities high enough to change vegetation?"},
   {id:"U2", tr:"eco", rel:3, unc:3, t:"State-shift thresholds", q:"At what density, and how quickly, do moss and shrubs give way to grasses?"},
   {id:"U3", tr:"cli", rel:3, unc:3, t:"Winter snow effect", q:"Does trampling compact snow enough to cool soils and protect permafrost?"},
-  {id:"U4", tr:"cli", rel:3, unc:2, t:"Summer warming offset", q:"Does removing vegetation warm soils in summer and cancel part of the winter cooling?"},
   {id:"U5", tr:"cli", rel:3, unc:2, t:"Net albedo", q:"Is the year-round change in surface reflectivity net cooling, and how large is it?"},
   {id:"U6", tr:"cli", rel:3, unc:3, t:"Ecosystem carbon", q:"Do herbivores increase total carbon stored above and below ground?"},
-  {id:"U7", tr:"cli", rel:2, unc:3, t:"Methane", q:"Do changes in soil moisture raise or lower methane emissions?"},
-  {id:"U8", tr:"mea", rel:3, unc:3, t:"Scalability", q:"How much land, how many animals, and what cost per tonne at scale?"},
   {id:"U9", tr:"eco", rel:3, unc:3, t:"Herd growth and persistence", q:"How fast can reintroduced herds grow, and can they stay at high density with predators and limited management?"},
-  {id:"U10", tr:"mea", rel:3, unc:2, t:"Measurability", q:"Can effects be measured credibly beyond a single instrumented site?"},
   {id:"U11", tr:"imp", rel:3, unc:2, t:"Consent and governance", q:"On what terms would landholders, Tribes and agencies support rewilding?"},
-  {id:"U12", tr:"eco", rel:2, unc:3, t:"Local co-effects", q:"What are the effects on local fire risk, hydrology and biodiversity?"},
   {id:"U13", tr:"cli", rel:3, unc:3, t:"Grazing-triggered thaw", q:"Where grazing strips moss and shrubs from ice-rich (Yedoma) permafrost, does it start thaw and ground collapse that offsets the cooling?"},
   {id:"U14", tr:"cli", rel:3, unc:3, t:"Boreal transition pathways", q:"Where can herbivores open boreal land to grassland: after fire in dense forest, or directly in shrubland, wetland and open woodland, and how much carbon is given up?"}
 ];
@@ -559,7 +555,7 @@ const ACTS = [
   {id:"thermal-contrast", tr:"cli", p:0, t:"Soil temperature at existing grazed and ungrazed contrasts", dur:"1–2 yr", c:[200,500], st:"Planned",
    why:"Existing exclosures and herding boundaries are natural experiments that can test thermal effects years before new sites mature.",
    min:"Instrument paired plots at existing exclosures for year-round soil temperature and active-layer depth.",
-   ext:"Add summer energy-balance measurements to capture warming offsets.", u:["U3","U4"], dep:["slr"]},
+   ext:"Add summer energy-balance measurements to capture warming offsets.", u:["U3","U13"], dep:["slr"]},
   {id:"yedoma", tr:"cli", p:0, t:"Grazing disturbance on ice-rich permafrost", dur:"1–2 yr", c:[150,400], st:"Planned",
    why:"Where grazing strips moss or shrubs from ice-rich Yedoma ground, it could start thaw and ground collapse instead of preventing it. In ROAM’s Arctic rewilding model this is one of the largest drivers of the 2100 result, and it pushes toward warming.",
    min:"Measure moss and shrub cover, active-layer depth and ground subsidence at grazed and ungrazed sites on ice-rich ground, including Pleistocene Park and Yedoma near existing herds.",
@@ -727,7 +723,7 @@ const ACTS = [
    min:"Combine remote sensing, flux networks and atmospheric inversions across all release landscapes.",
    ext:"Independent re-analysis by outside groups.", u:["U5","U6","U7","U8","U10"], dep:["landscape"]}
 ];
-ACTS.forEach(a=>{ if(a.pe==null) a.pe=a.p; });
+ACTS.forEach(a=>{ if(a.pe==null) a.pe=a.p; a.u=a.u.filter(id=>UNC.some(x=>x.id===id)); });
 const SHORT = {
   "pp-data":"Pleistocene Park data inventory", "herb-data":"Pan-Arctic herbivore dataset", "snow-field":"Snow trampling measurements",
   "thermal-contrast":"Soil temperature at existing contrasts", "yedoma":"Grazing on ice-rich permafrost", "fire-path":"Boreal transition pathways", "geo-model":"Geospatial ecosystem model", "hindcast":"Model validation at Pleistocene Park",
@@ -746,18 +742,18 @@ const byId = Object.fromEntries(ACTS.map(a=>[a.id,a]));
 const trackById = Object.fromEntries(TRACKS.map(t=>[t.id,t]));
 const uncById = Object.fromEntries(UNC.map(u=>[u.id,u]));
 const FEEDBACK = "https://github.com/lukegt-AFEI/ROAM-researchroadmap-mockup/issues/new?title=";
-// One-at-a-time sensitivity of modeled cooling at 2100 in ROAM's Arctic rewilding model (warming scenario SSP3-7.0, run of Nov 3, 2026, version f6c1cfd):
-// % change from the central estimate at the low (lo) and high (hi) end of each input's tested range.
+// One-at-a-time sensitivity of modeled cooling at 2100 in ROAM's Arctic rewilding model (warming scenario SSP3-7.0, run of Nov 3, 2026, version 08f82ff):
+// % change from the central estimate at the low (lo) and high (hi) end of each input's tested range; e = largest swing by 2325.
 const SENS = {
-  U1:{p:"Maximum herbivore density",lo:-68,hi:6,e:79,ev:"Published estimate from one region, extrapolated"},
-  U9:{p:"Wild herd growth rate",lo:-48,hi:7,e:6,ev:"Measured for bison and muskox; other species judgment"},
-  U3:{p:"Share of thaw that can be prevented",lo:-39,hi:18,e:47,ev:"One published model; its reading is disputed"},
-  U6:{p:"Soil carbon accumulation rate",lo:-38,hi:19,e:43,ev:"One site, unpublished"},
-  U13:{p:"Strength of grazing-triggered thaw",lo:17,hi:-41,e:25,ev:"Judgment on a well-documented mechanism"},
-  U2:{p:"Density at which land converts",lo:11,hi:-39,e:26,ev:"Judgment"},
-  U5:{p:"Spring snow-albedo effect",lo:-33,hi:33,e:17,ev:"Published dataset; surface change under review"},
-  U11:{p:"Permitting and start delay",lo:5,hi:-31,e:2,ev:"Judgment, anchored on one program"},
-  U14:{p:"Share of burned forest that converts (fire route only)",lo:-26,hi:15,e:20,ev:"Judgment from published ecology; routes without fire not modeled"}
+  U1:{p:"Maximum herbivore density",lo:-74,hi:8,e:81,ev:"Published estimate from one region, extrapolated"},
+  U9:{p:"Wild herd growth rate",lo:-51,hi:8,e:7,ev:"Measured for bison and muskox; other species judgment"},
+  U3:{p:"Share of thaw that can be prevented",lo:-44,hi:20,e:49,ev:"One published model; its reading is disputed"},
+  U6:{p:"Soil carbon accumulation rate",lo:-43,hi:21,e:46,ev:"One site, unpublished"},
+  U13:{p:"Strength of grazing-triggered thaw",lo:19,hi:-45,e:26,ev:"Judgment on a well-documented mechanism"},
+  U2:{p:"Density at which land converts",lo:12,hi:-37,e:26,ev:"Judgment"},
+  U5:{p:"Spring snow-albedo effect",lo:-23,hi:23,e:11,ev:"Published kernels; boreal surface change from satellite data"},
+  U11:{p:"Permitting and start delay",lo:5,hi:-33,e:2,ev:"Judgment, anchored on one program"},
+  U14:{p:"Share of burned forest that converts (fire route only)",lo:-24,hi:14,e:20,ev:"Judgment from published ecology; routes without fire not modeled"}
 };
 // Sources, from the Arctic rewilding model's evidence table (workbook Tab 5 - Evidence)
 const REFS = {
@@ -779,27 +775,22 @@ function srcHTML(list, head){
 // Why each question is rated as it is. Impact: high if the input moves modeled cooling by 30% or more at 2100 or 2325, medium for 15–30%; judgment where the model is silent.
 // Uncertainty: high where the value rests on judgment or a single study, medium where it is measured but contested.
 const RATE = {
-  U1:"Moves modeled cooling 68% at 2100 and 79% by 2325, the largest of any input. Plausible values span tenfold (2–20 t/km²), and the model applies one value to every ecosystem type.",
-  U2:"Moves modeled cooling 39% at 2100. The density and speed of conversion are judgment calls; the only published conversion extent is Pleistocene Park’s core.",
-  U3:"Moves modeled cooling 39% at 2100 and 47% by 2325. Rests on one modeling study and few field measurements of trampled snow.",
-  U4:"Not in the model. Could cancel part of the winter cooling; field data exist but conflict.",
-  U5:"Moves modeled cooling 33% at 2100. The radiative kernels are well sourced, but the size of the spring surface brightening is still being checked against satellite data.",
-  U6:"Moves modeled cooling 38% at 2100 and 43% by 2325. The rate rests on a single unpublished site measurement.",
-  U7:"Not in the model beyond the animals’ own methane. Wetter or drier soils could swing emissions either way, with little data.",
-  U8:"Not a single model input: it combines carrying capacity, area, herd growth and cost, several of which are highly uncertain themselves.",
-  U9:"Moves modeled cooling 48% at 2100. Growth rates are measured for a few reintroduced herds, but whether faster growth and high densities hold up with predators and limited management is unknown.",
-  U10:"Not in the model. Decides whether any climate claim is credible; methods exist but are untested at landscape scale.",
-  U11:"Permitting delay moves modeled cooling 31% at 2100, and nothing proceeds without consent. The processes are known; the outcomes are not.",
-  U12:"Not in the model. May matter locally as much as the climate signal; effects on fire, water and wildlife are largely unstudied.",
-  U13:"Moves modeled cooling 41% at 2100. Its strength is a judgment call (0–0.5) with almost no field evidence.",
-  U14:"The model opens boreal land only through fire (the share of burns that convert moves cooling 26%). Shrubland, wetland and open woodland that animals could use without fire aren’t represented, so the real effect may be larger."
+  U1:"Moves modeled cooling 74% at 2100 and 81% by 2325, the largest of any input. Plausible values span tenfold (2–20 t/km²), and the model applies one value to every ecosystem type.",
+  U2:"Moves modeled cooling 37% at 2100. The density and speed of conversion are judgment calls; the only published conversion extent is Pleistocene Park’s core. Conversion rate is a second, related input (33%).",
+  U3:"Moves modeled cooling 44% at 2100 and 49% by 2325. Rests on one modeling study and few field measurements of trampled snow.",
+  U5:"Moves modeled cooling 23% at 2100. The radiative kernels are well sourced, and the boreal surface change now comes from satellite data, which narrowed this input.",
+  U6:"Moves modeled cooling 43% at 2100 and 46% by 2325. The rate rests on a single unpublished site measurement; how long soils keep storing carbon is a related input (28% by 2325).",
+  U9:"Moves modeled cooling 51% at 2100. Growth rates are measured for a few reintroduced herds, but whether faster growth and high densities hold up with predators and limited management is unknown.",
+  U11:"Permitting delay moves modeled cooling 33% at 2100, and nothing proceeds without consent. The processes are known; the outcomes are not.",
+  U13:"Moves modeled cooling 45% at 2100. Its strength is a judgment call (0–0.5) with almost no field evidence. It is the summer-warming side of grazing: stripping moss and shrubs can warm ice-rich ground.",
+  U14:"The model opens boreal land only through fire (the share of burns that convert moves cooling 24%). Shrubland, wetland and open woodland that animals could use without fire aren’t represented, so the real effect may be larger."
 };
 const REF_SENS = [
   {t:"Climate sensitivity",q:"How much the planet warms or cools per unit of forcing. Not reducible by rewilding research.",p:"IPCC range",lo:-33,hi:67,e:67,ev:"Published assessment",
    src:[{c:"IPCC AR6 WGI (2021), Chapter 7",l:"https://www.ipcc.ch/report/ar6/wg1/chapter/chapter-7/"}]},
-  {t:"Permafrost thaw without herbivores",q:"When and how much permafrost carbon thaws in the do-nothing case. Narrowed by permafrost science, not by this roadmap.",p:"Timing and size of the do-nothing release",lo:0,hi:38,e:32,ev:"Calibrated to published syntheses",
+  {t:"Permafrost thaw without herbivores",q:"When and how much permafrost carbon thaws in the do-nothing case. Narrowed by permafrost science, not by this roadmap.",p:"Timing and size of the do-nothing release",lo:0,hi:42,e:34,ev:"Calibrated to published syntheses",
    src:[{c:"Schädel et al. 2026, Communications Earth & Environment 7:306",l:"https://doi.org/10.1038/s43247-026-03189-5"},{c:"McGuire et al. 2018, PNAS 115:3882"},{c:"Schuur et al. 2022, Annual Review of Environment and Resources 47:343",l:"https://doi.org/10.1146/annurev-environ-012220-011847"}]},
-  {t:"Warming scenario",q:"Which emissions path the world follows. A choice, not an unknown research can narrow.",p:"SSP1-2.6 to SSP5-8.5",lo:-28,hi:14,e:49,ev:"Scenario choice",
+  {t:"Warming scenario",q:"Which emissions path the world follows. A choice, not an unknown research can narrow.",p:"SSP1-2.6 to SSP5-8.5",lo:-27,hi:13,e:48,ev:"Scenario choice",
    src:[{c:"IPCC AR6 WGI (2021), Summary for Policymakers"},{c:"Hausfather & Peters 2020, Nature 577:618–620",l:"https://doi.org/10.1038/d41586-020-00177-3"}]}
 ];
 ACTS.forEach(a=>a.unl=[]);
@@ -1387,7 +1378,7 @@ function openRef(i){
     pf.appendChild(b);
   });
   m.parentNode.before(pf);
-  const MAX=70, pos=v=>50+50*Math.max(-MAX,Math.min(MAX,v))/MAX, pc=v=>(v>0?"+":v<0?"\u2212":"")+Math.abs(v)+"%";
+  const MAX=80, pos=v=>50+50*Math.max(-MAX,Math.min(MAX,v))/MAX, pc=v=>(v>0?"+":v<0?"\u2212":"")+Math.abs(v)+"%";
   const bar = s => {
     if(!s) return '<div class="tz-none">Not in the model yet</div>';
     const a=Math.min(s.lo,s.hi), b=Math.max(s.lo,s.hi);
@@ -1399,7 +1390,7 @@ function openRef(i){
   const swing = s => Math.max(Math.abs(s.lo),Math.abs(s.hi),s.e||0);
   const modeled = UNC.filter(u=>SENS[u.id]).sort((x,y)=>swing(SENS[y.id])-swing(SENS[x.id]));
   const other = UNC.filter(u=>!SENS[u.id]).sort((x,y)=>(y.rel*10+y.unc)-(x.rel*10+x.unc));
-  m.appendChild(el("div","ul-head",`<span>#</span><span>Question</span><span>Evidence behind the range</span><span>Change in modeled cooling at 2100<em><b>\u221270%</b><b>0</b><b>+70%</b></em></span>`));
+  m.appendChild(el("div","ul-head",`<span>#</span><span>Question</span><span>Evidence behind the range</span><span>Change in modeled cooling at 2100<em><b>\u221280%</b><b>0</b><b>+80%</b></em></span>`));
   m.appendChild(el("div","ul-sep","For scale: large drivers of the model result that rewilding research can\u2019t narrow"));
   REF_SENS.forEach((s,i)=>{
     const r=el("button","ul-row ref"); r.type="button";
@@ -1413,10 +1404,8 @@ function openRef(i){
     r.innerHTML=`<span class="ul-n">${n}</span><span class="ul-q"><b>${esc(u.t)}</b><small>${esc(u.q)}</small></span><span class="ul-ev">${s?esc(s.ev):"Draft judgment: impact "+lv[u.rel].toLowerCase()+", uncertainty "+lv[u.unc].toLowerCase()}</span><span class="ul-t">${bar(s)}</span>`;
     r.addEventListener("click",()=>openUnc(u.id)); m.appendChild(r);
   };
-  m.appendChild(el("div","ul-sep","Open questions this roadmap targets, ranked by how far each moves modeled cooling (the larger of its 2100 and 2325 effects)"));
+  m.appendChild(el("div","ul-sep","Uncertain inputs this roadmap targets, ranked by how far each moves modeled cooling (the larger of its 2100 and 2325 effects)"));
   modeled.forEach(row);
-  m.appendChild(el("div","ul-sep","Not in the model yet, in draft order of importance"));
-  other.forEach(row);
 })();
 
 // Gate list on About page
